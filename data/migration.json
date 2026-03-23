@@ -1,0 +1,23 @@
+{
+  "source": "IRS SOI Migration Data 2021-2022, Tax Foundation analysis Dec 2024",
+  "topGainers": [
+    { "state": "FL", "netFilers": 125551 },
+    { "state": "TX", "netFilers": 88216 },
+    { "state": "NC", "netFilers": 43653 },
+    { "state": "SC", "netFilers": 32927 },
+    { "state": "TN", "netFilers": 30935 }
+  ],
+  "topLosers": [
+    { "state": "CA", "netFilers": -144203 },
+    { "state": "NY", "netFilers": -108586 },
+    { "state": "IL", "netFilers": -45460 },
+    { "state": "MA", "netFilers": -26033 },
+    { "state": "NJ", "netFilers": -20820 }
+  ],
+  "california": {
+    "agiLost2020to2022": 102000000000,
+    "highEarnerHouseholdsLost2022": 24670,
+    "highEarnerAGILost2022": 16100000000,
+    "source": "CA Legislative Analyst's Office (2024), Center for Jobs (June 2024)"
+  }
+}

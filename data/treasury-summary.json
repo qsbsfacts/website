@@ -1,0 +1,65 @@
+{
+  "source": "U.S. Treasury OTA Working Paper 127, January 2025",
+  "dataYears": "2012-2022",
+  "overview": {
+    "totalExclusionsClaimed": 152000000000,
+    "peakYear": 2021,
+    "peakAmount": 51100000000,
+    "peakIndividualAmount": 42200000000,
+    "totalIndividualClaimants": 217000,
+    "totalTrustClaimants": 25000,
+    "avgAnnualClaimants": 33000,
+    "shareOfAllCapGains2021": 2.55,
+    "totalCapGains2012to2022": 10000000000000
+  },
+  "distribution": {
+    "medianAnnualExclusion": 2810,
+    "p90AnnualExclusion": 590940,
+    "byIncome": [
+      { "bracket": "Under $100K", "pctOfClaimants": 20, "pctOfDollars": 2 },
+      { "bracket": "$100K-$400K", "pctOfClaimants": 35, "pctOfDollars": 11 },
+      { "bracket": "$400K-$1M", "pctOfClaimants": 19, "pctOfDollars": 12 },
+      { "bracket": "Over $1M", "pctOfClaimants": 26, "pctOfDollars": 75 }
+    ],
+    "itepMethodology": {
+      "pctToOver1M_beforeQSBS": 74,
+      "pctToUnder1M_butQSBSpushesOver": 20,
+      "combinedClaim": 94,
+      "note": "ITEP adds these two groups to get '94% goes to millionaires'. The second group (20%) are people earning under $1M normally whose one-time exit pushes them over — exactly the people QSBS was designed for."
+    },
+    "oneTimeClaimants": {
+      "pctSingleYear": 75,
+      "pctFiveOrMoreYears": 6,
+      "note": "75% of individuals claim QSBS in only a single year across the 11-year sample. This is overwhelmingly a one-time event."
+    },
+    "holdingPeriod": {
+      "modalYears": 5,
+      "note": "5 years = the minimum required holding period. Many claims occur after longer periods."
+    },
+    "trustClaims": {
+      "peakYear2021": 6650000000,
+      "pctOfTotal2021": 13,
+      "note": "Trust claims have grown significantly, from negligible in 2012 to $6.65B in 2021"
+    }
+  },
+  "annualExclusions": [
+    { "year": 2012, "individuals": 1180000000, "trusts": 0, "other": 140000000, "total": 1320000000 },
+    { "year": 2021, "individuals": 42200000000, "trusts": 6650000000, "other": 2270000000, "total": 51120000000 }
+  ],
+  "academicStudies": [
+    {
+      "authors": "Edwards & Todenhaupt",
+      "year": 2020,
+      "finding": "Investment in startup firms increased by approximately 12% after the 100% exclusion",
+      "method": "Within-firm variation comparing funding rounds before/after SBJA 2010",
+      "ssrn": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783"
+    },
+    {
+      "authors": "Chen & Farre-Mensa",
+      "year": "2023/2025",
+      "finding": "QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round VC",
+      "method": "Diff-in-diff comparing eligible vs ineligible industries after 2010 increase to 100%",
+      "ssrn": "https://ssrn.com/abstract=4482626"
+    }
+  ]
+}

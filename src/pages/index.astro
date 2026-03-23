@@ -1,0 +1,1104 @@
+---
+import '../styles/global.css';
+import statesData from '../../data/states.json';
+import treasuryData from '../../data/treasury-summary.json';
+import migrationData from '../../data/migration.json';
+
+const comparisonStates = ['TX', 'FL', 'WA', 'CA', 'OR', 'NY'];
+const comparisonData = comparisonStates.map(code => statesData.find(s => s.code === code)!);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Most startups fail. QSBS rewards the founders who built them, the employees who joined early, and the investors who backed them. Here's what the data actually shows." />
+    <meta property="og:title" content="QSBS Facts — Most startups fail. QSBS rewards the ones that don't." />
+    <meta property="og:description" content="75% of QSBS claimants use it exactly once. Data-driven analysis of Section 1202 tax policy." />
+    <meta property="og:type" content="website" />
+    <title>QSBS Facts — Most startups fail. QSBS rewards the ones that don't.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#" class="text-white font-bold text-lg">QSBS Facts</a>
+        <div class="hidden md:flex items-center gap-6 text-sm text-primary-200">
+          <a href="#evidence" class="hover:text-white transition-colors">Evidence</a>
+          <a href="#who-uses-it" class="hover:text-white transition-colors">Who Uses It</a>
+          <a href="#claim-vs-reality" class="hover:text-white transition-colors">The 94% Claim</a>
+          <a href="#calculator" class="hover:text-white transition-colors">Calculator</a>
+          <a href="#self-defeating" class="hover:text-white transition-colors">Migration</a>
+          <a href="#campaign" class="hover:text-white transition-colors">Campaign</a>
+          <a href="#reform" class="hover:text-white transition-colors">Reform</a>
+          <a href="#sources" class="hover:text-white transition-colors">Sources</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden bg-primary-950 border-t border-primary-800 px-4 py-3">
+        <div class="flex flex-col gap-3 text-sm text-primary-200">
+          <a href="#evidence" class="hover:text-white">Evidence</a>
+          <a href="#who-uses-it" class="hover:text-white">Who Uses It</a>
+          <a href="#claim-vs-reality" class="hover:text-white">The 94% Claim</a>
+          <a href="#calculator" class="hover:text-white">Calculator</a>
+          <a href="#self-defeating" class="hover:text-white">Migration</a>
+          <a href="#campaign" class="hover:text-white">Campaign</a>
+          <a href="#reform" class="hover:text-white">Reform</a>
+          <a href="#sources" class="hover:text-white">Sources</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 1. Hero -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white pt-28 pb-20 px-4 md:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">Section 1202 — Qualified Small Business Stock</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+          Most startups fail.<br/>QSBS rewards the ones that don't.
+        </h1>
+        <p class="text-lg md:text-xl text-primary-200 max-w-2xl mx-auto mb-4">
+          Section 1202 creates an incentive for the founders who build companies, the employees who join early, and the investors who back them at the riskiest stage. 75% of claimants use it exactly once. One bet. One reward.
+        </p>
+        <p class="text-md text-primary-300 max-w-xl mx-auto mb-10">
+          The data tells a different story than the one you've been hearing.
+        </p>
+        <a href="#evidence" class="inline-block bg-white text-primary-900 font-semibold px-8 py-3 rounded-lg hover:bg-primary-100 transition-colors text-lg">
+          See the evidence &darr;
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. The Evidence -->
+    <section id="evidence" class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Incentives Are Working</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          Nobody starts a company because of a tax incentive. But QSBS reduces the penalty for taking the risk — and the data shows that matters. When the exclusion was expanded to 100% in 2010, startup investment increased, more companies were created, and more people were employed at startups.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {treasuryData.academicStudies.map((study, i) => (
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-primary-500">
+              <p class="text-sm text-gray-400 mb-1">
+                {study.ssrn ? (
+                  <a href={study.ssrn} target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">{study.authors} ({study.year}) ↗</a>
+                ) : (
+                  <span>{study.authors} ({study.year})</span>
+                )}
+              </p>
+              {i === 0 && (
+                <p class="text-3xl font-bold text-primary-700 mb-2">~12%</p>
+              )}
+              <p class="text-lg font-semibold text-gray-800 mb-3">{study.finding}</p>
+              <p class="text-sm text-gray-500"><strong>Method:</strong> {study.method}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Who Actually Uses It — with archetypes -->
+    <section id="who-uses-it" class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Who Actually Uses It</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          These are the people who took the risk. Founders who spent years building something. Employees who took below-market salary for equity. Investors who wrote checks when nobody else would.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">{treasuryData.distribution.oneTimeClaimants.pctSingleYear}%</p>
+            <p class="text-gray-600">used it exactly once in 11 years</p>
+            <p class="text-xs text-gray-400 mt-2">One exit. One reward. Only {treasuryData.distribution.oneTimeClaimants.pctFiveOrMoreYears}% claimed it five or more years.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">$67,820</p>
+            <p class="text-gray-600">75th percentile annual exclusion</p>
+            <p class="text-xs text-gray-400 mt-2">The typical meaningful QSBS exit. Median is just ${treasuryData.distribution.medianAnnualExclusion.toLocaleString()}, pulled down by micro-claims.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">{treasuryData.overview.shareOfAllCapGains2021}%</p>
+            <p class="text-gray-600">of all capital gains in 2021</p>
+            <p class="text-xs text-gray-400 mt-2">QSBS is a rounding error in total capital gains.</p>
+          </div>
+        </div>
+
+        <!-- Archetypes -->
+        <h3 class="text-xl font-semibold text-center mb-6 text-gray-700">Who QSBS actually helps</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Senior Engineer</p>
+            <p class="text-gray-700 text-sm mb-3">A senior engineer at a 50-person startup exercises $40K in stock after 6 years.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$5,320</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">First-time Founder</p>
+            <p class="text-gray-700 text-sm mb-3">A first-time founder sells after 8 years for $2M. First liquidity event of their career.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$266,000</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Early Employee</p>
+            <p class="text-gray-700 text-sm mb-3">Employee #12 exercises options worth $150K after the company is acquired. Five years of below-market salary.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$19,950</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Seed Investor</p>
+            <p class="text-gray-700 text-sm mb-3">Puts $25K into a friend's company. 7 years later it's worth $200K.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$23,275</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-400 text-center mt-4 mb-8">Tax shown at California's 13.3% rate, the highest in the nation. Your state may differ — <a href="#calculator" class="underline hover:text-gray-600">try the calculator</a>.</p>
+
+        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 max-w-3xl mx-auto">
+          <h3 class="font-semibold text-lg mb-2 text-center">How large is a typical QSBS exclusion?</h3>
+          <p class="text-sm text-gray-500 text-center mb-4">Annual exclusion amount by percentile. 90% of claimants exclude less than $591K.</p>
+          <canvas id="distribution-chart" class="w-full" style="max-height: 300px;"></canvas>
+          <p class="text-xs text-gray-400 text-center mt-3">Source: Treasury OTA WP-127, Table 1. Percentiles of annual individual QSBS exclusion claims, 2012-2022.</p>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Distribution data: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025. Archetype examples are illustrative, based on typical QSBS claim profiles.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. The 94% Claim -->
+    <section id="claim-vs-reality" class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The "94% Goes to Millionaires" Claim</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          You've probably heard that 94% of QSBS benefits go to millionaires. The Treasury data shows why that's misleading.
+        </p>
+
+        <div class="max-w-2xl mx-auto mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-2 text-center">Who claims QSBS?</h3>
+            <p class="text-sm text-gray-500 text-center mb-4">By number of unique claimants (average income excluding QSBS gains)</p>
+            <canvas id="claimants-chart" class="w-full" style="max-height: 300px;"></canvas>
+            <p class="text-xs text-gray-400 text-center mt-3">Income measured as average Total Positive Income (TPI), excluding QSBS gains. Source: Treasury OTA WP-127, Figure 4.</p>
+          </div>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 md:p-8 max-w-3xl mx-auto">
+          <div class="text-center mb-6">
+            <p class="text-lg text-gray-700">Count the <strong>people</strong>, not just the dollars:</p>
+            <p class="text-5xl font-bold text-primary-700 mb-2">74%</p>
+            <p class="text-lg text-gray-700">of QSBS claimants earn under $1 million</p>
+            <p class="text-xs text-gray-500 mt-1">(by average income, excluding QSBS gains)</p>
+            <p class="text-sm text-gray-500 mt-2">The single largest group (35%) earns $100K-$400K. These are founders and early employees, not millionaires.</p>
+          </div>
+          <div class="border-t border-primary-200 pt-6">
+            <h4 class="font-semibold text-gray-800 mb-3">How ITEP gets to 94%</h4>
+            <p class="text-sm text-gray-700 mb-2"><strong>ITEP claims:</strong> "94% of QSBS exclusions were claimed by people with more than $1 million of annual income."</p>
+            <p class="text-sm text-gray-500 mb-4">That's a <em>dollar-weighted</em> stat, not a count of people. Here's how they construct it:</p>
+            <div class="space-y-3 text-sm text-gray-600">
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-primary-200 text-primary-800 flex items-center justify-center text-xs font-bold">1</span>
+                <p><strong>{treasuryData.distribution.itepMethodology.pctToOver1M_beforeQSBS}%</strong> of <em>dollars</em> go to people who already earned over $1M before counting QSBS gains</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold">2</span>
+                <p><strong>{treasuryData.distribution.itepMethodology.pctToUnder1M_butQSBSpushesOver}%</strong> of <em>dollars</em> go to people earning under $1M normally, whose one-time startup exit temporarily pushed them over</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-red-200 text-red-800 flex items-center justify-center text-xs font-bold">=</span>
+                <p>ITEP <strong>lumps both groups</strong> to claim 94% "goes to millionaires."</p>
+              </div>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mt-5">
+              <p class="text-sm font-semibold text-green-800 mb-2">These two groups are the incentive working as designed.</p>
+              <p class="text-sm text-gray-700">The 74% are <strong>investors who funded early-stage companies</strong>. The 20% are <strong>founders and employees who built them</strong>. QSBS connects capital to builders. Both sides show up in the "94%" because both sides took the risk the policy was designed to reward.</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Source: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025
+        </p>
+
+        <!-- TPI Methodology Explainer -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 md:p-8 max-w-3xl mx-auto mt-10">
+          <h4 class="font-semibold text-amber-900 text-lg mb-3">How Treasury actually measures income (and why it matters)</h4>
+          <p class="text-sm text-gray-700 mb-3">
+            Treasury's Working Paper 127 classifies QSBS claimants using <strong>Total Positive Income (TPI)</strong>, the sum of positive income sources on a tax return. Critically, <strong>QSBS gains that are excluded from income are also excluded from TPI</strong>. This is a deliberate methodological choice: Treasury measures a claimant's <em>regular economic income</em>, not a one-time liquidity event.
+          </p>
+          <p class="text-sm text-gray-700 mb-3">
+            Treasury also uses a <strong>3-year average TPI</strong> (the current year plus the prior two years) to classify claimants, smoothing out year-to-year volatility. For unique claimant counts, they average TPI over the full 11-year sample period (2012–2022). This methodology is designed to capture a person's <em>typical</em> income level.
+          </p>
+          <div class="bg-white rounded-lg p-4 mb-3 border border-amber-100">
+            <p class="text-sm text-gray-700 italic">
+              <strong>Example:</strong> A founder earning $150K/year sells their company after 8 years for $2M. By Treasury's methodology (which excludes QSBS gains from income), they're classified in the $100K-$400K income bracket. Not a millionaire. ITEP adds the gain back to reach "94%," reclassifying this person as a millionaire based on a single liquidity event.
+            </p>
+          </div>
+          <p class="text-sm text-gray-700">
+            ITEP's approach (adding the excluded QSBS gain back into income) directly undoes Treasury's deliberate choice. The result: people with normal incomes who had one successful exit get lumped in with actual high-income earners, inflating the "millionaire" count.
+          </p>
+          <p class="text-xs text-gray-400 mt-3">
+            Methodology: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">Treasury OTA WP-127</a>, Section III ("Data and Sample Construction")
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Exit Calculator -->
+    <section id="calculator" class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Exit Tax Calculator</h2>
+        <p class="text-gray-500 text-center mb-10 max-w-2xl mx-auto">
+          See what your state actually takes from a qualified small business stock exit under Section 1202.
+        </p>
+
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div>
+              <label for="state-select" class="block text-sm font-medium text-gray-700 mb-2">Your state</label>
+              <select id="state-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                {statesData.map(state => (
+                  <option value={state.code} data-rate={state.taxRate} data-conformity={state.qsbsConformity} data-note={state.note}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="exit-input" class="block text-sm font-medium text-gray-700 mb-2">Exit amount</label>
+              <input
+                type="text"
+                id="exit-input"
+                value="$2,810"
+                inputmode="numeric"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                aria-label="Exit amount in dollars"
+              />
+              <p class="text-xs text-gray-400 mt-1">Default is the median QSBS exclusion. Try your own amount.</p>
+            </div>
+            <div>
+              <label for="period-select" class="block text-sm font-medium text-gray-700 mb-2">Year stock was acquired</label>
+              <select id="period-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                <option value="before-2009">Before 2009 (50% exclusion)</option>
+                <option value="2009-2010">2009–2010 (75% exclusion)</option>
+                <option value="2010-2025" selected>2010–2025 (100% exclusion)</option>
+                <option value="after-july-2025">After July 2025 (100%, $15M cap)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div id="calc-result" class="bg-primary-50 rounded-xl p-6 mb-8 text-center">
+            <p class="text-sm text-gray-500 mb-1">State tax on this exit in <span id="result-state" class="font-semibold">Alabama</span></p>
+            <p id="result-amount" class="text-4xl md:text-5xl font-bold text-primary-700">$0</p>
+            <p id="result-note" class="text-sm text-gray-500 mt-2"></p>
+          </div>
+
+          <!-- Comparison Table -->
+          <h3 class="font-semibold text-gray-700 mb-4">Compare key states on the same exit</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="py-3 pr-4 text-sm font-medium text-gray-500">State</th>
+                  <th class="py-3 pr-4 text-sm font-medium text-gray-500">Tax Rate</th>
+                  <th class="py-3 pr-4 text-sm font-medium text-gray-500">QSBS Status</th>
+                  <th class="py-3 text-sm font-medium text-gray-500 text-right">Tax on Exit</th>
+                </tr>
+              </thead>
+              <tbody id="comparison-body">
+                {comparisonData.map(state => (
+                  <tr class="border-b border-gray-100 comparison-row" data-code={state.code} data-rate={state.taxRate} data-conformity={state.qsbsConformity}>
+                    <td class="py-3 pr-4 font-medium">{state.name}</td>
+                    <td class="py-3 pr-4 text-gray-600">{state.taxRate}%</td>
+                    <td class="py-3 pr-4">
+                      <span class={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
+                        state.qsbsConformity === 'conforms' ? 'bg-green-100 text-green-800' :
+                        state.qsbsConformity === 'decoupled' ? 'bg-red-100 text-red-800' :
+                        state.qsbsConformity === 'pending' ? 'bg-amber-100 text-amber-800' :
+                        'bg-gray-100 text-gray-800'
+                      }`}>
+                        {state.qsbsConformity === 'none' ? 'No income tax' : state.qsbsConformity}
+                      </span>
+                    </td>
+                    <td class="py-3 text-right font-semibold comparison-tax">$0</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Share link -->
+          <div class="mt-6 text-center">
+            <button id="share-btn" class="text-sm text-primary-500 hover:text-primary-700 transition-colors">
+              Copy shareable link
+            </button>
+            <span id="share-confirm" class="text-sm text-green-600 ml-2 hidden">Copied!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. The Self-Defeating Policy (combines State Map + Migration) -->
+    <section id="self-defeating" class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Self-Defeating Policy</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          States that decouple from QSBS lose the people <em>and</em> the revenue. Migration data doesn't lie.
+        </p>
+
+        <!-- State Map -->
+        <h3 class="text-xl font-semibold text-center mb-6">State QSBS Conformity</h3>
+        <div class="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-green-500"></span> Conforms</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-red-500"></span> Decoupled</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-amber-500"></span> Pending</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-blue-300"></span> Partial</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-gray-300"></span> No income tax</div>
+        </div>
+
+        <div id="state-grid" class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 gap-1 max-w-4xl mx-auto mb-8">
+          {statesData.map(state => (
+            <button
+              class={`state-tile p-2 rounded text-xs font-bold text-center cursor-pointer transition-transform hover:scale-110 ${
+                state.qsbsConformity === 'conforms' ? 'bg-green-500 text-white' :
+                state.qsbsConformity === 'decoupled' ? 'bg-red-500 text-white' :
+                state.qsbsConformity === 'pending' ? 'bg-amber-500 text-white' :
+                state.qsbsConformity === 'partial' ? 'bg-blue-300 text-white' :
+                'bg-gray-300 text-gray-700'
+              }`}
+              data-code={state.code}
+              data-name={state.name}
+              data-rate={state.taxRate}
+              data-conformity={state.qsbsConformity}
+              data-note={state.note}
+              aria-label={`${state.name}: ${state.qsbsConformity}`}
+            >
+              {state.code}
+            </button>
+          ))}
+        </div>
+
+        <div id="state-detail" class="bg-white rounded-xl shadow-lg p-6 max-w-lg mx-auto hidden mb-8">
+          <h3 id="detail-name" class="text-xl font-bold mb-2"></h3>
+          <div class="grid grid-cols-2 gap-4 text-sm mb-3">
+            <div><span class="text-gray-500">Tax rate:</span> <strong id="detail-rate"></strong></div>
+            <div><span class="text-gray-500">QSBS status:</span> <strong id="detail-status"></strong></div>
+          </div>
+          <p id="detail-note" class="text-sm text-gray-600"></p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto text-center text-sm mb-16">
+          <div class="bg-green-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-green-700">{statesData.filter(s => s.qsbsConformity === 'conforms').length}</p>
+            <p class="text-green-600">Conform</p>
+          </div>
+          <div class="bg-red-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-red-700">{statesData.filter(s => s.qsbsConformity === 'decoupled').length}</p>
+            <p class="text-red-600">Decoupled</p>
+          </div>
+          <div class="bg-amber-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-amber-700">{statesData.filter(s => s.qsbsConformity === 'pending').length}</p>
+            <p class="text-amber-600">Pending</p>
+          </div>
+          <div class="bg-blue-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-blue-700">{statesData.filter(s => s.qsbsConformity === 'partial').length}</p>
+            <p class="text-blue-600">Partial</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-gray-700">{statesData.filter(s => s.qsbsConformity === 'none').length}</p>
+            <p class="text-gray-600">No income tax</p>
+          </div>
+        </div>
+
+        <!-- Migration -->
+        <h3 class="text-xl font-semibold text-center mb-8">The Migration Problem</h3>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-1 text-center text-green-700">Top 5 States Gaining Filers</h3>
+            <p class="text-xs text-gray-400 text-center mb-4">Net interstate tax filer migration, IRS SOI 2021–2022</p>
+            <canvas id="gainers-chart" class="w-full" style="max-height: 280px;"></canvas>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-1 text-center text-red-700">Top 5 States Losing Filers</h3>
+            <p class="text-xs text-gray-400 text-center mb-4">Net interstate tax filer migration, IRS SOI 2021–2022</p>
+            <canvas id="losers-chart" class="w-full" style="max-height: 280px;"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-6 md:p-8 max-w-3xl mx-auto text-center">
+          <p class="text-4xl md:text-5xl font-bold text-red-700 mb-2">${(migrationData.california.agiLost2020to2022 / 1e9).toFixed(0)} billion</p>
+          <p class="text-lg text-gray-700 mb-1">in AGI lost by California to outbound migration, 2020-2022</p>
+          <p class="text-sm text-gray-500">
+            In 2022 alone, {migrationData.california.highEarnerHouseholdsLost2022.toLocaleString()} high-earner households left,
+            taking ${(migrationData.california.highEarnerAGILost2022 / 1e9).toFixed(1)} billion in AGI.
+          </p>
+          <p class="text-sm text-gray-500 mt-2">
+            Migration is driven by multiple factors (housing costs, remote work, overall tax burden) and QSBS conformity is one factor among many. But the pattern is clear: capital flows toward lower-tax, QSBS-conforming states.
+          </p>
+          <p class="text-xs text-gray-400 mt-3">Sources: <a href="https://lao.ca.gov/Publications/Report/4932" target="_blank" rel="noopener" class="underline hover:text-gray-600">CA Legislative Analyst's Office (2024)</a>, Center for Jobs (2024)</p>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Migration data: <a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data" target="_blank" rel="noopener" class="underline hover:text-gray-600">IRS SOI Migration Data 2021-2022</a>, <a href="https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/" target="_blank" rel="noopener" class="underline hover:text-gray-600">Tax Foundation analysis Dec 2024</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. The Campaign — with timeline -->
+    <section id="campaign" class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Campaign</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          Nearly identical bills showed up in multiple states within months. Same data, same framing, same legislative session.
+        </p>
+
+        <!-- Coordinated Timeline -->
+        <div class="max-w-2xl mx-auto mb-12">
+          <p class="text-sm font-semibold text-red-600 text-center uppercase tracking-widest mb-2">Four states · Three months · One playbook</p>
+          <h3 class="font-semibold text-lg mb-6 text-center">Coordinated Campaign Timeline</h3>
+          <div class="relative border-l-4 border-red-400 ml-4 pl-8 space-y-8">
+            <div class="relative">
+              <div class="absolute -left-[2.85rem] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow"></div>
+              <p class="text-xs font-semibold text-red-600 uppercase tracking-wide">Dec 2024</p>
+              <p class="text-gray-800 font-medium">DC passes B25-0900</p>
+              <p class="text-sm text-gray-500">Unanimous council vote to decouple from federal QSBS</p>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-[2.85rem] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow"></div>
+              <p class="text-xs font-semibold text-red-600 uppercase tracking-wide">Jan 2025</p>
+              <p class="text-gray-800 font-medium">Oregon introduces SB 1507</p>
+              <p class="text-sm text-gray-500">QSBS decoupling bill using ITEP analysis and OCPP testimony</p>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-[2.85rem] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow"></div>
+              <p class="text-xs font-semibold text-red-600 uppercase tracking-wide">Jan 2025</p>
+              <p class="text-gray-800 font-medium">Washington introduces SB 6229</p>
+              <p class="text-sm text-gray-500">Capital gains tax decoupling from QSBS exclusion</p>
+            </div>
+            <div class="relative">
+              <div class="absolute -left-[2.85rem] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow"></div>
+              <p class="text-xs font-semibold text-red-600 uppercase tracking-wide">Feb 2025</p>
+              <p class="text-gray-800 font-medium">New York includes decoupling in budget proposal</p>
+              <p class="text-sm text-gray-500">QSBS decoupling included as part of broader tax changes</p>
+            </div>
+          </div>
+          <p class="text-center text-sm text-gray-500 mt-6 italic">Same playbook. Different states. Same session.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-4">Who's behind it</h3>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-1 w-2 h-2 rounded-full bg-red-400"></span>
+                <span><strong>ITEP</strong> (Institute on Taxation and Economic Policy) produces the "94%" stat and provides model legislation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-1 w-2 h-2 rounded-full bg-red-400"></span>
+                <span><strong>Working Families Party</strong> runs state-level political campaigns</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-1 w-2 h-2 rounded-full bg-red-400"></span>
+                <span><strong>OCPP</strong> (Oregon Center for Public Policy) supplied the analysis behind Oregon's SB 1507</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-4">The messaging</h3>
+            <div class="space-y-4 text-sm text-gray-600">
+              <div class="bg-amber-50 rounded-lg p-4">
+                <p class="font-medium text-amber-800 mb-1">"Trump tax giveaway"</p>
+                <p>QSBS was signed by <strong>President Clinton</strong> in 1993, expanded to 100% exclusion by <strong>President Obama</strong> in 2010. Bipartisan policy, partisan framing.</p>
+              </div>
+              <div class="bg-amber-50 rounded-lg p-4">
+                <p class="font-medium text-amber-800 mb-1">Bundled revenue estimates</p>
+                <p>Revenue projections lump QSBS decoupling with unrelated tax changes, inflating the headline number.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Why Decoupling Is Wrong -->
+    <section id="reform" class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Why Blanket Decoupling Is the Wrong Answer</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          If there are concerns about how QSBS is used at the top end, the response should be proportional. Not a blunt instrument that hits everyone.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-10">
+          <div class="bg-red-50 rounded-xl p-6">
+            <h3 class="font-semibold text-lg mb-3 text-red-800">What decoupling actually does</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
+                <span><strong>Taxes the engineer</strong> exercising $40K in startup stock the same way it taxes a $50M exit</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
+                <span><strong>Punishes the 74%</strong> of claimants earning under $1M to address concerns about the top end</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
+                <span><strong>Drives founders and capital</strong> to conforming states, losing both the people and the revenue</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
+                <span><strong>Ignores one-time use:</strong> 75% of claimants use QSBS exactly once. This isn't a recurring loophole</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-green-50 rounded-xl p-6">
+            <h3 class="font-semibold text-lg mb-3 text-green-800">What the data actually supports</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-green-600 font-bold">✓</span>
+                <span><strong>QSBS increases startup investment</strong> by ~12% (Edwards & Todenhaupt)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-green-600 font-bold">✓</span>
+                <span><strong>QSBS drives more firm births</strong> and startup employment (Chen & Farre-Mensa)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-green-600 font-bold">✓</span>
+                <span><strong>Median exclusion is $2,810</strong> — less than most people's tax refund</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 text-green-600 font-bold">✓</span>
+                <span><strong>Decoupled states lose filers</strong> — high earners move to states that conform</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-6 md:p-8 max-w-3xl mx-auto text-center">
+          <p class="text-lg font-semibold text-gray-800 mb-2">Decoupling doesn't solve a problem. It creates new ones.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            It doesn't raise meaningful revenue (people move). It doesn't target abuse (it hits everyone equally).
+            And it removes one of the few incentives that actually works to encourage startup formation and risk-taking.
+          </p>
+          <div class="border-t border-primary-200 pt-4">
+            <p class="text-sm font-semibold text-gray-800 mb-1">States should conform to the federal standard</p>
+            <p class="text-sm text-gray-600">
+              Section 1202 has had bipartisan support since 1993. It was strengthened under Presidents Clinton, Obama, and Trump. States that decouple aren't fixing a problem. They're opting out of a policy that works.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. What You Can Do (CTA) -->
+    <section id="take-action" class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What You Can Do</h2>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
+          Data without distribution is just noise. Get this in front of decision-makers.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Contact legislator -->
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Contact your state legislator</h3>
+            <p class="text-sm text-gray-500 mb-4">Most legislators voting on QSBS decoupling haven't seen the Treasury data. Send it to them.</p>
+            <a href="https://openstates.org/find_your_legislator/" target="_blank" rel="noopener" class="inline-block bg-primary-600 text-white font-medium px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm">
+              Find your legislator
+            </a>
+          </div>
+
+          <!-- Share -->
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Share this data</h3>
+            <p class="text-sm text-gray-500 mb-4">Pre-written message with the key facts. Copy and post.</p>
+            <button id="copy-social" class="inline-block bg-primary-600 text-white font-medium px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm">
+              Copy to clipboard
+            </button>
+            <span id="copy-social-confirm" class="block text-sm text-green-600 mt-2 hidden">Copied!</span>
+          </div>
+
+          <!-- Subscribe -->
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Subscribe for updates</h3>
+            <p class="text-sm text-gray-500 mb-4">New bills, new analysis, straight to your inbox.</p>
+            <form id="subscribe-form" class="flex flex-col gap-2">
+              <input type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500" required />
+              <button type="submit" class="bg-primary-600 text-white font-medium px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm">
+                Subscribe
+              </button>
+            </form>
+            <span id="subscribe-confirm" class="block text-sm text-green-600 mt-2 hidden">Thanks! We'll be in touch.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Sources -->
+    <section id="sources" class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Sources</h2>
+
+        <div class="space-y-4 text-sm">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                U.S. Treasury OTA Working Paper 127 ↗
+              </a>
+            </p>
+            <p class="text-gray-500">January 2025. Primary source for all distribution, claimant, and exclusion data (2012-2022).</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                Edwards & Todenhaupt (2020) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Study finding ~12% increase in startup investment after 100% QSBS exclusion. Uses within-firm funding round variation.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4482626" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                Chen & Farre-Mensa (2023/2025) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Diff-in-diff study finding more firm births, startup employment, and first-round VC in QSBS-eligible industries.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                IRS SOI Migration Data, 2021-2022 ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Interstate migration of tax filers and AGI. See also: <a href="https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Tax Foundation analysis (Dec 2024) ↗</a></p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://lao.ca.gov/Publications/Report/4932" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                California Legislative Analyst's Office (2024) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Analysis of high-earner outmigration and AGI losses from California, 2020-2022.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://itep.org/qsbs-trump-tax-law-threatens-state-revenues-enriches-wealthy/" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                ITEP Section 1202 Analysis ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Source of the "94% goes to millionaires" claim. State-by-state revenue estimates.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">State legislation</p>
+            <p class="text-gray-500">
+              <a href="https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/SB1507" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Oregon SB 1507 ↗</a> ·
+              <a href="https://lims.dccouncil.gov/Legislation/B25-0900" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">DC B25-0900 ↗</a> ·
+              <a href="https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025&Initiative=false" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">WA SB 6229 ↗</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-950 text-primary-300 px-4 py-12">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-white font-bold text-lg mb-2">QSBS Facts</p>
+        <p class="text-sm mb-4">Data-driven analysis of Section 1202 QSBS tax policy.</p>
+        <p class="text-xs text-primary-500">
+          All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research.
+          This site presents factual analysis and is not tax advice.
+        </p>
+        <p class="text-xs text-primary-600 mt-2">Updated March 2026.</p>
+      </div>
+    </footer>
+
+    <!-- Client-side JavaScript -->
+    <script>
+      import Chart from 'chart.js/auto';
+
+      // === DATA ===
+      const treasuryByIncome = [
+        { bracket: "Under $100K", pctOfClaimants: 20, pctOfDollars: 2 },
+        { bracket: "$100K-$400K", pctOfClaimants: 35, pctOfDollars: 11 },
+        { bracket: "$400K-$1M", pctOfClaimants: 19, pctOfDollars: 12 },
+        { bracket: "Over $1M", pctOfClaimants: 26, pctOfDollars: 75 }
+      ];
+
+      const migrationGainers = [
+        { state: "FL", net: 125551 },
+        { state: "TX", net: 88216 },
+        { state: "NC", net: 43653 },
+        { state: "SC", net: 32927 },
+        { state: "TN", net: 30935 }
+      ];
+
+      const migrationLosers = [
+        { state: "CA", net: -144203 },
+        { state: "NY", net: -108586 },
+        { state: "IL", net: -45460 },
+        { state: "MA", net: -26033 },
+        { state: "NJ", net: -20820 }
+      ];
+
+      // === CALCULATOR ===
+      type AcquisitionPeriod = 'before-2009' | '2009-2010' | '2010-2025' | 'after-july-2025';
+
+      const stateSelect = document.getElementById('state-select') as HTMLSelectElement;
+      const exitInput = document.getElementById('exit-input') as HTMLInputElement;
+      const periodSelect = document.getElementById('period-select') as HTMLSelectElement;
+      const resultState = document.getElementById('result-state')!;
+      const resultAmount = document.getElementById('result-amount')!;
+      const resultNote = document.getElementById('result-note')!;
+
+      function formatCurrency(n: number): string {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+      }
+
+      function parseExitAmount(raw: string): number {
+        const cleaned = raw.replace(/[^0-9.]/g, '');
+        const num = parseFloat(cleaned);
+        return isNaN(num) ? 0 : Math.round(num);
+      }
+
+      function getExclusionRules(period: AcquisitionPeriod) {
+        switch (period) {
+          case 'before-2009': return { exclusionPct: 0.50, capAmount: 10_000_000 };
+          case '2009-2010': return { exclusionPct: 0.75, capAmount: 10_000_000 };
+          case '2010-2025': return { exclusionPct: 1.00, capAmount: 10_000_000 };
+          case 'after-july-2025': return { exclusionPct: 1.00, capAmount: 15_000_000 };
+        }
+      }
+
+      function calcTax(exitAmount: number, taxRate: number, conformity: string, period: AcquisitionPeriod = '2010-2025', stateCode?: string): number {
+        if (conformity === 'none') return 0;
+        const rules = getExclusionRules(period);
+        const excludableAmount = Math.min(exitAmount, rules.capAmount);
+        const exclusion = excludableAmount * rules.exclusionPct;
+        const taxableGain = exitAmount - exclusion;
+
+        if (conformity === 'conforms') return Math.round(taxableGain * (taxRate / 100));
+        if (conformity === 'decoupled') return Math.round(exitAmount * (taxRate / 100));
+        if (conformity === 'pending') return Math.round(exitAmount * (taxRate / 100));
+        if (conformity === 'partial') {
+          if (stateCode === 'HI') {
+            const hawaiiExclusion = Math.min(exitAmount, rules.capAmount) * 0.50;
+            return Math.round((exitAmount - hawaiiExclusion) * (taxRate / 100));
+          }
+          if (stateCode === 'MA') return Math.round(exitAmount * (3 / 100));
+          return Math.round(exitAmount * (taxRate / 100));
+        }
+        return Math.round(exitAmount * (taxRate / 100));
+      }
+
+      function updateCalculator() {
+        const exitAmount = parseExitAmount(exitInput.value);
+        const period = periodSelect.value as AcquisitionPeriod;
+
+        const selected = stateSelect.options[stateSelect.selectedIndex];
+        const rate = parseFloat(selected.dataset.rate || '0');
+        const conformity = selected.dataset.conformity || '';
+        const note = selected.dataset.note || '';
+        const stateName = selected.textContent?.trim() || '';
+        const stateCode = selected.value;
+
+        const tax = calcTax(exitAmount, rate, conformity, period, stateCode);
+        resultState.textContent = stateName;
+        resultAmount.textContent = formatCurrency(tax);
+        resultAmount.className = tax > 0
+          ? 'text-4xl md:text-5xl font-bold text-red-600'
+          : 'text-4xl md:text-5xl font-bold text-green-600';
+
+        let noteText = '';
+        if (conformity === 'none') {
+          noteText = 'No state income tax';
+        } else if (conformity === 'conforms') {
+          const rules = getExclusionRules(period);
+          if (rules.exclusionPct < 1.0) {
+            noteText = `Conforms to federal QSBS — ${Math.round(rules.exclusionPct * 100)}% exclusion (${period === 'before-2009' ? 'pre-2009' : '2009–2010'} stock). ${tax > 0 ? 'State taxes the non-excluded portion.' : ''}`;
+          } else if (exitAmount > rules.capAmount) {
+            noteText = `Conforms to federal QSBS — 100% exclusion up to ${formatCurrency(rules.capAmount)} cap. Amount above cap is taxed.`;
+          } else {
+            noteText = 'Conforms to federal QSBS — no state tax on qualified gains';
+          }
+        } else if (conformity === 'partial') {
+          if (stateCode === 'HI') noteText = 'Hawaii allows only 50% QSBS exclusion regardless of federal rules';
+          else if (stateCode === 'MA') noteText = 'Massachusetts taxes QSBS gains at a reduced 3% rate';
+          else noteText = note || 'Partial conformity';
+        } else if (conformity === 'pending') {
+          noteText = (note || 'QSBS conformity pending') + ' — showing projected tax if enacted';
+        } else if (conformity === 'decoupled') {
+          noteText = note || 'Does not conform to federal QSBS — full state tax applies';
+        }
+        resultNote.textContent = noteText;
+
+        // Update comparison table
+        document.querySelectorAll('.comparison-row').forEach(row => {
+          const el = row as HTMLElement;
+          const rowRate = parseFloat(el.dataset.rate || '0');
+          const rowConformity = el.dataset.conformity || '';
+          const rowCode = el.dataset.code || '';
+          const rowTax = calcTax(exitAmount, rowRate, rowConformity, period, rowCode);
+          const taxCell = el.querySelector('.comparison-tax')!;
+          taxCell.textContent = formatCurrency(rowTax);
+          (taxCell as HTMLElement).className = `py-3 text-right font-semibold comparison-tax ${rowTax > 0 ? 'text-red-600' : 'text-green-600'}`;
+        });
+
+        // Update URL
+        const url = new URL(window.location.href);
+        url.searchParams.set('state', selected.value);
+        url.searchParams.set('exit', exitAmount.toString());
+        url.searchParams.set('period', period);
+        window.history.replaceState({}, '', url.toString());
+      }
+
+      stateSelect.addEventListener('change', updateCalculator);
+      periodSelect.addEventListener('change', updateCalculator);
+      exitInput.addEventListener('input', updateCalculator);
+      exitInput.addEventListener('blur', () => {
+        const amount = parseExitAmount(exitInput.value);
+        if (amount > 0) exitInput.value = formatCurrency(amount);
+      });
+      exitInput.addEventListener('focus', () => {
+        const amount = parseExitAmount(exitInput.value);
+        if (amount > 0) exitInput.value = amount.toString();
+      });
+
+      // Read URL params on load
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('state')) {
+        stateSelect.value = params.get('state')!;
+      }
+      if (params.get('exit')) {
+        const exitVal = parseInt(params.get('exit')!);
+        if (!isNaN(exitVal)) exitInput.value = formatCurrency(exitVal);
+      }
+      if (params.get('period')) {
+        periodSelect.value = params.get('period')!;
+      }
+      updateCalculator();
+
+      // Share button (calculator)
+      document.getElementById('share-btn')?.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href);
+        const confirm = document.getElementById('share-confirm')!;
+        confirm.classList.remove('hidden');
+        setTimeout(() => confirm.classList.add('hidden'), 2000);
+      });
+
+      // === CTA: Copy social ===
+      document.getElementById('copy-social')?.addEventListener('click', () => {
+        const text = `Most startups fail. QSBS rewards the ones that don't. 75% of claimants use it exactly once — one exit, one reward. 74% earn under $1M. This isn't a loophole. It's an incentive for founders, employees, and investors who took the risk. See the data: https://qsbsfacts.org`;
+        navigator.clipboard.writeText(text);
+        const confirm = document.getElementById('copy-social-confirm')!;
+        confirm.classList.remove('hidden');
+        setTimeout(() => confirm.classList.add('hidden'), 3000);
+      });
+
+      // === CTA: Subscribe placeholder ===
+      document.getElementById('subscribe-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const confirm = document.getElementById('subscribe-confirm')!;
+        confirm.classList.remove('hidden');
+        (e.target as HTMLFormElement).reset();
+      });
+
+      // === MOBILE MENU ===
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      });
+      document.querySelectorAll('#mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+          document.getElementById('mobile-menu')?.classList.add('hidden');
+        });
+      });
+
+      // === STATE MAP TILES ===
+      document.querySelectorAll('.state-tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+          const el = tile as HTMLElement;
+          const detail = document.getElementById('state-detail')!;
+          document.getElementById('detail-name')!.textContent = el.dataset.name || '';
+          document.getElementById('detail-rate')!.textContent = el.dataset.rate + '%';
+          const status = el.dataset.conformity || '';
+          const statusEl = document.getElementById('detail-status')!;
+          statusEl.textContent = status === 'none' ? 'No income tax' : status.charAt(0).toUpperCase() + status.slice(1);
+          document.getElementById('detail-note')!.textContent = el.dataset.note || 'Standard federal conformity.';
+          detail.classList.remove('hidden');
+        });
+      });
+
+      // === CHARTS ===
+      Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+      // Claimants chart (4 buckets, by unique claimants)
+      // Custom plugin to render data labels on bars
+      const barLabelPlugin = {
+        id: 'barLabels',
+        afterDatasetsDraw(chart: any) {
+          const { ctx } = chart;
+          chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+            const meta = chart.getDatasetMeta(datasetIndex);
+            meta.data.forEach((bar: any, index: number) => {
+              const value = dataset.data[index];
+              ctx.save();
+              ctx.fillStyle = '#1e3a5f';
+              ctx.font = 'bold 14px Inter, system-ui, sans-serif';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'bottom';
+              ctx.fillText(value + '%', bar.x, bar.y - 6);
+              ctx.restore();
+            });
+          });
+        }
+      };
+
+      new Chart(document.getElementById('claimants-chart') as HTMLCanvasElement, {
+        type: 'bar',
+        data: {
+          labels: treasuryByIncome.map(d => d.bracket),
+          datasets: [{
+            label: '% of claimants',
+            data: treasuryByIncome.map(d => d.pctOfClaimants),
+            backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'],
+            borderRadius: 6,
+          }]
+        },
+        plugins: [barLabelPlugin],
+        options: {
+          responsive: true,
+          layout: { padding: { top: 24 } },
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx) => ctx.parsed.y + '% of claimants' } }
+          },
+          scales: {
+            y: { beginAtZero: true, max: 50, ticks: { callback: (v) => v + '%' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Distribution chart (4 percentiles)
+      new Chart(document.getElementById('distribution-chart') as HTMLCanvasElement, {
+        type: 'bar',
+        data: {
+          labels: ['25th percentile', '50th (median)', '75th percentile', '90th percentile'],
+          datasets: [{
+            label: 'Annual exclusion',
+            data: [30, 2810, 67820, 590940],
+            backgroundColor: ['#93c5fd', '#60a5fa', '#3b82f6', '#1d4ed8'],
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx) => '$' + ctx.parsed.x.toLocaleString() } }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              ticks: { callback: (v) => '$' + Number(v).toLocaleString() }
+            },
+            y: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Migration gainers
+      new Chart(document.getElementById('gainers-chart') as HTMLCanvasElement, {
+        type: 'bar',
+        data: {
+          labels: migrationGainers.map(d => d.state),
+          datasets: [{
+            label: 'Net filers gained',
+            data: migrationGainers.map(d => d.net),
+            backgroundColor: '#16a34a',
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx) => '+' + ctx.parsed.x.toLocaleString() + ' filers' } }
+          },
+          scales: {
+            x: { beginAtZero: true, ticks: { callback: (v) => '+' + Number(v).toLocaleString() } },
+            y: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Migration losers
+      new Chart(document.getElementById('losers-chart') as HTMLCanvasElement, {
+        type: 'bar',
+        data: {
+          labels: migrationLosers.map(d => d.state),
+          datasets: [{
+            label: 'Net filers lost',
+            data: migrationLosers.map(d => d.net),
+            backgroundColor: '#dc2626',
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx) => ctx.parsed.x.toLocaleString() + ' filers' } }
+          },
+          scales: {
+            x: { ticks: { callback: (v) => Number(v).toLocaleString() } },
+            y: { grid: { display: false } }
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>
