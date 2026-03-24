@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Base.astro';
+import treasuryData from '../../data/treasury-summary.json';
+
+const title = 'Academic Evidence That QSBS Works — Section 1202 Research';
+const description = 'Peer-reviewed research shows QSBS drives ~12% more startup investment, more firm births, and more startup employment. The evidence from Edwards & Todenhaupt and Chen & Farre-Mensa.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/evidence"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Academic Evidence That QSBS Section 1202 Works",
+    "url": "https://qsbsfacts.org/evidence",
+    "description": description,
+    "datePublished": "2025-03-20",
+    "dateModified": "2026-03-24",
+    "citation": [
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Edwards & Todenhaupt (2020)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Chen & Farre-Mensa (2023/2025)",
+        "url": "https://ssrn.com/abstract=4482626"
+      }
+    ]
+  }]}
+>
+
+  <main class="pt-20">
+    <!-- Intro -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">Peer-Reviewed Research</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">The Incentives Are Working</h1>
+        <p class="text-lg text-primary-200 max-w-2xl mx-auto">
+          Nobody starts a company because of a tax incentive. But QSBS reduces the penalty for taking the risk — and the data shows that matters. When the exclusion was expanded to 100% in 2010, startup investment increased, more companies were created, and more people were employed at startups.
+        </p>
+      </div>
+    </section>
+
+    <!-- Studies -->
+    <section class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+          {treasuryData.academicStudies.map((study: any, i: number) => (
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-primary-500">
+              <p class="text-sm text-gray-400 mb-1">
+                {study.ssrn ? (
+                  <a href={study.ssrn} target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">{study.authors} ({study.year}) ↗</a>
+                ) : (
+                  <span>{study.authors} ({study.year})</span>
+                )}
+              </p>
+              {i === 0 && (
+                <p class="text-3xl font-bold text-primary-700 mb-2">~12%</p>
+              )}
+              <p class="text-lg font-semibold text-gray-800 mb-3">{study.finding}</p>
+              <p class="text-sm text-gray-500"><strong>Method:</strong> {study.method}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Deeper context -->
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold mb-6">What the Research Shows</h2>
+
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Edwards & Todenhaupt (2020)</h3>
+              <p class="text-gray-600 mb-3">
+                This study examined the Small Business Jobs Act of 2010 (SBJA), which permanently raised the QSBS exclusion to 100%. Using within-firm variation — comparing funding rounds for the same startup before and after the law change — they found that <strong>investment in startup firms increased by approximately 12%</strong> after the 100% exclusion took effect.
+              </p>
+              <p class="text-gray-600 mb-3">
+                This is a causal finding, not just a correlation. By comparing funding rounds within the same firm, the study controls for firm-specific characteristics. The increase in investment is attributable to the change in tax treatment of potential gains.
+              </p>
+              <p class="text-sm text-gray-400">
+                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Read the paper on SSRN ↗</a>
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Chen & Farre-Mensa (2023/2025)</h3>
+              <p class="text-gray-600 mb-3">
+                This study used a difference-in-differences approach, comparing QSBS-eligible industries to ineligible industries before and after the 2010 expansion to 100% exclusion. They found that <strong>QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round venture capital</strong>.
+              </p>
+              <p class="text-gray-600 mb-3">
+                The findings suggest QSBS doesn't just redirect existing investment — it generates new economic activity. More companies are formed, more people are hired at startups, and more early-stage capital flows into the ecosystem.
+              </p>
+              <p class="text-sm text-gray-400">
+                <a href="https://ssrn.com/abstract=4482626" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Read the paper on SSRN ↗</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-primary-50 rounded-xl p-6 md:p-8 mt-10">
+            <h3 class="font-semibold text-lg mb-3 text-gray-800">Why this matters for state policy</h3>
+            <p class="text-sm text-gray-700 mb-3">
+              States considering QSBS decoupling are proposing to remove an incentive that peer-reviewed research shows actually works. The 100% exclusion enacted in 2010 led to measurably more startup investment, more companies, and more startup jobs.
+            </p>
+            <p class="text-sm text-gray-700">
+              Decoupling at the state level doesn't eliminate the federal incentive — but it does create a tax penalty for founders, employees, and investors in that state. The research suggests this penalty has real consequences for startup formation and investment.
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
+            Read the full analysis &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

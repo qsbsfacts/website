@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Base.astro';
+import treasuryData from '../../data/treasury-summary.json';
+
+const title = 'Who Actually Uses QSBS? — Section 1202 Claimant Data';
+const description = '75% of QSBS claimants use it once. Median exclusion: $2,810. The largest group earns $100K-$400K. Treasury data on who really benefits from Section 1202.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/who-uses-it"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Who Actually Uses QSBS Section 1202?",
+    "url": "https://qsbsfacts.org/who-uses-it",
+    "description": description,
+    "datePublished": "2025-03-20",
+    "dateModified": "2026-03-24",
+    "citation": {
+      "@type": "CreativeWork",
+      "name": "U.S. Treasury OTA Working Paper 127",
+      "url": "https://home.treasury.gov/system/files/131/WP-127.pdf"
+    }
+  }]}
+>
+
+  <main class="pt-20">
+    <!-- Intro -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">U.S. Treasury Data, 2012-2022</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Who Actually Uses It</h1>
+        <p class="text-lg text-primary-200 max-w-2xl mx-auto">
+          These are the people who took the risk. Founders who spent years building something. Employees who took below-market salary for equity. Investors who wrote checks when nobody else would.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key stats -->
+    <section class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">{treasuryData.distribution.oneTimeClaimants.pctSingleYear}%</p>
+            <p class="text-gray-600">used it exactly once in 11 years</p>
+            <p class="text-xs text-gray-400 mt-2">One exit. One reward. Only {treasuryData.distribution.oneTimeClaimants.pctFiveOrMoreYears}% claimed it five or more years.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">$67,820</p>
+            <p class="text-gray-600">75th percentile annual exclusion</p>
+            <p class="text-xs text-gray-400 mt-2">The typical meaningful QSBS exit. Median is just ${treasuryData.distribution.medianAnnualExclusion.toLocaleString()}, pulled down by micro-claims.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center">
+            <p class="text-4xl md:text-5xl font-bold text-primary-700 mb-2">{treasuryData.overview.shareOfAllCapGains2021}%</p>
+            <p class="text-gray-600">of all capital gains in 2021</p>
+            <p class="text-xs text-gray-400 mt-2">QSBS is a rounding error in total capital gains.</p>
+          </div>
+        </div>
+
+        <!-- Archetypes -->
+        <h2 class="text-2xl font-bold text-center mb-6">Who QSBS actually helps</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Senior Engineer</p>
+            <p class="text-gray-700 text-sm mb-3">A senior engineer at a 50-person startup exercises $40K in stock after 6 years.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$5,320</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">First-time Founder</p>
+            <p class="text-gray-700 text-sm mb-3">A first-time founder sells after 8 years for $2M. First liquidity event of their career.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$266,000</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Early Employee</p>
+            <p class="text-gray-700 text-sm mb-3">Employee #12 exercises options worth $150K after the company is acquired. Five years of below-market salary.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$19,950</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
+            <p class="text-sm font-semibold text-primary-600 mb-1">Seed Investor</p>
+            <p class="text-gray-700 text-sm mb-3">Puts $25K into a friend's company. 7 years later it's worth $200K.</p>
+            <div class="flex justify-between text-xs">
+              <span class="text-gray-400">With QSBS</span>
+              <span class="font-bold text-green-600">$0 state tax</span>
+            </div>
+            <div class="flex justify-between text-xs mt-1">
+              <span class="text-gray-400">Without</span>
+              <span class="font-bold text-red-600">$23,275</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-400 text-center mt-4 mb-8">Tax shown at California's 13.3% rate, the highest in the nation. Your state may differ — <a href="/calculator" class="underline hover:text-gray-600">try the calculator</a>.</p>
+
+        <!-- Distribution chart -->
+        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 max-w-3xl mx-auto">
+          <h3 class="font-semibold text-lg mb-2 text-center">How large is a typical QSBS exclusion?</h3>
+          <p class="text-sm text-gray-500 text-center mb-4">Annual exclusion amount by percentile. 90% of claimants exclude less than $591K.</p>
+          <canvas id="distribution-chart" class="w-full" style="max-height: 300px;"></canvas>
+          <p class="text-xs text-gray-400 text-center mt-3">Source: Treasury OTA WP-127, Table 1. Percentiles of annual individual QSBS exclusion claims, 2012-2022.</p>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Distribution data: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025. Archetype examples are illustrative, based on typical QSBS claim profiles.
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
+            Read the full analysis &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    import Chart from 'chart.js/auto';
+
+    Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+    new Chart(document.getElementById('distribution-chart') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: ['25th percentile', '50th (median)', '75th percentile', '90th percentile'],
+        datasets: [{
+          label: 'Annual exclusion',
+          data: [30, 2810, 67820, 590940],
+          backgroundColor: ['#93c5fd', '#60a5fa', '#3b82f6', '#1d4ed8'],
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => '$' + ctx.parsed.x.toLocaleString() } }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: { callback: (v) => '$' + Number(v).toLocaleString() }
+          },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+  </script>
+</Layout>
