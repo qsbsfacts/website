@@ -42,12 +42,12 @@ As of March 2026: 33 states conform, 7 have no income tax, 6 are decoupled, 2 ha
 - [CA Legislative Analyst's Office (2024)](https://lao.ca.gov/Publications/Report/4932)
 - [ITEP Section 1202 Analysis](https://itep.org/qsbs-trump-tax-law-threatens-state-revenues-enriches-wealthy/)
 
-## Sections
+## Pages
 
-- **The Incentives Are Working**: Academic evidence that QSBS drives startup formation and investment.
-- **Who Actually Uses It**: Treasury data on claimant demographics, income levels, and exclusion amounts.
-- **The "94% Goes to Millionaires" Claim**: Deconstruction of the ITEP methodology and the dollar-weighted vs. people-counted distinction.
-- **Exit Tax Calculator**: Interactive calculator showing state tax impact on QSBS exits across all 50 states + DC.
-- **The Self-Defeating Policy**: State conformity map and IRS migration data showing capital flight from high-tax, decoupled states.
-- **The Campaign**: Timeline of coordinated state-level decoupling efforts (DC, Oregon, Washington, New York).
-- **Why Blanket Decoupling Is Wrong**: Policy arguments for conformity and against blunt decoupling.
+- **Homepage** (https://qsbsfacts.org): Full single-page analysis with all sections, charts, and interactive calculator.
+- **Evidence** (https://qsbsfacts.org/evidence): Academic evidence that QSBS drives startup formation and investment. Edwards & Todenhaupt (2020), Chen & Farre-Mensa (2023/2025).
+- **Who Uses It** (https://qsbsfacts.org/who-uses-it): Treasury data on claimant demographics, income levels, exclusion amounts, and the 4 archetypes.
+- **The 94% Claim** (https://qsbsfacts.org/the-94-percent-claim): Deconstruction of the ITEP "94% goes to millionaires" methodology and the dollar-weighted vs. people-counted distinction.
+- **Calculator** (https://qsbsfacts.org/calculator): Interactive exit tax calculator for all 50 states + DC. Supports URL parameter sharing.
+- **State Impact** (https://qsbsfacts.org/state-impact): State conformity map, IRS migration data, and California's $102B AGI loss from outmigration.
+- **Sources** (https://qsbsfacts.org/sources): All citations, data sources, methodology notes, and links to primary documents.

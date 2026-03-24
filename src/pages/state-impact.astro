@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Base.astro';
+import statesData from '../../data/states.json';
+import migrationData from '../../data/migration.json';
+
+const title = 'QSBS State Impact — Migration Data & State Conformity Map';
+const description = 'States that decouple from QSBS lose residents and revenue. See the state conformity map, IRS migration data, and California\'s $102B in lost AGI.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/state-impact"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "QSBS State Impact: Migration Data & Conformity Map",
+    "url": "https://qsbsfacts.org/state-impact",
+    "description": description,
+    "datePublished": "2025-03-20",
+    "dateModified": "2026-03-24"
+  }]}
+>
+
+  <main class="pt-20">
+    <!-- Intro -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">IRS Migration Data & State Policy</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">The Self-Defeating Policy</h1>
+        <p class="text-lg text-primary-200 max-w-2xl mx-auto">
+          States that decouple from QSBS lose the people <em>and</em> the revenue. Migration data doesn't lie. The states losing the most tax filers are overwhelmingly high-tax states that don't conform to federal QSBS.
+        </p>
+      </div>
+    </section>
+
+    <!-- State Map -->
+    <section class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6">State QSBS Conformity</h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-green-500"></span> Conforms</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-red-500"></span> Decoupled</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-amber-500"></span> Pending</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-blue-300"></span> Partial</div>
+          <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-gray-300"></span> No income tax</div>
+        </div>
+
+        <div id="state-grid" class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 gap-1 max-w-4xl mx-auto mb-8">
+          {statesData.map(state => (
+            <button
+              class={`state-tile p-2 rounded text-xs font-bold text-center cursor-pointer transition-transform hover:scale-110 ${
+                state.qsbsConformity === 'conforms' ? 'bg-green-500 text-white' :
+                state.qsbsConformity === 'decoupled' ? 'bg-red-500 text-white' :
+                state.qsbsConformity === 'pending' ? 'bg-amber-500 text-white' :
+                state.qsbsConformity === 'partial' ? 'bg-blue-300 text-white' :
+                'bg-gray-300 text-gray-700'
+              }`}
+              data-code={state.code}
+              data-name={state.name}
+              data-rate={state.taxRate}
+              data-conformity={state.qsbsConformity}
+              data-note={state.note}
+              aria-label={`${state.name}: ${state.qsbsConformity}`}
+            >
+              {state.code}
+            </button>
+          ))}
+        </div>
+
+        <div id="state-detail" class="bg-white rounded-xl shadow-lg p-6 max-w-lg mx-auto hidden mb-8">
+          <h3 id="detail-name" class="text-xl font-bold mb-2"></h3>
+          <div class="grid grid-cols-2 gap-4 text-sm mb-3">
+            <div><span class="text-gray-500">Tax rate:</span> <strong id="detail-rate"></strong></div>
+            <div><span class="text-gray-500">QSBS status:</span> <strong id="detail-status"></strong></div>
+          </div>
+          <p id="detail-note" class="text-sm text-gray-600"></p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto text-center text-sm mb-16">
+          <div class="bg-green-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-green-700">{statesData.filter(s => s.qsbsConformity === 'conforms').length}</p>
+            <p class="text-green-600">Conform</p>
+          </div>
+          <div class="bg-red-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-red-700">{statesData.filter(s => s.qsbsConformity === 'decoupled').length}</p>
+            <p class="text-red-600">Decoupled</p>
+          </div>
+          <div class="bg-amber-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-amber-700">{statesData.filter(s => s.qsbsConformity === 'pending').length}</p>
+            <p class="text-amber-600">Pending</p>
+          </div>
+          <div class="bg-blue-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-blue-700">{statesData.filter(s => s.qsbsConformity === 'partial').length}</p>
+            <p class="text-blue-600">Partial</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <p class="text-2xl font-bold text-gray-700">{statesData.filter(s => s.qsbsConformity === 'none').length}</p>
+            <p class="text-gray-600">No income tax</p>
+          </div>
+        </div>
+
+        <!-- Migration -->
+        <h2 class="text-2xl font-bold text-center mb-8">The Migration Problem</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-1 text-center text-green-700">Top 5 States Gaining Filers</h3>
+            <p class="text-xs text-gray-400 text-center mb-4">Net interstate tax filer migration, IRS SOI 2021-2022</p>
+            <canvas id="gainers-chart" class="w-full" style="max-height: 280px;"></canvas>
+          </div>
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="font-semibold text-lg mb-1 text-center text-red-700">Top 5 States Losing Filers</h3>
+            <p class="text-xs text-gray-400 text-center mb-4">Net interstate tax filer migration, IRS SOI 2021-2022</p>
+            <canvas id="losers-chart" class="w-full" style="max-height: 280px;"></canvas>
+          </div>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-6 md:p-8 max-w-3xl mx-auto text-center">
+          <p class="text-4xl md:text-5xl font-bold text-red-700 mb-2">${(migrationData.california.agiLost2020to2022 / 1e9).toFixed(0)} billion</p>
+          <p class="text-lg text-gray-700 mb-1">in AGI lost by California to outbound migration, 2020-2022</p>
+          <p class="text-sm text-gray-500">
+            In 2022 alone, {migrationData.california.highEarnerHouseholdsLost2022.toLocaleString()} high-earner households left,
+            taking ${(migrationData.california.highEarnerAGILost2022 / 1e9).toFixed(1)} billion in AGI.
+          </p>
+          <p class="text-sm text-gray-500 mt-2">
+            Migration is driven by multiple factors (housing costs, remote work, overall tax burden) and QSBS conformity is one factor among many. But the pattern is clear: capital flows toward lower-tax, QSBS-conforming states.
+          </p>
+          <p class="text-xs text-gray-400 mt-3">Sources: <a href="https://lao.ca.gov/Publications/Report/4932" target="_blank" rel="noopener" class="underline hover:text-gray-600">CA Legislative Analyst's Office (2024)</a>, Center for Jobs (2024)</p>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Migration data: <a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data" target="_blank" rel="noopener" class="underline hover:text-gray-600">IRS SOI Migration Data 2021-2022</a>, <a href="https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/" target="_blank" rel="noopener" class="underline hover:text-gray-600">Tax Foundation analysis Dec 2024</a>
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
+            Read the full analysis &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    import Chart from 'chart.js/auto';
+
+    Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+    const migrationGainers = [
+      { state: "FL", net: 125551 },
+      { state: "TX", net: 88216 },
+      { state: "NC", net: 43653 },
+      { state: "SC", net: 32927 },
+      { state: "TN", net: 30935 }
+    ];
+
+    const migrationLosers = [
+      { state: "CA", net: -144203 },
+      { state: "NY", net: -108586 },
+      { state: "IL", net: -45460 },
+      { state: "MA", net: -26033 },
+      { state: "NJ", net: -20820 }
+    ];
+
+    // Migration gainers
+    new Chart(document.getElementById('gainers-chart') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: migrationGainers.map(d => d.state),
+        datasets: [{
+          label: 'Net filers gained',
+          data: migrationGainers.map(d => d.net),
+          backgroundColor: '#16a34a',
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => '+' + ctx.parsed.x.toLocaleString() + ' filers' } }
+        },
+        scales: {
+          x: { beginAtZero: true, ticks: { callback: (v) => '+' + Number(v).toLocaleString() } },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Migration losers
+    new Chart(document.getElementById('losers-chart') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: migrationLosers.map(d => d.state),
+        datasets: [{
+          label: 'Net filers lost',
+          data: migrationLosers.map(d => d.net),
+          backgroundColor: '#dc2626',
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => ctx.parsed.x.toLocaleString() + ' filers' } }
+        },
+        scales: {
+          x: { ticks: { callback: (v) => Number(v).toLocaleString() } },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+
+    // State tiles
+    document.querySelectorAll('.state-tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const el = tile as HTMLElement;
+        const detail = document.getElementById('state-detail')!;
+        document.getElementById('detail-name')!.textContent = el.dataset.name || '';
+        document.getElementById('detail-rate')!.textContent = el.dataset.rate + '%';
+        const status = el.dataset.conformity || '';
+        const statusEl = document.getElementById('detail-status')!;
+        statusEl.textContent = status === 'none' ? 'No income tax' : status.charAt(0).toUpperCase() + status.slice(1);
+        document.getElementById('detail-note')!.textContent = el.dataset.note || 'Standard federal conformity.';
+        detail.classList.remove('hidden');
+      });
+    });
+  </script>
+</Layout>

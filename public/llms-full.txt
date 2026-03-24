@@ -232,3 +232,17 @@ States should conform to the federal standard. Section 1202 has had bipartisan s
 ---
 
 All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research. This site presents factual analysis and is not tax advice. Updated March 2026.
+
+---
+
+## Site Pages
+
+This site is available as both a single-page experience and as standalone pages optimized for search:
+
+- **Homepage**: https://qsbsfacts.org — Full single-page analysis with all sections, charts, and interactive calculator.
+- **Evidence**: https://qsbsfacts.org/evidence — Academic evidence that QSBS drives startup formation and investment.
+- **Who Uses It**: https://qsbsfacts.org/who-uses-it — Treasury data on claimant demographics, income levels, and exclusion amounts.
+- **The 94% Claim**: https://qsbsfacts.org/the-94-percent-claim — Deconstruction of the ITEP "94% goes to millionaires" methodology.
+- **Calculator**: https://qsbsfacts.org/calculator — Interactive QSBS exit tax calculator for all 50 states + DC.
+- **State Impact**: https://qsbsfacts.org/state-impact — State conformity map and IRS migration data.
+- **Sources**: https://qsbsfacts.org/sources — All citations, data sources, and methodology notes.

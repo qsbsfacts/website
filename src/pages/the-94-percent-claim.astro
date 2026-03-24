@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Base.astro';
+import treasuryData from '../../data/treasury-summary.json';
+
+const title = 'The "94% Goes to Millionaires" QSBS Claim — What Treasury Data Actually Shows';
+const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasury data shows 74% of claimants earn under $1M. Here\'s how they construct the misleading stat.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/the-94-percent-claim"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The '94% Goes to Millionaires' QSBS Claim — Debunked by Treasury Data",
+    "url": "https://qsbsfacts.org/the-94-percent-claim",
+    "description": description,
+    "datePublished": "2025-03-20",
+    "dateModified": "2026-03-24",
+    "citation": {
+      "@type": "CreativeWork",
+      "name": "U.S. Treasury OTA Working Paper 127",
+      "url": "https://home.treasury.gov/system/files/131/WP-127.pdf"
+    }
+  }]}
+>
+
+  <main class="pt-20">
+    <!-- Intro -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">Claim vs. Reality</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">The "94% Goes to Millionaires" Claim</h1>
+        <p class="text-lg text-primary-200 max-w-2xl mx-auto">
+          You've probably heard that 94% of QSBS benefits go to millionaires. That number comes from ITEP (Institute on Taxation and Economic Policy). The U.S. Treasury data tells a very different story.
+        </p>
+      </div>
+    </section>
+
+    <!-- Claimants Chart -->
+    <section class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-5xl mx-auto">
+        <div class="max-w-2xl mx-auto mb-12">
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="font-semibold text-lg mb-2 text-center">Who claims QSBS?</h2>
+            <p class="text-sm text-gray-500 text-center mb-4">By number of unique claimants (average income excluding QSBS gains)</p>
+            <canvas id="claimants-chart" class="w-full" style="max-height: 300px;"></canvas>
+            <p class="text-xs text-gray-400 text-center mt-3">Income measured as average Total Positive Income (TPI), excluding QSBS gains. Source: Treasury OTA WP-127, Figure 4.</p>
+          </div>
+        </div>
+
+        <!-- 74% callout -->
+        <div class="bg-primary-50 rounded-xl p-6 md:p-8 max-w-3xl mx-auto">
+          <div class="text-center mb-6">
+            <p class="text-lg text-gray-700">Count the <strong>people</strong>, not just the dollars:</p>
+            <p class="text-5xl font-bold text-primary-700 mb-2">74%</p>
+            <p class="text-lg text-gray-700">of QSBS claimants earn under $1 million</p>
+            <p class="text-xs text-gray-500 mt-1">(by average income, excluding QSBS gains)</p>
+            <p class="text-sm text-gray-500 mt-2">The single largest group (35%) earns $100K-$400K. These are founders and early employees, not millionaires.</p>
+          </div>
+
+          <!-- Dollar vs People breakdown -->
+          <div class="grid md:grid-cols-4 gap-4 mb-6">
+            {treasuryData.distribution.byIncome.map((d: any) => (
+              <div class="bg-white rounded-lg p-4 text-center">
+                <p class="text-sm font-medium text-gray-600 mb-2">{d.bracket}</p>
+                <p class="text-2xl font-bold text-primary-700">{d.pctOfClaimants}%</p>
+                <p class="text-xs text-gray-400">of claimants</p>
+                <p class="text-lg font-semibold text-gray-500 mt-1">{d.pctOfDollars}%</p>
+                <p class="text-xs text-gray-400">of dollars</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="border-t border-primary-200 pt-6">
+            <h3 class="font-semibold text-gray-800 mb-3">How ITEP gets to 94%</h3>
+            <p class="text-sm text-gray-700 mb-2"><strong>ITEP claims:</strong> "94% of QSBS exclusions were claimed by people with more than $1 million of annual income."</p>
+            <p class="text-sm text-gray-500 mb-4">That's a <em>dollar-weighted</em> stat, not a count of people. Here's how they construct it:</p>
+            <div class="space-y-3 text-sm text-gray-600">
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-primary-200 text-primary-800 flex items-center justify-center text-xs font-bold">1</span>
+                <p><strong>{treasuryData.distribution.itepMethodology.pctToOver1M_beforeQSBS}%</strong> of <em>dollars</em> go to people who already earned over $1M before counting QSBS gains</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-xs font-bold">2</span>
+                <p><strong>{treasuryData.distribution.itepMethodology.pctToUnder1M_butQSBSpushesOver}%</strong> of <em>dollars</em> go to people earning under $1M normally, whose one-time startup exit temporarily pushed them over</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="shrink-0 w-6 h-6 rounded-full bg-red-200 text-red-800 flex items-center justify-center text-xs font-bold">=</span>
+                <p>ITEP <strong>lumps both groups</strong> to claim 94% "goes to millionaires."</p>
+              </div>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mt-5">
+              <p class="text-sm font-semibold text-green-800 mb-2">These two groups are the incentive working as designed.</p>
+              <p class="text-sm text-gray-700">The 74% are <strong>investors who funded early-stage companies</strong>. The 20% are <strong>founders and employees who built them</strong>. QSBS connects capital to builders. Both sides show up in the "94%" because both sides took the risk the policy was designed to reward.</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4 text-xs text-gray-400">
+          Source: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025
+        </p>
+
+        <!-- TPI Methodology Explainer -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 md:p-8 max-w-3xl mx-auto mt-10">
+          <h3 class="font-semibold text-amber-900 text-lg mb-3">How Treasury actually measures income (and why it matters)</h3>
+          <p class="text-sm text-gray-700 mb-3">
+            Treasury's Working Paper 127 classifies QSBS claimants using <strong>Total Positive Income (TPI)</strong>, the sum of positive income sources on a tax return. Critically, <strong>QSBS gains that are excluded from income are also excluded from TPI</strong>. This is a deliberate methodological choice: Treasury measures a claimant's <em>regular economic income</em>, not a one-time liquidity event.
+          </p>
+          <p class="text-sm text-gray-700 mb-3">
+            Treasury also uses a <strong>3-year average TPI</strong> (the current year plus the prior two years) to classify claimants, smoothing out year-to-year volatility. For unique claimant counts, they average TPI over the full 11-year sample period (2012-2022). This methodology is designed to capture a person's <em>typical</em> income level.
+          </p>
+          <div class="bg-white rounded-lg p-4 mb-3 border border-amber-100">
+            <p class="text-sm text-gray-700 italic">
+              <strong>Example:</strong> A founder earning $150K/year sells their company after 8 years for $2M. By Treasury's methodology (which excludes QSBS gains from income), they're classified in the $100K-$400K income bracket. Not a millionaire. ITEP adds the gain back to reach "94%," reclassifying this person as a millionaire based on a single liquidity event.
+            </p>
+          </div>
+          <p class="text-sm text-gray-700">
+            ITEP's approach (adding the excluded QSBS gain back into income) directly undoes Treasury's deliberate choice. The result: people with normal incomes who had one successful exit get lumped in with actual high-income earners, inflating the "millionaire" count.
+          </p>
+          <p class="text-xs text-gray-400 mt-3">
+            Methodology: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">Treasury OTA WP-127</a>, Section III ("Data and Sample Construction")
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
+            Read the full analysis &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    import Chart from 'chart.js/auto';
+
+    const treasuryByIncome = [
+      { bracket: "Under $100K", pctOfClaimants: 20, pctOfDollars: 2 },
+      { bracket: "$100K-$400K", pctOfClaimants: 35, pctOfDollars: 11 },
+      { bracket: "$400K-$1M", pctOfClaimants: 19, pctOfDollars: 12 },
+      { bracket: "Over $1M", pctOfClaimants: 26, pctOfDollars: 75 }
+    ];
+
+    Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+    const barLabelPlugin = {
+      id: 'barLabels',
+      afterDatasetsDraw(chart: any) {
+        const { ctx } = chart;
+        chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+          const meta = chart.getDatasetMeta(datasetIndex);
+          meta.data.forEach((bar: any, index: number) => {
+            const value = dataset.data[index];
+            ctx.save();
+            ctx.fillStyle = '#1e3a5f';
+            ctx.font = 'bold 14px Inter, system-ui, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText(value + '%', bar.x, bar.y - 6);
+            ctx.restore();
+          });
+        });
+      }
+    };
+
+    new Chart(document.getElementById('claimants-chart') as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: treasuryByIncome.map(d => d.bracket),
+        datasets: [{
+          label: '% of claimants',
+          data: treasuryByIncome.map(d => d.pctOfClaimants),
+          backgroundColor: ['#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'],
+          borderRadius: 6,
+        }]
+      },
+      plugins: [barLabelPlugin],
+      options: {
+        responsive: true,
+        layout: { padding: { top: 24 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => ctx.parsed.y + '% of claimants' } }
+        },
+        scales: {
+          y: { beginAtZero: true, max: 50, ticks: { callback: (v) => v + '%' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  </script>
+</Layout>

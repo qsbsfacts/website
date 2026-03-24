@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Base.astro';
+
+const title = 'Sources — QSBS Facts Data & Citations';
+const description = 'All data sources for QSBS Facts: U.S. Treasury OTA WP-127, academic studies, IRS migration data, state legislation, and methodology notes.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/sources"
+  jsonLd={[{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "QSBS Facts Sources & Citations",
+    "url": "https://qsbsfacts.org/sources",
+    "description": description
+  }]}
+>
+
+  <main class="pt-20">
+    <!-- Intro -->
+    <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-4">Data & Citations</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Sources</h1>
+        <p class="text-lg text-primary-200 max-w-2xl mx-auto">
+          Every claim on this site is backed by U.S. government data, peer-reviewed academic research, or official state records. Here are the primary sources.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section class="px-4 py-16 md:px-8 lg:py-24">
+      <div class="max-w-4xl mx-auto">
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Primary Data Source</h2>
+        <div class="space-y-4 text-sm mb-12">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                U.S. Treasury OTA Working Paper 127 ↗
+              </a>
+            </p>
+            <p class="text-gray-500">January 2025. Primary source for all distribution, claimant, and exclusion data (2012-2022). This paper from the Office of Tax Analysis provides the first comprehensive look at who claims QSBS, how often, and how much. Key findings: 75% one-time claimants, $2,810 median exclusion, 74% of claimants under $1M income.</p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Academic Studies</h2>
+        <div class="space-y-4 text-sm mb-12">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                Edwards & Todenhaupt (2020) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Study finding ~12% increase in startup investment after 100% QSBS exclusion. Uses within-firm funding round variation before/after the Small Business Jobs Act of 2010.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4482626" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                Chen & Farre-Mensa (2023/2025) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Diff-in-diff study finding more firm births, startup employment, and first-round VC in QSBS-eligible industries after 2010 expansion to 100% exclusion.</p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Migration & Economic Data</h2>
+        <div class="space-y-4 text-sm mb-12">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                IRS SOI Migration Data, 2021-2022 ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Interstate migration of tax filers and AGI. Shows net filer flows between states. See also: <a href="https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Tax Foundation analysis (Dec 2024) ↗</a></p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://lao.ca.gov/Publications/Report/4932" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                California Legislative Analyst's Office (2024) ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Analysis of high-earner outmigration and AGI losses from California, 2020-2022. $102 billion in AGI lost to outmigration. 24,670 high-earner households departed in 2022 alone.</p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Opposing Analysis</h2>
+        <div class="space-y-4 text-sm mb-12">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">
+              <a href="https://itep.org/qsbs-trump-tax-law-threatens-state-revenues-enriches-wealthy/" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">
+                ITEP Section 1202 Analysis ↗
+              </a>
+            </p>
+            <p class="text-gray-500">Source of the "94% goes to millionaires" claim. Provides state-by-state revenue estimates for QSBS decoupling. See our <a href="/the-94-percent-claim" class="text-primary-600 hover:text-primary-800 underline">detailed analysis of this claim</a>.</p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">State Legislation</h2>
+        <div class="space-y-4 text-sm mb-12">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+            <p class="font-medium text-gray-800">State legislation</p>
+            <p class="text-gray-500">
+              <a href="https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/SB1507" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Oregon SB 1507 ↗</a> ·
+              <a href="https://lims.dccouncil.gov/Legislation/B25-0900" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">DC B25-0900 ↗</a> ·
+              <a href="https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025&Initiative=false" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">WA SB 6229 ↗</a>
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Methodology Notes</h2>
+        <div class="bg-gray-50 rounded-xl p-6 text-sm text-gray-600 space-y-3 mb-12">
+          <p><strong>Income classification:</strong> All income brackets use Treasury's Total Positive Income (TPI) methodology, which excludes QSBS gains from income. This measures a claimant's regular economic income, not one-time liquidity events.</p>
+          <p><strong>State conformity data:</strong> Compiled from state tax codes, legislative actions, and Tax Foundation analysis as of March 2026. "Pending" status indicates active legislation awaiting vote or signature.</p>
+          <p><strong>Migration data:</strong> Based on IRS Statistics of Income (SOI) county-to-county migration data, tracking address changes on tax returns between filing years 2021 and 2022.</p>
+          <p><strong>Calculator:</strong> Tax calculations use each state's top marginal capital gains tax rate. Actual tax liability may differ based on individual circumstances, filing status, and other state-specific rules.</p>
+          <p><strong>Archetype examples:</strong> The four claimant archetypes (engineer, founder, employee, investor) are illustrative scenarios based on typical QSBS claim profiles described in Treasury data. Tax amounts calculated at California's 13.3% top rate.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
+            Read the full analysis &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
