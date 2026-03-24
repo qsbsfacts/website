@@ -29,7 +29,7 @@
   { "code": "NE", "name": "Nebraska", "taxRate": 5.84, "qsbsConformity": "conforms", "note": "" },
   { "code": "NV", "name": "Nevada", "taxRate": 0, "qsbsConformity": "none", "note": "No state income tax" },
   { "code": "NH", "name": "New Hampshire", "taxRate": 0, "qsbsConformity": "none", "note": "No state income tax on wages/cap gains" },
-  { "code": "NJ", "name": "New Jersey", "taxRate": 10.75, "qsbsConformity": "decoupled", "note": "Does not conform" },
+  { "code": "NJ", "name": "New Jersey", "taxRate": 10.75, "qsbsConformity": "conforms", "note": "Conforms to federal QSBS (effective Jan 1, 2026)" },
   { "code": "NM", "name": "New Mexico", "taxRate": 5.9, "qsbsConformity": "conforms", "note": "" },
   { "code": "NY", "name": "New York", "taxRate": 10.9, "qsbsConformity": "pending", "note": "Senate budget proposal to decouple, retroactive to Jan 1 2025. Budget deadline Apr 1 2026." },
   { "code": "NC", "name": "North Carolina", "taxRate": 4.5, "qsbsConformity": "conforms", "note": "" },
