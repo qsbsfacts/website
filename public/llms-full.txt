@@ -1,0 +1,234 @@
+# QSBS Facts — Most startups fail. QSBS rewards the ones that don't.
+
+Data-driven analysis of Section 1202 Qualified Small Business Stock (QSBS) tax policy.
+
+URL: https://qsbsfacts.org
+
+---
+
+## Section 1202 — Qualified Small Business Stock
+
+Most startups fail. QSBS rewards the ones that don't.
+
+Section 1202 creates an incentive for the founders who build companies, the employees who join early, and the investors who back them at the riskiest stage. 75% of claimants use it exactly once. One bet. One reward.
+
+The data tells a different story than the one you've been hearing.
+
+---
+
+## The Incentives Are Working
+
+Nobody starts a company because of a tax incentive. But QSBS reduces the penalty for taking the risk — and the data shows that matters. When the exclusion was expanded to 100% in 2010, startup investment increased, more companies were created, and more people were employed at startups.
+
+### Edwards & Todenhaupt (2020)
+
+**Finding:** Investment in startup firms increased by approximately 12% after the 100% exclusion.
+
+**Method:** Within-firm variation comparing funding rounds before/after SBJA 2010.
+
+Source: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783
+
+### Chen & Farre-Mensa (2023/2025)
+
+**Finding:** QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round VC.
+
+**Method:** Diff-in-diff comparing eligible vs ineligible industries after 2010 increase to 100%.
+
+Source: https://ssrn.com/abstract=4482626
+
+---
+
+## Who Actually Uses It
+
+These are the people who took the risk. Founders who spent years building something. Employees who took below-market salary for equity. Investors who wrote checks when nobody else would.
+
+### Key Statistics
+
+- **75%** used QSBS exactly once in 11 years. One exit. One reward. Only 6% claimed it five or more years.
+- **$67,820** — 75th percentile annual exclusion. The typical meaningful QSBS exit. Median is just $2,810, pulled down by micro-claims.
+- **2.55%** of all capital gains in 2021. QSBS is a rounding error in total capital gains.
+
+### Who QSBS Actually Helps
+
+**Senior Engineer:** A senior engineer at a 50-person startup exercises $40K in stock after 6 years. With QSBS: $0 state tax. Without: $5,320.
+
+**First-time Founder:** A first-time founder sells after 8 years for $2M. First liquidity event of their career. With QSBS: $0 state tax. Without: $266,000.
+
+**Early Employee:** Employee #12 exercises options worth $150K after the company is acquired. Five years of below-market salary. With QSBS: $0 state tax. Without: $19,950.
+
+**Seed Investor:** Puts $25K into a friend's company. 7 years later it's worth $200K. With QSBS: $0 state tax. Without: $23,275.
+
+Tax shown at California's 13.3% rate, the highest in the nation.
+
+### Distribution of QSBS Exclusion Amounts
+
+Annual exclusion amount by percentile. 90% of claimants exclude less than $591K.
+
+- 25th percentile: $30
+- 50th percentile (median): $2,810
+- 75th percentile: $67,820
+- 90th percentile: $590,940
+
+Source: Treasury OTA WP-127, Table 1. Percentiles of annual individual QSBS exclusion claims, 2012–2022.
+
+---
+
+## The "94% Goes to Millionaires" Claim
+
+You've probably heard that 94% of QSBS benefits go to millionaires. The Treasury data shows why that's misleading.
+
+### Who Claims QSBS (by number of unique claimants, average income excluding QSBS gains)
+
+- Under $100K: 20% of claimants, 2% of dollars
+- $100K–$400K: 35% of claimants, 11% of dollars
+- $400K–$1M: 19% of claimants, 12% of dollars
+- Over $1M: 26% of claimants, 75% of dollars
+
+Count the people, not just the dollars: **74% of QSBS claimants earn under $1 million** (by average income, excluding QSBS gains). The single largest group (35%) earns $100K–$400K. These are founders and early employees, not millionaires.
+
+### How ITEP Gets to 94%
+
+ITEP claims: "94% of QSBS exclusions were claimed by people with more than $1 million of annual income."
+
+That's a dollar-weighted stat, not a count of people. Here's how they construct it:
+
+1. **74%** of dollars go to people who already earned over $1M before counting QSBS gains.
+2. **20%** of dollars go to people earning under $1M normally, whose one-time startup exit temporarily pushed them over.
+3. ITEP lumps both groups to claim 94% "goes to millionaires."
+
+**These two groups are the incentive working as designed.** The 74% are investors who funded early-stage companies. The 20% are founders and employees who built them. QSBS connects capital to builders. Both sides show up in the "94%" because both sides took the risk the policy was designed to reward.
+
+### How Treasury Actually Measures Income (and Why It Matters)
+
+Treasury's Working Paper 127 classifies QSBS claimants using Total Positive Income (TPI), the sum of positive income sources on a tax return. Critically, QSBS gains that are excluded from income are also excluded from TPI. This is a deliberate methodological choice: Treasury measures a claimant's regular economic income, not a one-time liquidity event.
+
+Treasury also uses a 3-year average TPI (the current year plus the prior two years) to classify claimants, smoothing out year-to-year volatility. For unique claimant counts, they average TPI over the full 11-year sample period (2012–2022). This methodology is designed to capture a person's typical income level.
+
+**Example:** A founder earning $150K/year sells their company after 8 years for $2M. By Treasury's methodology (which excludes QSBS gains from income), they're classified in the $100K–$400K income bracket. Not a millionaire. ITEP adds the gain back to reach "94%," reclassifying this person as a millionaire based on a single liquidity event.
+
+ITEP's approach (adding the excluded QSBS gain back into income) directly undoes Treasury's deliberate choice. The result: people with normal incomes who had one successful exit get lumped in with actual high-income earners, inflating the "millionaire" count.
+
+Source: Treasury OTA WP-127, Section III ("Data and Sample Construction")
+
+---
+
+## Exit Tax Calculator
+
+See what your state actually takes from a qualified small business stock exit under Section 1202. The calculator supports all 50 states plus DC, with options for different acquisition periods:
+
+- Before 2009: 50% exclusion
+- 2009–2010: 75% exclusion
+- 2010–2025: 100% exclusion
+- After July 2025: 100% exclusion, $15M cap
+
+Default exit amount is $2,810, the median QSBS exclusion.
+
+---
+
+## The Self-Defeating Policy
+
+States that decouple from QSBS lose the people and the revenue. Migration data doesn't lie.
+
+### State QSBS Conformity (as of March 2026)
+
+- **33 states** conform to federal QSBS
+- **7 states** have no income tax (AK, FL, NV, NH, SD, TN, TX, WY)
+- **6 states** are decoupled (AL, CA, DC, MS, NJ, PA)
+- **2 states** have pending decoupling (NY, OR)
+- **2 states** have partial conformity (HI: 50% exclusion; MA: 3% rate)
+
+### The Migration Problem
+
+#### Top 5 States Gaining Tax Filers (IRS SOI 2021–2022)
+
+1. Florida: +125,551 net filers
+2. Texas: +88,216 net filers
+3. North Carolina: +43,653 net filers
+4. South Carolina: +32,927 net filers
+5. Tennessee: +30,935 net filers
+
+#### Top 5 States Losing Tax Filers (IRS SOI 2021–2022)
+
+1. California: -144,203 net filers
+2. New York: -108,586 net filers
+3. Illinois: -45,460 net filers
+4. Massachusetts: -26,033 net filers
+5. New Jersey: -20,820 net filers
+
+### California Migration
+
+**$102 billion** in AGI lost by California to outbound migration, 2020–2022. In 2022 alone, 24,670 high-earner households left, taking $16.1 billion in AGI.
+
+Migration is driven by multiple factors (housing costs, remote work, overall tax burden) and QSBS conformity is one factor among many. But the pattern is clear: capital flows toward lower-tax, QSBS-conforming states.
+
+Sources: CA Legislative Analyst's Office (2024), Center for Jobs (2024), IRS SOI Migration Data 2021–2022, Tax Foundation analysis Dec 2024.
+
+---
+
+## The Campaign
+
+Nearly identical bills showed up in multiple states within months. Same data, same framing, same legislative session.
+
+### Coordinated Campaign Timeline — Four states, three months, one playbook
+
+- **Dec 2024:** DC passes B25-0900. Unanimous council vote to decouple from federal QSBS.
+- **Jan 2025:** Oregon introduces SB 1507. QSBS decoupling bill using ITEP analysis and OCPP testimony.
+- **Jan 2025:** Washington introduces SB 6229. Capital gains tax decoupling from QSBS exclusion.
+- **Feb 2025:** New York includes decoupling in budget proposal. QSBS decoupling included as part of broader tax changes.
+
+### Who's Behind It
+
+- **ITEP** (Institute on Taxation and Economic Policy) produces the "94%" stat and provides model legislation.
+- **Working Families Party** runs state-level political campaigns.
+- **OCPP** (Oregon Center for Public Policy) supplied the analysis behind Oregon's SB 1507.
+
+### The Messaging
+
+**"Trump tax giveaway":** QSBS was signed by President Clinton in 1993, expanded to 100% exclusion by President Obama in 2010. Bipartisan policy, partisan framing.
+
+**Bundled revenue estimates:** Revenue projections lump QSBS decoupling with unrelated tax changes, inflating the headline number.
+
+---
+
+## Why Blanket Decoupling Is the Wrong Answer
+
+If there are concerns about how QSBS is used at the top end, the response should be proportional. Not a blunt instrument that hits everyone.
+
+### What Decoupling Actually Does
+
+- Taxes the engineer exercising $40K in startup stock the same way it taxes a $50M exit.
+- Punishes the 74% of claimants earning under $1M to address concerns about the top end.
+- Drives founders and capital to conforming states, losing both the people and the revenue.
+- Ignores one-time use: 75% of claimants use QSBS exactly once. This isn't a recurring loophole.
+
+### What the Data Actually Supports
+
+- QSBS increases startup investment by ~12% (Edwards & Todenhaupt).
+- QSBS drives more firm births and startup employment (Chen & Farre-Mensa).
+- Median exclusion is $2,810 — less than most people's tax refund.
+- Decoupled states lose filers — high earners move to states that conform.
+
+### Conclusion
+
+Decoupling doesn't solve a problem. It creates new ones. It doesn't raise meaningful revenue (people move). It doesn't target abuse (it hits everyone equally). And it removes one of the few incentives that actually works to encourage startup formation and risk-taking.
+
+States should conform to the federal standard. Section 1202 has had bipartisan support since 1993. It was strengthened under Presidents Clinton, Obama, and Trump. States that decouple aren't fixing a problem. They're opting out of a policy that works.
+
+---
+
+## Sources
+
+- [U.S. Treasury OTA Working Paper 127](https://home.treasury.gov/system/files/131/WP-127.pdf) — January 2025. Primary source for all distribution, claimant, and exclusion data (2012–2022).
+- [Edwards & Todenhaupt (2020)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783) — ~12% increase in startup investment after 100% QSBS exclusion.
+- [Chen & Farre-Mensa (2023/2025)](https://ssrn.com/abstract=4482626) — More firm births, startup employment, and first-round VC in QSBS-eligible industries.
+- [IRS SOI Migration Data, 2021–2022](https://www.irs.gov/statistics/soi-tax-stats-migration-data) — Interstate migration of tax filers and AGI.
+- [Tax Foundation Migration Analysis (Dec 2024)](https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/)
+- [CA Legislative Analyst's Office (2024)](https://lao.ca.gov/Publications/Report/4932) — High-earner outmigration and AGI losses from California.
+- [ITEP Section 1202 Analysis](https://itep.org/qsbs-trump-tax-law-threatens-state-revenues-enriches-wealthy/) — Source of the "94% goes to millionaires" claim.
+- [Oregon SB 1507](https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/SB1507)
+- [DC B25-0900](https://lims.dccouncil.gov/Legislation/B25-0900)
+- [WA SB 6229](https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025&Initiative=false)
+
+---
+
+All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research. This site presents factual analysis and is not tax advice. Updated March 2026.
