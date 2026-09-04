@@ -1,0 +1,231 @@
+---
+import statesData from '../../data/states.json';
+
+const comparisonStates = ['TX', 'FL', 'WA', 'CA', 'OR', 'NY'];
+const comparisonData = comparisonStates.map(code => statesData.find(s => s.code === code)!);
+
+interface Props {
+  showIntro?: boolean;
+}
+const { showIntro = false } = Astro.props;
+---
+
+<div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+  {showIntro && (
+    <p class="text-gray-500 text-center mb-8 max-w-2xl mx-auto text-sm">
+      Under IRC Section 1202, founders, early employees, and investors can exclude QSBS gains from federal tax.
+      Stock acquired on or before July 4, 2025 still needs a 5-year hold and a $10 million cap.
+      Stock acquired after that date uses a 3/4/5-year ladder (50/75/100%) and a $15 million cap.
+      Some states do not follow the federal exclusion — meaning you could owe state tax even when you owe nothing federally.
+    </p>
+  )}
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div>
+      <label for="state-select" class="block text-sm font-medium text-gray-700 mb-2">Your state</label>
+      <select id="state-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+        {statesData.map(state => (
+          <option value={state.code} data-rate={state.taxRate} data-conformity={state.qsbsConformity} data-note={state.note}>
+            {state.name}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div>
+      <label for="exit-input" class="block text-sm font-medium text-gray-700 mb-2">Exit amount</label>
+      <input
+        type="text"
+        id="exit-input"
+        value="$2,810"
+        inputmode="numeric"
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+        aria-label="Exit amount in dollars"
+      />
+      <p class="text-xs text-gray-400 mt-1">Default is the median QSBS exclusion.</p>
+    </div>
+    <div>
+      <label for="period-select" class="block text-sm font-medium text-gray-700 mb-2">Year stock was acquired</label>
+      <select id="period-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+        <option value="before-2009">Before 2009 (50%, $10M cap)</option>
+        <option value="2009-2010">2009–2010 (75%, $10M cap)</option>
+        <option value="2010-2025" selected>Sep 2010 – July 4, 2025 (100%, $10M)</option>
+        <option value="after-july-2025">After July 4, 2025 (OBBBA)</option>
+      </select>
+    </div>
+    <div>
+      <label for="sale-year-select" class="block text-sm font-medium text-gray-700 mb-2">Tax year of sale</label>
+      <select id="sale-year-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+        <option value="2026" selected>2026</option>
+        <option value="2027">2027 or later</option>
+      </select>
+      <p class="text-xs text-gray-400 mt-1">Rhode Island still conforms in 2026.</p>
+    </div>
+  </div>
+
+  <div id="holding-wrap" class="mb-8 hidden">
+    <label for="holding-select" class="block text-sm font-medium text-gray-700 mb-2">Holding period (post–July 4, 2025 stock)</label>
+    <select id="holding-select" class="w-full md:w-80 border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+      <option value="5" selected>5+ years — 100% exclusion, $15M cap</option>
+      <option value="4">4 years — 75% exclusion, $15M cap</option>
+      <option value="3">3 years — 50% exclusion, $15M cap</option>
+    </select>
+  </div>
+
+  <div id="calc-result" class="bg-primary-50 rounded-xl p-6 mb-8 text-center">
+    <p class="text-sm text-gray-500 mb-1">State tax on this exit in <span id="result-state" class="font-semibold">Alabama</span></p>
+    <p id="result-amount" class="text-4xl md:text-5xl font-bold text-primary-700">$0</p>
+    <p id="result-note" class="text-sm text-gray-500 mt-2"></p>
+  </div>
+
+  <h3 class="font-semibold text-gray-700 mb-4">Compare key states on the same exit</h3>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left">
+      <thead>
+        <tr class="border-b border-gray-200">
+          <th class="py-3 pr-4 text-sm font-medium text-gray-500">State</th>
+          <th class="py-3 pr-4 text-sm font-medium text-gray-500">Tax Rate</th>
+          <th class="py-3 pr-4 text-sm font-medium text-gray-500">QSBS Status</th>
+          <th class="py-3 text-sm font-medium text-gray-500 text-right">Tax on Exit</th>
+        </tr>
+      </thead>
+      <tbody id="comparison-body">
+        {comparisonData.map(state => (
+          <tr class="border-b border-gray-100 comparison-row" data-code={state.code} data-rate={state.taxRate} data-conformity={state.qsbsConformity}>
+            <td class="py-3 pr-4 font-medium">{state.name}</td>
+            <td class="py-3 pr-4 text-gray-600">{state.taxRate}%</td>
+            <td class="py-3 pr-4">
+              <span class={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
+                state.qsbsConformity === 'conforms' ? 'bg-green-100 text-green-800' :
+                state.qsbsConformity === 'decoupled' ? 'bg-red-100 text-red-800' :
+                state.qsbsConformity === 'pending' ? 'bg-amber-100 text-amber-800' :
+                state.qsbsConformity === 'partial' ? 'bg-blue-100 text-blue-800' :
+                'bg-gray-100 text-gray-800'
+              }`}>
+                {state.qsbsConformity === 'none' ? 'No income tax' : state.qsbsConformity}
+              </span>
+            </td>
+            <td class="py-3 text-right font-semibold comparison-tax">$0</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6 text-center">
+    <button id="share-btn" class="text-sm text-primary-500 hover:text-primary-700 transition-colors">
+      Copy shareable link
+    </button>
+    <span id="share-confirm" class="text-sm text-green-600 ml-2 hidden">Copied!</span>
+  </div>
+</div>
+
+<script>
+  import { calcTax, describeTax } from '../calcTax';
+  import type { AcquisitionPeriod, HoldingYears } from '../calcTax';
+
+  const stateSelect = document.getElementById('state-select') as HTMLSelectElement;
+  const exitInput = document.getElementById('exit-input') as HTMLInputElement;
+  const periodSelect = document.getElementById('period-select') as HTMLSelectElement;
+  const saleYearSelect = document.getElementById('sale-year-select') as HTMLSelectElement;
+  const holdingSelect = document.getElementById('holding-select') as HTMLSelectElement;
+  const holdingWrap = document.getElementById('holding-wrap')!;
+  const resultState = document.getElementById('result-state')!;
+  const resultAmount = document.getElementById('result-amount')!;
+  const resultNote = document.getElementById('result-note')!;
+
+  function formatCurrency(n: number): string {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  }
+
+  function parseExitAmount(raw: string): number {
+    const cleaned = raw.replace(/[^0-9.]/g, '');
+    const num = parseFloat(cleaned);
+    return isNaN(num) ? 0 : Math.round(num);
+  }
+
+  function syncHoldingVisibility() {
+    const show = periodSelect.value === 'after-july-2025';
+    holdingWrap.classList.toggle('hidden', !show);
+  }
+
+  function updateCalculator() {
+    syncHoldingVisibility();
+    const exitAmount = parseExitAmount(exitInput.value);
+    const period = periodSelect.value as AcquisitionPeriod;
+    const holdingYears = Number(holdingSelect.value) as HoldingYears;
+    const saleYear = Number(saleYearSelect.value);
+    const options = { holdingYears, saleYear };
+
+    const selected = stateSelect.options[stateSelect.selectedIndex];
+    const rate = parseFloat(selected.dataset.rate || '0');
+    const conformity = selected.dataset.conformity || '';
+    const note = selected.dataset.note || '';
+    const stateName = selected.textContent?.trim() || '';
+    const stateCode = selected.value;
+
+    const tax = calcTax(exitAmount, rate, conformity, period, stateCode, options);
+    resultState.textContent = stateName;
+    resultAmount.textContent = formatCurrency(tax);
+    resultAmount.className = tax > 0
+      ? 'text-4xl md:text-5xl font-bold text-red-600'
+      : 'text-4xl md:text-5xl font-bold text-green-600';
+    resultNote.textContent = describeTax({
+      tax, exitAmount, conformity, period, stateCode, note, holdingYears, saleYear,
+    });
+
+    document.querySelectorAll('.comparison-row').forEach(row => {
+      const el = row as HTMLElement;
+      const rowRate = parseFloat(el.dataset.rate || '0');
+      const rowConformity = el.dataset.conformity || '';
+      const rowCode = el.dataset.code || '';
+      const rowTax = calcTax(exitAmount, rowRate, rowConformity, period, rowCode, options);
+      const taxCell = el.querySelector('.comparison-tax')!;
+      taxCell.textContent = formatCurrency(rowTax);
+      (taxCell as HTMLElement).className = `py-3 text-right font-semibold comparison-tax ${rowTax > 0 ? 'text-red-600' : 'text-green-600'}`;
+    });
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('state', selected.value);
+    url.searchParams.set('exit', exitAmount.toString());
+    url.searchParams.set('period', period);
+    url.searchParams.set('year', String(saleYear));
+    if (period === 'after-july-2025') {
+      url.searchParams.set('holding', String(holdingYears));
+    } else {
+      url.searchParams.delete('holding');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  stateSelect.addEventListener('change', updateCalculator);
+  periodSelect.addEventListener('change', updateCalculator);
+  saleYearSelect.addEventListener('change', updateCalculator);
+  holdingSelect.addEventListener('change', updateCalculator);
+  exitInput.addEventListener('input', updateCalculator);
+  exitInput.addEventListener('blur', () => {
+    const amount = parseExitAmount(exitInput.value);
+    if (amount > 0) exitInput.value = formatCurrency(amount);
+  });
+  exitInput.addEventListener('focus', () => {
+    const amount = parseExitAmount(exitInput.value);
+    if (amount > 0) exitInput.value = amount.toString();
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('state')) stateSelect.value = params.get('state')!;
+  if (params.get('exit')) {
+    const exitVal = parseInt(params.get('exit')!);
+    if (!isNaN(exitVal)) exitInput.value = formatCurrency(exitVal);
+  }
+  if (params.get('period')) periodSelect.value = params.get('period')!;
+  if (params.get('year')) saleYearSelect.value = params.get('year')!;
+  if (params.get('holding')) holdingSelect.value = params.get('holding')!;
+  updateCalculator();
+
+  document.getElementById('share-btn')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href);
+    const confirm = document.getElementById('share-confirm')!;
+    confirm.classList.remove('hidden');
+    setTimeout(() => confirm.classList.add('hidden'), 2000);
+  });
+</script>

@@ -20,9 +20,21 @@ describe('getExclusionRules', () => {
     expect(rules.capAmount).toBe(10_000_000);
   });
 
-  it('after-july-2025: 100% exclusion, $15M cap', () => {
+  it('after-july-2025: 100% exclusion, $15M cap (default 5-year hold)', () => {
     const rules = getExclusionRules('after-july-2025');
     expect(rules.exclusionPct).toBe(1.00);
+    expect(rules.capAmount).toBe(15_000_000);
+  });
+
+  it('after-july-2025 3-year hold: 50% exclusion, $15M cap', () => {
+    const rules = getExclusionRules('after-july-2025', 3);
+    expect(rules.exclusionPct).toBe(0.50);
+    expect(rules.capAmount).toBe(15_000_000);
+  });
+
+  it('after-july-2025 4-year hold: 75% exclusion, $15M cap', () => {
+    const rules = getExclusionRules('after-july-2025', 4);
+    expect(rules.exclusionPct).toBe(0.75);
     expect(rules.capAmount).toBe(15_000_000);
   });
 });
@@ -130,13 +142,81 @@ describe('calcTax', () => {
       expect(calcTax(12_000_000, 11.0, 'partial', '2010-2025', 'HI')).toBe(770_000);
     });
 
-    it('Massachusetts: reduced 3% rate on all QSBS gains', () => {
-      // $2M × 3% = $60,000
-      expect(calcTax(2_000_000, 9.0, 'partial', '2010-2025', 'MA')).toBe(60_000);
+    it('Massachusetts: honors pre-OBBBA 100% exclusion under $10M, remainder at 5%', () => {
+      expect(calcTax(2_000_000, 9.0, 'partial', '2010-2025', 'MA')).toBe(0);
     });
 
-    it('Massachusetts: 3% rate regardless of period', () => {
-      expect(calcTax(5_000_000, 9.0, 'partial', 'before-2009', 'MA')).toBe(150_000);
+    it('Massachusetts: 50% exclusion on pre-2009 stock, remainder at 5%', () => {
+      // $2M, 50% excluded = $1M taxable at 5% = $50,000
+      expect(calcTax(2_000_000, 9.0, 'partial', 'before-2009', 'MA')).toBe(50_000);
+    });
+
+    it('Massachusetts: after-July-2025 5-year hold uses $10M pre-OBBBA cap at 5%', () => {
+      // $12M exit, $10M excluded, $2M × 5% = $100,000
+      expect(calcTax(12_000_000, 9.0, 'partial', 'after-july-2025', 'MA', { holdingYears: 5 })).toBe(100_000);
+    });
+
+    it('Massachusetts: after-July-2025 3-year hold has no MA exclusion', () => {
+      // old 5-year hold not met: $2M × 5% = $100,000
+      expect(calcTax(2_000_000, 9.0, 'partial', 'after-july-2025', 'MA', { holdingYears: 3 })).toBe(100_000);
+    });
+
+    it('Hawaii: $10M cap frozen after OBBBA (Act 35)', () => {
+      // $15M exit, 50% of $10M = $5M excluded, $10M taxable at 11%
+      expect(calcTax(15_000_000, 11.0, 'partial', 'after-july-2025', 'HI')).toBe(1_100_000);
+    });
+
+    it('Maine: pre-July-2025 stock still conforms', () => {
+      expect(calcTax(2_000_000, 7.15, 'partial', '2010-2025', 'ME')).toBe(0);
+    });
+
+    it('Maine: post-July-2025 stock is fully taxed', () => {
+      expect(calcTax(2_000_000, 7.15, 'partial', 'after-july-2025', 'ME')).toBe(143_000);
+    });
+
+    it('Vermont: 40% capital-gains exclusion capped at $350k after QSBS add-back', () => {
+      // $2M gain, exclusion = min(800k, 350k) = 350k, taxable 1.65M × 8.75%
+      expect(calcTax(2_000_000, 8.75, 'partial', '2010-2025', 'VT')).toBe(144_375);
+    });
+  });
+
+  describe('2026 session outcomes', () => {
+    it('Oregon decoupled: $2M × 9.9% = $198,000', () => {
+      expect(calcTax(2_000_000, 9.9, 'decoupled', '2010-2025', 'OR')).toBe(198_000);
+    });
+
+    it('New York conforming $10M 2010–2025 → $0', () => {
+      expect(calcTax(10_000_000, 10.9, 'conforms', '2010-2025', 'NY')).toBe(0);
+    });
+
+    it('Illinois decoupled: $2M × 4.95% = $99,000', () => {
+      expect(calcTax(2_000_000, 4.95, 'decoupled', '2010-2025', 'IL')).toBe(99_000);
+    });
+
+    it('Rhode Island 2026 sale still conforms', () => {
+      expect(calcTax(2_000_000, 5.99, 'decoupled', '2010-2025', 'RI', { saleYear: 2026 })).toBe(0);
+    });
+
+    it('Rhode Island 2027 sale is fully taxed', () => {
+      expect(calcTax(2_000_000, 5.99, 'decoupled', '2010-2025', 'RI', { saleYear: 2027 })).toBe(119_800);
+    });
+
+    it('Rhode Island defaults to 2026 (not silently taxed)', () => {
+      expect(calcTax(2_000_000, 5.99, 'decoupled', '2010-2025', 'RI')).toBe(0);
+    });
+  });
+
+  describe('OBBBA holding periods in conforming states', () => {
+    it('3-year hold: 50% of $2M taxed at 5%', () => {
+      expect(calcTax(2_000_000, 5.0, 'conforms', 'after-july-2025', 'CT', { holdingYears: 3 })).toBe(50_000);
+    });
+
+    it('4-year hold: 25% of $2M taxed at 5%', () => {
+      expect(calcTax(2_000_000, 5.0, 'conforms', 'after-july-2025', 'CT', { holdingYears: 4 })).toBe(25_000);
+    });
+
+    it('5-year hold: $0 under $15M cap', () => {
+      expect(calcTax(2_000_000, 5.0, 'conforms', 'after-july-2025', 'CT', { holdingYears: 5 })).toBe(0);
     });
   });
 

@@ -116,10 +116,12 @@ Source: Treasury OTA WP-127, Section III ("Data and Sample Construction")
 
 See what your state actually takes from a qualified small business stock exit under Section 1202. The calculator supports all 50 states plus DC, with options for different acquisition periods:
 
-- Before 2009: 50% exclusion
-- 2009–2010: 75% exclusion
-- 2010–2025: 100% exclusion
-- After July 2025: 100% exclusion, $15M cap
+- Before 2009: 50% exclusion, $10M cap
+- 2009–2010: 75% exclusion, $10M cap
+- Sep 2010 – July 4, 2025: 100% exclusion, $10M cap
+- After July 4, 2025 (OBBBA / P.L. 119-21 §70431): 3/4/5-year hold → 50/75/100%, $15M cap, $75M gross-asset test, indexed after 2026
+
+Rhode Island still conforms for 2026 sales (add-back starts 2027). Maine taxes only post–July 3, 2025 stock. Vermont adds back federal QSBS then allows a 40% capital-gains exclusion capped at $350,000. Massachusetts follows IRC as of Jan 1, 2024 (pre-OBBBA) and taxes the remainder at 5%.
 
 Default exit amount is $2,810, the median QSBS exclusion.
 
@@ -127,15 +129,15 @@ Default exit amount is $2,810, the median QSBS exclusion.
 
 ## The Self-Defeating Policy
 
-States that decouple from QSBS lose the people and the revenue. Migration data doesn't lie.
+California never conformed and still hosts the largest U.S. venture cluster — that cluster is path-dependent. For other states, the 2026 lesson is New York keeping QSBS after a public fight, and Oregon's governor flagging competitiveness the day she signed decoupling.
 
-### State QSBS Conformity (as of March 2026)
+### State QSBS Conformity (as of September 2026)
 
-- **33 states** conform to federal QSBS
-- **7 states** have no income tax (AK, FL, NV, NH, SD, TN, TX, WY)
-- **6 states** are decoupled (AL, CA, DC, MS, NJ, PA)
-- **2 states** have pending decoupling (NY, OR)
-- **2 states** have partial conformity (HI: 50% exclusion; MA: 3% rate)
+- **31 jurisdictions** conform to federal QSBS
+- **8** have no income tax (AK, FL, NV, NH, SD, TN, TX, WY)
+- **8** are decoupled (AL, CA, DC, IL, MS, OR, PA, RI — RI effective 2027)
+- **4** have partial conformity (HI: 50% frozen pre-OBBBA; MA: IRC as of Jan 1, 2024; ME: post–July 3, 2025 stock only; VT: add-back with 40% CG exclusion cap $350k)
+- **0** pending. New York rejected decoupling. Washington SB 6229 and Maryland HB 801 failed. New Jersey conformity is in force for 2026+.
 
 ### The Migration Problem
 
@@ -159,7 +161,7 @@ States that decouple from QSBS lose the people and the revenue. Migration data d
 
 **$102 billion** in AGI lost by California to outbound migration, 2020–2022. In 2022 alone, 24,670 high-earner households left, taking $16.1 billion in AGI.
 
-Migration is driven by multiple factors (housing costs, remote work, overall tax burden) and QSBS conformity is one factor among many. But the pattern is clear: capital flows toward lower-tax, QSBS-conforming states.
+Migration is driven by housing costs, remote work, and overall tax burden — not QSBS alone. California's cluster is the exception opponents cite. The 2026 lesson is New York keeping the exclusion, not California 2013.
 
 Sources: CA Legislative Analyst's Office (2024), Center for Jobs (2024), IRS SOI Migration Data 2021–2022, Tax Foundation analysis Dec 2024.
 
@@ -167,14 +169,21 @@ Sources: CA Legislative Analyst's Office (2024), Center for Jobs (2024), IRS SOI
 
 ## The Campaign
 
-Nearly identical bills showed up in multiple states within months. Same data, same framing, same legislative session.
+ITEP's memo still travels. After 18 months the outcomes do not. Same ITEP memo. Different outcomes.
 
-### Coordinated Campaign Timeline — Four states, three months, one playbook
+### 2025–2026 Campaign Timeline
 
-- **Dec 2024:** DC passes B25-0900. Unanimous council vote to decouple from federal QSBS.
-- **Jan 2025:** Oregon introduces SB 1507. QSBS decoupling bill using ITEP analysis and OCPP testimony.
-- **Jan 2025:** Washington introduces SB 6229. Capital gains tax decoupling from QSBS exclusion.
-- **Feb 2025:** New York includes decoupling in budget proposal. QSBS decoupling included as part of broader tax changes.
+- **Jan 2025:** Oregon SB 1507 and Washington SB 6229 introduced.
+- **Feb 2025:** New York includes decoupling in the budget proposal.
+- **Dec 2025:** DC decouples via B26-0457 / Act 26-214. (B25-0900 does not address §1202.)
+- **2026:** Washington SB 6229 and HB 2292 fail.
+- **Apr 9, 2026:** Governor Kotek signs Oregon SB 1507; signing letter pledges 2027 QSBS legislation.
+- **Apr 10, 2026:** Maine LD 2212 signed (expansion-only).
+- **Apr 2026:** Maryland HB 801 dies.
+- **May 28, 2026:** New York FY2027 budget signed; QSBS decoupling dropped.
+- **Jun 4, 2026:** Oregon referendum fails to qualify.
+- **Jun 16, 2026:** Illinois SB 3019 signed.
+- **Jun 2026:** Vermont Act 164 QSBS add-back; Rhode Island HB 7127 locks 2027 decoupling.
 
 ### Who's Behind It
 
@@ -208,11 +217,13 @@ If there are concerns about how QSBS is used at the top end, the response should
 - Median exclusion is $2,810 — less than most people's tax refund.
 - Decoupled states lose filers — high earners move to states that conform.
 
+### Trust stacking is the actual abuse
+
+Treasury WP-127: $6.65 billion (13%) of 2021 QSBS exclusions flowed through trusts, up from nearly nothing in 2012. Related nongrantor trusts can each take a separate per-issuer cap.
+
 ### Conclusion
 
-Decoupling doesn't solve a problem. It creates new ones. It doesn't raise meaningful revenue (people move). It doesn't target abuse (it hits everyone equally). And it removes one of the few incentives that actually works to encourage startup formation and risk-taking.
-
-States should conform to the federal standard. Section 1202 has had bipartisan support since 1993. It was strengthened under Presidents Clinton, Obama, and Trump. States that decouple aren't fixing a problem. They're opting out of a policy that works.
+Trust stacking is the problem the Treasury data actually shows. Cap or disallow multiplied exclusions through related nongrantor trusts. Do not tax the median $2,810 claim to do it. Blanket state decoupling taxes the engineer exercising $40K the same way it taxes a stacked $50M exit. New York rejected that trade in 2026. Oregon's governor asked for a 2027 bill the day she signed it.
 
 ---
 
@@ -225,13 +236,14 @@ States should conform to the federal standard. Section 1202 has had bipartisan s
 - [Tax Foundation Migration Analysis (Dec 2024)](https://taxfoundation.org/data/all/state/taxes-affect-state-migration-trends-2024/)
 - [CA Legislative Analyst's Office (2024)](https://lao.ca.gov/Publications/Report/4932) — High-earner outmigration and AGI losses from California.
 - [ITEP Section 1202 Analysis](https://itep.org/qsbs-trump-tax-law-threatens-state-revenues-enriches-wealthy/) — Source of the "94% goes to millionaires" claim.
-- [Oregon SB 1507](https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/SB1507)
-- [DC B25-0900](https://lims.dccouncil.gov/Legislation/B25-0900)
+- [Oregon DOR 2026 summary](https://www.oregon.gov/dor/pages/2026-summary-of-legislation.aspx) — SB 1507 enacted.
+- [DC B26-0457](https://lims.dccouncil.gov/Legislation/B26-0457) — QSBS add-back (not B25-0900).
 - [WA SB 6229](https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025&Initiative=false)
+- [JCX-35-25](https://www.jct.gov/publications/2025/jcx-35-25/) — JCT score of the OBBBA QSBS expansion.
 
 ---
 
-All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research. This site presents factual analysis and is not tax advice. Updated March 2026.
+All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research. This site presents factual analysis and is not tax advice. Updated September 2026.
 
 ---
 
