@@ -17,7 +17,7 @@ const description = '75% of QSBS claimants use it once. Median exclusion: $2,810
     "url": "https://qsbsfacts.org/who-uses-it",
     "description": description,
     "datePublished": "2025-03-20",
-    "dateModified": "2026-03-24",
+    "dateModified": "2026-09-04",
     "citation": {
       "@type": "CreativeWork",
       "name": "U.S. Treasury OTA Working Paper 127",
@@ -125,11 +125,16 @@ const description = '75% of QSBS claimants use it once. Median exclusion: $2,810
           Distribution data: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025. Archetype examples are illustrative, based on typical QSBS claim profiles.
         </p>
 
-        <!-- CTA -->
-        <div class="mt-12 text-center">
-          <a href="/" class="text-primary-600 hover:text-primary-800 font-medium">
-            Read the full analysis &rarr;
-          </a>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 md:p-8 max-w-3xl mx-auto mt-12">
+          <h3 class="font-semibold text-lg mb-2 text-amber-900">The other 13%: trust claims</h3>
+          <p class="text-3xl font-bold text-amber-900 mb-2">${(treasuryData.distribution.trustClaims.peakYear2021 / 1e9).toFixed(2)} billion</p>
+          <p class="text-sm text-gray-700 mb-3">
+            Trust QSBS exclusions in 2021 — {treasuryData.distribution.trustClaims.pctOfTotal2021}% of that year's total, up from nearly nothing in 2012. Related nongrantor trusts can each take a separate per-issuer cap.
+          </p>
+          <p class="text-sm text-gray-700">
+            That stacking is the real top-end problem. It is not an argument for taxing the median ${treasuryData.distribution.medianAnnualExclusion.toLocaleString()} individual claim. See the <a href="/#reform" class="underline hover:text-gray-900">reform proposal</a>.
+          </p>
+          <p class="text-xs text-gray-400 mt-3">Source: Treasury OTA WP-127, 2021 trust/estate claims.</p>
         </div>
       </div>
     </section>

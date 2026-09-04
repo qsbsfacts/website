@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CtaStrip from '../components/CtaStrip.astro';
 
 interface Props {
   title: string;
@@ -82,6 +83,8 @@ const resolvedOgDescription = ogDescription || description;
 
     <slot />
 
+    <CtaStrip />
+
     <!-- Footer -->
     <footer class="bg-primary-950 text-primary-300 px-4 py-12">
       <div class="max-w-5xl mx-auto text-center">
@@ -99,7 +102,7 @@ const resolvedOgDescription = ogDescription || description;
           All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research.
           This site presents factual analysis and is not tax advice.
         </p>
-        <p class="text-xs text-primary-600 mt-2">Updated March 2026.</p>
+        <p class="text-xs text-primary-600 mt-2">Updated September 2026.</p>
       </div>
     </footer>
 

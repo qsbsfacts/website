@@ -21,16 +21,25 @@ QSBS Facts presents evidence-based analysis of IRC Section 1202 — the federal 
 
 - Edwards & Todenhaupt (2020): Startup investment increased ~12% after the 100% exclusion was enacted in 2010.
 - Chen & Farre-Mensa (2023/2025): QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round VC.
+- Critics (Mitchell/Equitable Growth 2023; Pomerleau & Mitchell AEI/Tax Notes Oct 2025; Shilov/Tax Foundation Dec 2025) argue cost-effectiveness and complexity. Those papers do not measure the 2010 100% expansion the way the two studies above do. State decoupling does not repeal the federal incentive.
+
+## Federal rules (P.L. 119-21 §70431, signed July 4, 2025)
+
+Stock acquired on or before July 4, 2025: 5-year hold, $10M cap (or 10× basis). Stock acquired after: 3/4/5-year ladder (50/75/100%), $15M cap, $75M gross-asset test, both indexed after 2026. JCT (JCX-35-25) scores a small near-term revenue gain through 2028, then −$17.2B over 2025–34.
 
 ## Migration Data (IRS SOI 2021–2022)
 
 - Top states gaining tax filers: FL (+125,551), TX (+88,216), NC (+43,653), SC (+32,927), TN (+30,935)
 - Top states losing tax filers: CA (-144,203), NY (-108,586), IL (-45,460), MA (-26,033), NJ (-20,820)
-- California lost $102 billion in AGI to outmigration from 2020–2022.
+- California lost $102 billion in AGI to outmigration from 2020–2022. California never conformed and still hosts the largest U.S. venture cluster; the 2026 lesson for other states is New York keeping QSBS, not California 2013.
 
-## State Conformity
+## State Conformity (September 2026)
 
-As of March 2026: 33 states conform, 7 have no income tax, 6 are decoupled, 2 have pending decoupling legislation, 2 have partial conformity (Hawaii 50% exclusion, Massachusetts 3% rate).
+31 jurisdictions conform, 8 have no income tax, 8 are decoupled (AL, CA, DC, IL, MS, OR, PA, RI — RI effective 2027), 4 have partial conformity (HI 50% frozen pre-OBBBA; MA follows IRC as of Jan 1, 2024; ME decoupled only for stock acquired after July 3, 2025; VT add-back with 40% CG exclusion cap $350k). No pending states. New York rejected decoupling (FY2027 budget, May 28, 2026). Washington SB 6229 and Maryland HB 801 failed. New Jersey full conformity is in force for 2026+.
+
+## Trust stacking
+
+Treasury WP-127: $6.65B (13%) of 2021 QSBS exclusions flowed through trusts, up from nearly nothing in 2012. The site's reform line: cap or disallow multiplied exclusions through related nongrantor trusts; do not tax the median $2,810 claim to do it.
 
 ## Source Documents
 

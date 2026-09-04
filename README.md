@@ -23,7 +23,7 @@ This site exists because policy should be based on data, not talking points. We'
 
 - **Exit Calculator** — See what your startup exit costs in each state, with and without QSBS conformity
 - **Distribution Analysis** — Interactive charts showing claimant-weighted vs. dollar-weighted QSBS data
-- **State Map** — Which states conform, which have decoupled, which are pending
+- **State Map** — Which states conform, which have decoupled, which have partial rules after the 2026 session
 - **Migration Data** — IRS data on where high-income taxpayers are moving
 - **Academic Evidence** — The two studies that directly measure QSBS effects
 - **Source Tracking** — Every claim linked to primary sources
@@ -34,7 +34,7 @@ All data is in the `data/` directory as JSON files:
 
 | File | Contents | Source |
 |------|----------|--------|
-| `states.json` | 50 states + DC: tax rates, QSBS conformity status, pending legislation | Tax Foundation, state legislative records |
+| `states.json` | 50 states + DC: tax rates, QSBS conformity status, 2026-session notes | Tax Foundation, enacted bills, DOR summaries |
 | `treasury-summary.json` | Key statistics from the Treasury analysis | [U.S. Treasury OTA Working Paper 127](https://home.treasury.gov/system/files/131/WP-127.pdf) (Jan 2025) |
 | `migration.json` | Interstate migration flows | [IRS SOI Migration Data](https://www.irs.gov/statistics/soi-tax-stats-migration-data) (2021-2022) |
 

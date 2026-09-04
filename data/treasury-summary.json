@@ -34,7 +34,7 @@
     },
     "holdingPeriod": {
       "modalYears": 5,
-      "note": "5 years = the minimum required holding period. Many claims occur after longer periods."
+      "note": "Pre-OBBBA stock (acquired on or before July 4, 2025) needs a 5-year hold. Stock acquired after that date uses a 3/4/5-year ladder (50/75/100%) under P.L. 119-21. Many claims occur after longer periods."
     },
     "trustClaims": {
       "peakYear2021": 6650000000,
