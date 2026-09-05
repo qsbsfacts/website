@@ -26,7 +26,7 @@ const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasu
   }]}
 >
 
-  <main class="pt-20">
+  <main id="main-content" tabindex="-1" class="pt-20">
     <!-- Intro -->
     <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
       <div class="max-w-3xl mx-auto text-center">
@@ -46,7 +46,7 @@ const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasu
             <h2 class="font-semibold text-lg mb-2 text-center">Who claims QSBS?</h2>
             <p class="text-sm text-gray-500 text-center mb-4">By number of unique claimants (average income excluding QSBS gains)</p>
             <canvas id="claimants-chart" class="w-full" style="max-height: 300px;"></canvas>
-            <p class="text-xs text-gray-400 text-center mt-3">Income measured as average Total Positive Income (TPI), excluding QSBS gains. Source: Treasury OTA WP-127, Figure 4.</p>
+            <p class="text-xs text-gray-600 text-center mt-3">Income measured as average Total Positive Income (TPI), excluding QSBS gains. Source: Treasury OTA WP-127, Figure 4.</p>
           </div>
         </div>
 
@@ -66,9 +66,9 @@ const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasu
               <div class="bg-white rounded-lg p-4 text-center">
                 <p class="text-sm font-medium text-gray-600 mb-2">{d.bracket}</p>
                 <p class="text-2xl font-bold text-primary-700">{d.pctOfClaimants}%</p>
-                <p class="text-xs text-gray-400">of claimants</p>
+                <p class="text-xs text-gray-600">of claimants</p>
                 <p class="text-lg font-semibold text-gray-500 mt-1">{d.pctOfDollars}%</p>
-                <p class="text-xs text-gray-400">of dollars</p>
+                <p class="text-xs text-gray-600">of dollars</p>
               </div>
             ))}
           </div>
@@ -97,7 +97,7 @@ const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasu
             </div>
           </div>
         </div>
-        <p class="text-center mt-4 text-xs text-gray-400">
+        <p class="text-center mt-4 text-xs text-gray-600">
           Source: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">U.S. Treasury OTA Working Paper 127</a>, January 2025
         </p>
 
@@ -118,7 +118,7 @@ const description = 'ITEP claims 94% of QSBS benefits go to millionaires. Treasu
           <p class="text-sm text-gray-700">
             ITEP's approach (adding the excluded QSBS gain back into income) directly undoes Treasury's deliberate choice. The result: people with normal incomes who had one successful exit get lumped in with actual high-income earners, inflating the "millionaire" count.
           </p>
-          <p class="text-xs text-gray-400 mt-3">
+          <p class="text-xs text-gray-600 mt-3">
             Methodology: <a href="https://home.treasury.gov/system/files/131/WP-127.pdf" target="_blank" rel="noopener" class="underline hover:text-gray-600">Treasury OTA WP-127</a>, Section III ("Data and Sample Construction")
           </p>
         </div>

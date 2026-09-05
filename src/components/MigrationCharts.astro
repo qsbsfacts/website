@@ -1,0 +1,48 @@
+---
+import migration from '../../data/migration.json';
+import { statePresentation, statusStyles } from '../statePresentation';
+const groups = [
+  { id: 'gainers-chart', title: 'Top 5 States Gaining Filers', rows: migration.topGainers },
+  { id: 'losers-chart', title: 'Top 5 States Losing Filers', rows: migration.topLosers },
+];
+---
+<p class="text-sm text-gray-600 text-center mb-4">Bar colors show QSBS status in the state policy dataset, not migration direction. Migration figures are from 2021–2022; policy statuses include subsequent changes.</p>
+<div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm mb-6" aria-label="State status legend">
+  {Object.values(statusStyles).map(status => <span class="inline-flex items-center gap-2"><span class="size-3 rounded-sm" style={{ background: status.color }} aria-hidden="true"></span>{status.label}</span>)}
+</div>
+<div class="grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
+  {groups.map(group => <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+    <h3 class="font-semibold text-lg mb-1 text-center">{group.title}</h3>
+    <p class="text-xs text-gray-600 text-center mb-4">Net interstate tax filer migration · IRS SOI 2021–2022</p>
+    <div class="relative h-64"><canvas id={group.id} role="img" aria-label={`${group.title}. Exact numbers and state statuses in the table below.`}></canvas></div>
+    <details class="mt-4 border-t border-gray-200 pt-3">
+      <summary class="cursor-pointer text-sm font-medium text-primary-700 py-2">View numbers and state statuses</summary>
+      <table class="w-full text-sm mt-2"><caption class="sr-only">{group.title}</caption><thead><tr><th scope="col" class="text-left py-2">State / status</th><th scope="col" class="text-right py-2">Net filers</th></tr></thead>
+        <tbody>{group.rows.map(row => { const state = statePresentation(row.state); return <tr class="border-t border-gray-100"><th scope="row" class="text-left py-2 font-normal">{state.name}<span class="block text-xs" style={{ color: state.color }}>{state.symbol} {state.label}</span></th><td class="text-right tabular-nums">{row.netFilers > 0 ? '+' : ''}{row.netFilers.toLocaleString('en-US')}</td></tr>; })}</tbody>
+      </table>
+    </details>
+  </div>)}
+</div>
+<script>
+  import Chart from 'chart.js/auto';
+  import migration from '../../data/migration.json';
+  import { statePresentation } from '../statePresentation';
+  for (const [id, rows] of [['gainers-chart', migration.topGainers], ['losers-chart', migration.topLosers]] as const) {
+    new Chart(document.getElementById(id) as HTMLCanvasElement, {
+      type: 'bar',
+      data: {
+        labels: rows.map(row => row.state),
+        datasets: [{ label: 'Net filers', data: rows.map(row => row.netFilers), backgroundColor: rows.map(row => statePresentation(row.state).color), borderRadius: 4 }],
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        animation: matchMedia('(prefers-reduced-motion: reduce)').matches ? false : undefined,
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          title: items => { const state = statePresentation(rows[items[0].dataIndex].state); return `${state.name} · ${state.label}`; },
+          label: context => `${Number(context.parsed.x).toLocaleString('en-US', { signDisplay: 'exceptZero' })} filers`,
+        } } },
+        scales: { x: { ticks: { callback: value => Number(value).toLocaleString('en-US', { notation: 'compact', signDisplay: 'exceptZero' }) } }, y: { grid: { display: false } } },
+      },
+    });
+  }
+</script>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
 import CtaStrip from '../components/CtaStrip.astro';
 
 interface Props {
@@ -53,33 +54,7 @@ const resolvedOgDescription = ogDescription || description;
   </head>
   <body>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" class="text-white font-bold text-lg">QSBS Facts</a>
-        <div class="hidden md:flex items-center gap-6 text-sm text-primary-200">
-          <a href="/evidence" class="hover:text-white transition-colors">Evidence</a>
-          <a href="/who-uses-it" class="hover:text-white transition-colors">Who Uses It</a>
-          <a href="/the-94-percent-claim" class="hover:text-white transition-colors">The 94% Claim</a>
-          <a href="/calculator" class="hover:text-white transition-colors">Calculator</a>
-          <a href="/state-impact" class="hover:text-white transition-colors">Migration</a>
-          <a href="/sources" class="hover:text-white transition-colors">Sources</a>
-        </div>
-        <button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Open menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </div>
-      <div id="mobile-menu" class="hidden md:hidden bg-primary-950 border-t border-primary-800 px-4 py-3">
-        <div class="flex flex-col gap-3 text-sm text-primary-200">
-          <a href="/evidence" class="hover:text-white">Evidence</a>
-          <a href="/who-uses-it" class="hover:text-white">Who Uses It</a>
-          <a href="/the-94-percent-claim" class="hover:text-white">The 94% Claim</a>
-          <a href="/calculator" class="hover:text-white">Calculator</a>
-          <a href="/state-impact" class="hover:text-white">Migration</a>
-          <a href="/sources" class="hover:text-white">Sources</a>
-        </div>
-      </div>
-    </nav>
+    <Navigation />
 
     <slot />
 
@@ -98,24 +73,14 @@ const resolvedOgDescription = ogDescription || description;
           <a href="/state-impact" class="hover:text-white">State Impact</a>
           <a href="/sources" class="hover:text-white">Sources</a>
         </div>
-        <p class="text-xs text-primary-500">
+        <p class="text-xs text-primary-300">
           All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research.
           This site presents factual analysis and is not tax advice.
         </p>
-        <p class="text-xs text-primary-600 mt-2">Updated September 2026.</p>
+        <p class="text-xs text-primary-300 mt-2">Updated September 2026.</p>
       </div>
     </footer>
 
-    <script>
-      // Mobile menu toggle
-      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.toggle('hidden');
-      });
-      document.querySelectorAll('#mobile-menu a').forEach(a => {
-        a.addEventListener('click', () => {
-          document.getElementById('mobile-menu')?.classList.add('hidden');
-        });
-      });
-    </script>
+
   </body>
 </html>

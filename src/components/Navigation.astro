@@ -1,0 +1,43 @@
+---
+const links = [
+  ['/evidence', 'Evidence'], ['/who-uses-it', 'Who Uses It'],
+  ['/the-94-percent-claim', 'The 94% Claim'], ['/calculator', 'Calculator'],
+  ['/state-impact', 'State Impact'], ['/sources', 'Sources'],
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="site-nav fixed top-0 inset-x-0 z-50 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800" aria-label="Main navigation">
+  <div class="max-w-6xl mx-auto px-4 min-h-16 flex items-center justify-between gap-4">
+    <a href="/" class="text-white font-bold text-lg tracking-tight" aria-current={currentPath === '/' ? 'page' : undefined}>QSBS Facts<span class="text-primary-300">.</span></a>
+    <div class="hidden lg:flex items-center gap-2 text-sm text-primary-200">
+      {links.map(([href, label]) => <a href={href} aria-current={currentPath === href ? 'page' : undefined} class="nav-link">{label}</a>)}
+    </div>
+    <button id="mobile-menu-btn" class="lg:hidden text-white rounded-lg border border-primary-700 px-4 min-h-11" aria-controls="mobile-menu" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-primary-950 border-t border-primary-800 px-4 py-3">
+    <div class="flex flex-col text-sm text-primary-200">
+      {links.map(([href, label]) => <a href={href} aria-current={currentPath === href ? 'page' : undefined} class="nav-link">{label}</a>)}
+    </div>
+  </div>
+</nav>
+<script>
+  const button = document.getElementById('mobile-menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  function setOpen(open: boolean) {
+    menu.classList.toggle('hidden', !open);
+    button.setAttribute('aria-expanded', String(open));
+  }
+  button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      button.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!(event.target as Element).closest('.site-nav')) setOpen(false);
+  });
+  matchMedia('(min-width: 1024px)').addEventListener('change', () => setOpen(false));
+</script>

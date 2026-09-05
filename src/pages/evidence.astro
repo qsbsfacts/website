@@ -33,7 +33,7 @@ const description = 'Peer-reviewed research shows QSBS drives ~12% more startup 
   }]}
 >
 
-  <main class="pt-20">
+  <main id="main-content" tabindex="-1" class="pt-20">
     <!-- Intro -->
     <section class="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 text-white px-4 py-16 md:px-8">
       <div class="max-w-3xl mx-auto text-center">
@@ -51,7 +51,7 @@ const description = 'Peer-reviewed research shows QSBS drives ~12% more startup 
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           {treasuryData.academicStudies.map((study: any, i: number) => (
             <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-primary-500">
-              <p class="text-sm text-gray-400 mb-1">
+              <p class="text-sm text-gray-600 mb-1">
                 {study.ssrn ? (
                   <a href={study.ssrn} target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">{study.authors} ({study.year}) ↗</a>
                 ) : (
@@ -80,7 +80,7 @@ const description = 'Peer-reviewed research shows QSBS drives ~12% more startup 
               <p class="text-gray-600 mb-3">
                 This is a causal finding, not just a correlation. By comparing funding rounds within the same firm, the study controls for firm-specific characteristics. The increase in investment is attributable to the change in tax treatment of potential gains.
               </p>
-              <p class="text-sm text-gray-400">
+              <p class="text-sm text-gray-600">
                 <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Read the paper on SSRN ↗</a>
               </p>
             </div>
@@ -93,7 +93,7 @@ const description = 'Peer-reviewed research shows QSBS drives ~12% more startup 
               <p class="text-gray-600 mb-3">
                 The findings suggest QSBS doesn't just redirect existing investment — it generates new economic activity. More companies are formed, more people are hired at startups, and more early-stage capital flows into the ecosystem.
               </p>
-              <p class="text-sm text-gray-400">
+              <p class="text-sm text-gray-600">
                 <a href="https://ssrn.com/abstract=4482626" target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-800 underline">Read the paper on SSRN ↗</a>
               </p>
             </div>

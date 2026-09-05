@@ -1,5 +1,6 @@
 ---
 import statesData from '../../data/states.json';
+import { statusStyles } from '../statePresentation';
 
 const counts = {
   conforms: statesData.filter(s => s.qsbsConformity === 'conforms').length,
@@ -13,26 +14,22 @@ const boxCols = showPending ? 'md:grid-cols-5' : 'md:grid-cols-4';
 ---
 
 <h3 class="text-xl font-semibold text-center mb-6">State QSBS Conformity</h3>
-<div class="flex flex-wrap justify-center gap-4 mb-8 text-sm">
-  <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-green-500"></span> Conforms</div>
-  <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-red-500"></span> Decoupled</div>
-  {showPending && (
-    <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-amber-500"></span> Pending</div>
-  )}
-  <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-blue-300"></span> Partial</div>
-  <div class="flex items-center gap-2"><span class="w-4 h-4 rounded bg-gray-300"></span> No income tax</div>
+<p class="text-center text-sm text-gray-600 mb-5">Choose a state to see its tax rate and policy details. Statuses include enacted changes; check the notes for effective dates.</p>
+<div class="flex flex-wrap justify-center gap-4 mb-6 text-sm">
+  {Object.entries(statusStyles).filter(([key]) => key !== 'pending' || showPending).map(([key, status]) => <span class="flex items-center gap-2"><span class="size-5 rounded text-white text-center" style={{ background: status.color }} aria-hidden="true">{status.symbol}</span>{status.label}</span>)}
 </div>
-
+<label for="state-finder" class="block max-w-sm mx-auto text-sm font-medium mb-2">Find your state</label>
+<select id="state-finder" class="block w-full max-w-sm mx-auto border border-gray-300 rounded-lg p-3 mb-6">
+  <option value="">Select a state…</option>
+  {statesData.map(state => <option value={state.code}>{state.name}</option>)}
+</select>
 <div id="state-grid" class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 gap-1 max-w-4xl mx-auto mb-8">
   {statesData.map(state => (
     <button
-      class={`state-tile p-2 rounded text-xs font-bold text-center cursor-pointer transition-transform hover:scale-110 ${
-        state.qsbsConformity === 'conforms' ? 'bg-green-500 text-white' :
-        state.qsbsConformity === 'decoupled' ? 'bg-red-500 text-white' :
-        state.qsbsConformity === 'pending' ? 'bg-amber-500 text-white' :
-        state.qsbsConformity === 'partial' ? 'bg-blue-300 text-white' :
-        'bg-gray-300 text-gray-700'
-      }`}
+      class="state-tile min-h-11 p-2 rounded-md text-xs font-bold text-center cursor-pointer text-white transition-transform hover:-translate-y-0.5"
+      style={{ background: statusStyles[state.qsbsConformity as keyof typeof statusStyles].color }}
+      aria-pressed="false"
+      aria-controls="state-detail"
       data-code={state.code}
       data-name={state.name}
       data-rate={state.taxRate}
@@ -40,12 +37,12 @@ const boxCols = showPending ? 'md:grid-cols-5' : 'md:grid-cols-4';
       data-note={state.note}
       aria-label={`${state.name}: ${state.qsbsConformity}`}
     >
-      {state.code}
+      <span aria-hidden="true" class="block text-[10px] leading-none mb-1">{statusStyles[state.qsbsConformity as keyof typeof statusStyles].symbol}</span>{state.code}
     </button>
   ))}
 </div>
 
-<div id="state-detail" class="bg-white rounded-xl shadow-lg p-6 max-w-lg mx-auto hidden mb-8">
+<div id="state-detail" role="status" aria-live="polite" aria-atomic="true" class="bg-white rounded-xl shadow-lg p-6 max-w-lg mx-auto hidden mb-8">
   <h3 id="detail-name" class="text-xl font-bold mb-2"></h3>
   <div class="grid grid-cols-2 gap-4 text-sm mb-3">
     <div><span class="text-gray-500">Tax rate:</span> <strong id="detail-rate"></strong></div>
@@ -80,17 +77,25 @@ const boxCols = showPending ? 'md:grid-cols-5' : 'md:grid-cols-4';
 </div>
 
 <script>
-  document.querySelectorAll('.state-tile').forEach(tile => {
-    tile.addEventListener('click', () => {
-      const el = tile as HTMLElement;
-      const detail = document.getElementById('state-detail')!;
-      document.getElementById('detail-name')!.textContent = el.dataset.name || '';
-      document.getElementById('detail-rate')!.textContent = el.dataset.rate + '%';
-      const status = el.dataset.conformity || '';
-      const statusEl = document.getElementById('detail-status')!;
-      statusEl.textContent = status === 'none' ? 'No income tax' : status.charAt(0).toUpperCase() + status.slice(1);
-      document.getElementById('detail-note')!.textContent = el.dataset.note || 'Standard federal conformity.';
-      detail.classList.remove('hidden');
-    });
+  const finder = document.getElementById('state-finder') as HTMLSelectElement;
+  const tiles = document.querySelectorAll<HTMLButtonElement>('.state-tile');
+  function selectState(el: HTMLButtonElement) {
+    tiles.forEach(tile => tile.setAttribute('aria-pressed', String(tile === el)));
+    finder.value = el.dataset.code || '';
+    document.getElementById('detail-name')!.textContent = el.dataset.name || '';
+    document.getElementById('detail-rate')!.textContent = el.dataset.rate + '%';
+    const status = el.dataset.conformity || '';
+    document.getElementById('detail-status')!.textContent = status === 'none' ? 'No income tax' : status.charAt(0).toUpperCase() + status.slice(1);
+    document.getElementById('detail-note')!.textContent = el.dataset.note || 'Standard federal conformity.';
+    document.getElementById('state-detail')!.classList.remove('hidden');
+  }
+  tiles.forEach(tile => tile.addEventListener('click', () => selectState(tile)));
+  finder.addEventListener('change', () => {
+    const tile = Array.from(tiles).find(tile => tile.dataset.code === finder.value);
+    if (tile) selectState(tile);
+    else {
+      tiles.forEach(tile => tile.setAttribute('aria-pressed', 'false'));
+      document.getElementById('state-detail')!.classList.add('hidden');
+    }
   });
 </script>
