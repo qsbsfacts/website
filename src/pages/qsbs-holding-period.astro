@@ -1,0 +1,58 @@
+---
+import Guide from '../layouts/Guide.astro';
+const law = 'https://www.law.cornell.edu/uscode/text/26/1202';
+const sources = [
+  { label: '26 U.S.C. §1202(a), (f), (h), and (i): QSBS holding rules', url: law },
+  { label: '26 U.S.C. §1223: holding periods and carryovers', url: 'https://www.law.cornell.edu/uscode/text/26/1223' },
+  { label: '26 CFR §1.83-4: restricted-stock holding period', url: 'https://www.law.cornell.edu/cfr/text/26/1.83-4' },
+  { label: '26 U.S.C. §83(b): election and deadline', url: 'https://www.law.cornell.edu/uscode/text/26/83' },
+  { label: '26 U.S.C. §1045: replacement-stock rollover', url: 'https://www.law.cornell.edu/uscode/text/26/1045' },
+];
+---
+
+<Guide title="QSBS Holding Period: The 3-, 4-, and 5-Year Rules" description="Find which QSBS holding period applies, when the clock starts for options and restricted stock, and how gifts and rollovers affect acquisition dates." heading="How long do you need to hold QSBS?" summary="Shares acquired on or before July 4, 2025 generally need more than five years. Shares acquired afterward can earn partial exclusions at three and four years, and 100% at five." canonicalPath="/qsbs-holding-period/" category="QSBS basics" sources={sources} related={[
+  { label: '2025 changes to QSBS', href: '/new-qsbs-rules/' },
+  { label: 'Stock options and QSBS', href: '/qsbs-stock-options/' },
+  { label: 'Section 1045 rollovers', href: '/qsbs-rollover/' },
+]}>
+  <h2>First establish the acquisition date</h2>
+  <p>The first question is when you acquired the stock for tax purposes. It is not necessarily when you joined the company, signed an option grant, or first invested through a different instrument. Under <a href={`${law}#a_6`}>Section 1202(a)(6)</a>, the acquisition date reflects applicable holding-period rules in Section 1223, including periods carried over from qualifying earlier ownership.</p>
+  <p>That date determines which holding-period regime applies. A sale after the 2025 law change does not automatically bring older shares into the new three-year regime.</p>
+
+  <h2>The holding-period table</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">Stock acquisition period</th><th scope="col">Required holding period</th><th scope="col">Federal exclusion percentage</th></tr></thead>
+      <tbody>
+        <tr><td>After August 10, 1993 through February 17, 2009</td><td>More than 5 years</td><td>Generally 50%</td></tr>
+        <tr><td>February 18, 2009 through September 27, 2010</td><td>More than 5 years</td><td>75%</td></tr>
+        <tr><td>September 28, 2010 through July 4, 2025</td><td>More than 5 years</td><td>100%</td></tr>
+        <tr><td>After July 4, 2025</td><td>At least 3 years, less than 4</td><td>50%</td></tr>
+        <tr><td>After July 4, 2025</td><td>At least 4 years, less than 5</td><td>75%</td></tr>
+        <tr><td>After July 4, 2025</td><td>At least 5 years</td><td>100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These percentages apply to eligible gain within the <a href="/qsbs-exclusion-limits/">per-issuer cap</a>, assuming all other qualification requirements are met. Special empowerment-zone rules can affect certain older stock and gain attributable to periods before 2019. <a href={`${law}#a`}>Source: Section 1202(a).</a></p>
+  <p><strong>The wording matters:</strong> the older regime requires more than five years, while the newer tiers use at least three, four, or five years. Have the exact tax acquisition and sale dates checked before relying on an anniversary. Tax holding-period conventions and transaction structure can affect the calculation.</p>
+
+  <h2>When does the clock start?</h2>
+  <h3>Shares purchased directly for cash</h3>
+  <p>For a straightforward cash purchase of fully vested original-issue shares, the relevant starting event is the acquisition of those shares. Keep the executed agreement, funding evidence, and stock-issuance record together. Different closings or purchases can create separate lots with different dates.</p>
+  <h3>Employee options</h3>
+  <p>Time holding an option generally does not count as time holding the stock purchased through it. <a href="https://www.law.cornell.edu/uscode/text/26/1223">Section 1223(5)</a> ties the holding period for stock acquired by exercising rights to the exercise. Restricted shares and special compensation rules require additional analysis. Our <a href="/qsbs-stock-options/">stock-options guide</a> separates grant, exercise, and sale.</p>
+  <h3>Restricted stock and an 83(b) election</h3>
+  <p>For property governed by Section 83, the holding period generally begins just after it becomes substantially vested. A valid Section 83(b) election moves that starting point to just after transfer. The election generally must be made within 30 days of transfer, and has tax consequences beyond QSBS. See <a href="https://www.law.cornell.edu/cfr/text/26/1.83-4">Treasury Regulation 1.83-4(a)</a> and <a href="https://www.law.cornell.edu/uscode/text/26/83#b">Section 83(b)</a>. An election does not establish the company's QSBS eligibility.</p>
+
+  <h2>Two examples of the timing difference</h2>
+  <p><strong>Older shares:</strong> an investor acquires qualifying stock in June 2024 and sells in September 2028. The holding period exceeds four years but not five. The new 75% tier does not apply to that older acquisition, so Section 1202 provides no exclusion on those assumed facts.</p>
+  <p><strong>Newer shares:</strong> an investor acquires qualifying stock in August 2025 and sells in September 2029. The holding period exceeds four years but is shorter than five. If $2 million of gain is eligible within the available cap and all other tests are satisfied, the 75% tier excludes $1.5 million. The other $500,000 remains federally taxable. This is an exclusion illustration, not a complete tax calculation; state tax and the rate on nonexcluded gain require separate analysis.</p>
+
+  <h2>Transfers can preserve time without creating newer shares</h2>
+  <p><a href={`${law}#h`}>Section 1202(h)</a> can preserve the transferor's holding period for qualifying gifts and transfers at death. A qualifying conversion of QSBS within the same corporation can also preserve time under Section 1202(f). A later transfer date therefore does not necessarily unlock the newer acquisition-date rules.</p>
+  <p>When property other than cash or stock is contributed in exchange for shares, <a href={`${law}#i`}>Section 1202(i)</a> treats the shares as acquired on the exchange date for this purpose. Do not assume that years spent operating an unincorporated business count as years holding QSBS.</p>
+
+  <h2>What if the exit happens too soon?</h2>
+  <p><a href="https://www.law.cornell.edu/uscode/text/26/1045">Section 1045</a> may allow deferral when qualifying stock held for more than six months is sold and qualifying replacement stock is purchased within the 60-day period beginning on the sale date. A qualifying rollover can carry holding time under Section 1223, but it has separate conditions and does not make an early sale automatically tax-free.</p>
+  <p>Review the <a href="/qsbs-rollover/">rollover guide</a> before the sale if that might be relevant. Waiting longer also carries investment risk: a larger tax exclusion does not guarantee a better economic outcome if the share value falls or the transaction disappears.</p>
+</Guide>

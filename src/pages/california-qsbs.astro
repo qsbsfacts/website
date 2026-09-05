@@ -1,0 +1,85 @@
+---
+import Guide from '../layouts/Guide.astro';
+const sources = [
+  {"label": "California Revenue and Taxation Code §17952: intangible income", "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=17952.&lawCode=RTC"},
+  {
+    "label": "FTB: California Schedule D instructions",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-540-d-instructions.html"
+  },
+  {
+    "label": "FTB: residency guidelines, Publication 1031",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf"
+  },
+  {
+    "label": "California Revenue and Taxation Code \u00a717014",
+    "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17014."
+  },
+  {
+    "label": "FTB: equity compensation, Publication 1004",
+    "url": "https://www.ftb.ca.gov/forms/misc/1004.html"
+  },
+  {
+    "label": "FTB: part-year residents and nonresidents",
+    "url": "https://www.ftb.ca.gov/file/personal/residency-status/part-year-and-nonresident.html"
+  }
+];
+const related = [
+  {
+    "label": "California exit tax: what actually applies",
+    "href": "/california-exit-tax/"
+  },
+  {
+    "label": "Compare state QSBS treatment",
+    "href": "/state-impact/"
+  },
+  {
+    "label": "Estimate an exit scenario",
+    "href": "/calculator/"
+  },
+  {
+    "label": "Do employee stock options qualify?",
+    "href": "/qsbs-stock-options/"
+  }
+];
+---
+<Guide
+  title="California QSBS: Taxes, Residency, and Moving"
+  description="Does California tax QSBS gains? Understand federal versus state treatment, moving before a stock sale, residency, and employee equity sourcing."
+  heading="California QSBS: state taxes, residency, and moving before an exit"
+  summary="California does not recognize the federal QSBS exclusion. A genuine change of residence can matter, but there is no universal number of days outside the state that makes a stock sale tax-free."
+  canonicalPath="/california-qsbs/"
+  category="State QSBS guides"
+  sources={sources}
+  related={related}
+>
+  <h2>Does California recognize the QSBS exclusion?</h2>
+  <p>No. A stock sale can qualify for a federal Section 1202 exclusion and still produce taxable California gain. California also does not conform to the Section 1045 QSBS rollover. The FTB's <a href="https://www.ftb.ca.gov/forms/2025/2025-540-d-instructions.html">Schedule D instructions</a> expressly identify both differences. California nonconformity does not itself disqualify the stock federally.</p>
+  <p>That creates two separate calculations: establish the federal exclusion, then determine which income California can tax and the applicable state adjustments. A company's California headquarters does not, by itself, answer either question. The shareholder's residence, the character of the proceeds, and the stock's qualification all matter.</p>
+
+  <h2>What does that mean for an exit?</h2>
+  <p>Illustrative example: a California resident sells shares with $2 million of gain, all of which qualifies for a federal exclusion. The California calculation generally includes that gain despite the federal exclusion. This is $2 million of potentially taxable gain, not a $2 million tax bill. Basis adjustments, losses, other income, filing status, and state rates affect the final amount.</p>
+  <p>Use the <a href="/calculator/">calculator</a> to explore the difference between state treatments. It cannot decide residency or establish that a particular stock lot qualifies. A scenario comparing states is a financial illustration; it is not a determination that relocating produces that result.</p>
+
+  <h2>Can moving before the sale change California tax?</h2>
+  <p>Potentially. California taxes residents on worldwide income and nonresidents on California-source income. Part-year residents need to account for both periods. The FTB explains these categories in its <a href="https://www.ftb.ca.gov/file/personal/residency-status/part-year-and-nonresident.html">nonresident guidance</a>. The practical task is to establish when residence changed and identify the source of each item of income.</p>
+  <p>For ordinary investment stock, capital gain generally follows residence at the sale, subject to exceptions such as a California business situs. See <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=17952.&amp;lawCode=RTC">Revenue and Taxation Code §17952</a>. Employee compensation has different sourcing rules. Treating every dollar received in an acquisition as a stock-investment gain can therefore produce the wrong answer. Review the actual award and transaction documents.</p>
+
+  <h2>How long must you live outside California?</h2>
+  <p>There is no universal six-month or 183-day escape rule. Under <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=17014.">Section 17014</a>, a California domiciliary who leaves temporarily can remain a resident. A mailing address or a lease elsewhere does not resolve whether an absence is temporary.</p>
+  <p>The FTB weighs the whole situation, including homes, family, work, and other connections. Records should describe the life you actually lead. A planned return after a brief stay elsewhere is materially different from establishing a lasting home. See <a href="https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf">Publication 1031</a>.</p>
+  <h3>The 546-day safe harbor is narrow</h3>
+  <p>The employment-contract safe harbor generally requires at least 546 uninterrupted days outside California; return visits totaling no more than 45 days per tax year can be disregarded. It does not apply if intangible income exceeds $200,000 in any covered tax year, or if the principal purpose of the absence is avoiding California personal income tax. The $200,000 test applies separately to each spouse. These exceptions are especially relevant to a planned stock exit. Failing the safe harbor does not automatically make someone resident: the ordinary facts-and-circumstances analysis still applies. <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&amp;sectionNum=17014.">Read the statutory conditions</a>.</p>
+
+  <h2>Stock options need a separate analysis</h2>
+  <p>Nonstatutory option compensation may remain partly California-source after a move because it relates to California services. Capital gain on a subsequent stock sale is a different item. Incentive stock options introduce additional disposition and alternative minimum tax questions. The FTB illustrates these distinctions in <a href="https://www.ftb.ca.gov/forms/misc/1004.html">Publication 1004</a>; one allocation rule should not be applied to every kind of equity award.</p>
+
+  <h2>What to review before a transaction</h2>
+  <ul>
+    <li>Which lots qualify federally, and what documents support original issuance, basis, and holding period?</li>
+    <li>What facts establish the residency change date, and what California connections continue?</li>
+    <li>Which proceeds are investment gains, wages, deferred compensation, or other income?</li>
+    <li>Do signed agreements, exercise dates, escrow terms, or installment payments affect the timing analysis?</li>
+    <li>What returns, withholding, and estimated payments will each state require?</li>
+  </ul>
+  <p>Bring those records to a California tax professional before committing to a move or sale. The useful question is whether the specific facts support a different tax outcome, alongside the financial and personal costs of relocation.</p>
+</Guide>

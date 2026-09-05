@@ -1,0 +1,53 @@
+---
+import Guide from '../layouts/Guide.astro';
+const law = 'https://www.law.cornell.edu/uscode/text/26/1202';
+const sources = [
+  { label: '26 U.S.C. §1202: qualification and anti-abuse requirements', url: law },
+  { label: 'IRS: Schedule D instructions, qualification tests', url: 'https://www.irs.gov/instructions/i1040sd' },
+  { label: '26 CFR §1.1202-2: redemption rules and exceptions', url: 'https://www.law.cornell.edu/cfr/text/26/1.1202-2' },
+];
+---
+
+<Guide title="QSBS Requirements: Does Your Stock Qualify?" description="Check QSBS eligibility: original issuance, C corporation status, gross assets, active business, redemptions, and the records needed for review." heading="Does your stock qualify for QSBS?" summary="Start with the shares' history, then check the company and shareholder requirements. This checklist helps you prepare an eligibility review; it does not certify your shares." canonicalPath="/qsbs-eligibility/" category="QSBS basics" sources={sources} related={[
+  { label: 'What is QSBS?', href: '/what-is-qsbs/' },
+  { label: 'Employee stock options', href: '/qsbs-stock-options/' },
+  { label: 'QSBS holding periods', href: '/qsbs-holding-period/' },
+]}>
+  <h2>1. Identify who owns the stock</h2>
+  <p><a href={`${law}#a`}>Section 1202(a)</a> applies to taxpayers other than corporations. Individuals, estates, and qualifying trusts may be eligible. A partnership can hold QSBS and pass qualifying gain through, but the partner generally must have held an interest when the partnership acquired the shares and continuously afterward. The benefit is also limited by the partner's original interest. An S corporation can be an intermediary under the pass-through rules even though its own stock is not QSBS.</p>
+  <p><strong>Gather:</strong> the ownership chart, account registration, partnership acquisition records, and any trust or transfer documents. If the name on the cap table differs from the taxpayer claiming the exclusion, resolve that relationship first.</p>
+
+  <h2>2. Trace how the shares were issued and acquired</h2>
+  <p>Qualifying shares must have been originally issued after August 10, 1993. Generally, you must acquire them at original issuance, directly or through an underwriter, in exchange for cash, property other than stock, or services to the corporation other than underwriting. A secondary purchase from a founder or investor ordinarily does not qualify. <a href={`${law}#c`}>Section 1202(c)(1)</a> sets this test.</p>
+  <p>Specified gifts, transfers at death, conversions of qualifying stock, and some reorganizations have preservation rules in <a href={`${law}#f`}>Sections 1202(f) and (h)</a>. These are exceptions with conditions, not a blanket rule that every transferred share qualifies. An option grant is also different from acquiring the underlying stock; see <a href="/qsbs-stock-options/">employee stock options</a>.</p>
+  <p><strong>Gather:</strong> subscription or purchase agreements, exercise confirmations, stock ledgers, proof of payment, and records of conversions, gifts, and reorganizations.</p>
+
+  <h2>3. Verify C corporation status and the asset threshold</h2>
+  <p>The issuer must be a domestic C corporation when the shares are issued and remain a C corporation during substantially all of the holding period. An LLC's operating history does not by itself make later C corporation shares eligible for all those years.</p>
+  <p>The gross-assets ceiling depends on <strong>issuance date</strong>, not the year you sell:</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">When shares were issued</th><th scope="col">Aggregate gross-assets ceiling</th></tr></thead>
+      <tbody>
+        <tr><td>On or before July 4, 2025</td><td>$50 million</td></tr>
+        <tr><td>After July 4, 2025</td><td>$75 million, indexed after 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The test looks at the relevant history before issuance and immediately afterward, including cash received in the issuance. It counts predecessor assets and aggregates specified controlled corporations. Gross assets mean cash plus adjusted tax basis in other assets, with contributed property generally measured using fair market value. This is <strong>not the company's fundraising valuation</strong>. See <a href={`${law}#d`}>Section 1202(d) and its 2025 effective-date notes</a>.</p>
+  <p>For example, a $200 million headline valuation does not by itself establish failure if the statutory asset measure remains within the ceiling. Conversely, an issuance that brings the asset measure above the ceiling can fail even when the company is described as an early-stage startup.</p>
+  <p><strong>Gather:</strong> tax-basis balance sheets, financing closing records, contributed-property valuations, and predecessor and subsidiary information.</p>
+
+  <h2>4. Check the business throughout the holding period</h2>
+  <p>Generally, at least 80% of the corporation's asset value must be used in eligible active businesses during substantially all of the shareholder's holding period. Startup and research activities can count before revenue begins. Working capital has special rules; parking proceeds in investments indefinitely is not automatically permitted. <a href={`${law}#e`}>Section 1202(e)</a> also restricts certain portfolio investments and nonbusiness real estate.</p>
+  <p>Excluded activities include specified professional services such as law, health, accounting, consulting, and financial services; businesses principally dependent on employees' reputation or skill; banking, insurance, financing, leasing and investing; farming; specified extraction businesses; and hotels, motels, and restaurants. Industry labels alone can be misleading: review what the company actually sells and does.</p>
+  <p><strong>Gather:</strong> business descriptions, financial statements, asset-use records, and evidence of material changes in operations. “Substantially all” requires analysis; the statute does not supply a universal numerical safe harbor for that phrase.</p>
+
+  <h2>5. Review redemptions and other disqualifying events</h2>
+  <p>Stock buybacks around issuance can disqualify shares. <a href={`${law}#c_3`}>Section 1202(c)(3)</a> contains a four-year window beginning two years before issuance for purchases from the taxpayer or related persons, and a two-year window beginning one year before issuance for significant company-wide redemptions. <a href="https://www.law.cornell.edu/cfr/text/26/1.1202-2">Treasury regulations</a> provide thresholds and exceptions, so a buyback needs review rather than an automatic yes-or-no assumption.</p>
+  <p>Also flag hedges, reorganizations, entity conversions, and transfers. Passing the original issuance test does not settle later events.</p>
+
+  <h2>6. Confirm the holding period and available exclusion</h2>
+  <p>Eligible stock still needs the required <a href="/qsbs-holding-period/">holding period</a> and an available <a href="/qsbs-exclusion-limits/">gain limit</a>. Keep a separate record for each acquisition lot. A company letter can support the review but cannot substitute for the underlying facts or a shareholder-specific analysis.</p>
+  <p>Bring this evidence to your tax adviser before signing an exit agreement. Identify unknowns explicitly: unavailable historical records and uncertain business classification are questions to resolve, not boxes to assume are checked.</p>
+</Guide>

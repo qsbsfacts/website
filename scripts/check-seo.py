@@ -7,7 +7,16 @@ import xml.etree.ElementTree as ET
 
 DIST = Path(__file__).resolve().parents[1] / "dist"
 ORIGIN = "https://qsbsfacts.org"
-ROUTES = ["/", "/calculator/", "/evidence/", "/sources/", "/state-impact/", "/the-94-percent-claim/", "/who-uses-it/"]
+REQUIRED_ROUTES = {
+    "/", "/calculator/", "/evidence/", "/sources/", "/state-impact/", "/the-94-percent-claim/", "/who-uses-it/",
+    "/guides/", "/what-is-qsbs/", "/qsbs-eligibility/", "/qsbs-holding-period/", "/qsbs-exclusion-limits/",
+    "/new-qsbs-rules/", "/qsbs-stock-options/", "/qsbs-rollover/", "/qsbs-trust-stacking/",
+    "/california-qsbs/", "/california-exit-tax/", "/oregon-qsbs/", "/new-york-qsbs/",
+}
+ROUTES = sorted("/" + str(path.parent.relative_to(DIST)).replace(".", "").strip("/") + "/"
+                for path in DIST.rglob("index.html"))
+ROUTES = ["/" if route == "//" else route for route in ROUTES]
+assert REQUIRED_ROUTES <= set(ROUTES), ("missing required pages", REQUIRED_ROUTES - set(ROUTES))
 
 class Page(HTMLParser):
     def __init__(self, html):
@@ -85,6 +94,19 @@ for route, page in pages.items():
         assert url.path in pages, (route, "noncanonical or broken internal link", href)
         if url.fragment:
             assert url.fragment in pages[url.path].ids, (route, "broken fragment", href)
+
+# Every indexable page must be discoverable from the homepage using real links.
+reachable, pending = set(), ["/"]
+while pending:
+    route = pending.pop()
+    if route in reachable:
+        continue
+    reachable.add(route)
+    for href in pages[route].links:
+        url = urlparse(urljoin(ORIGIN + route, href))
+        if url.netloc == "qsbsfacts.org" and url.path in pages and url.path not in reachable:
+            pending.append(url.path)
+assert reachable == set(ROUTES), ("orphan pages", set(ROUTES) - reachable)
 
 ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 index = ET.parse(DIST / "sitemap-index.xml")

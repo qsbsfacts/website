@@ -1,0 +1,102 @@
+---
+import Guide from '../layouts/Guide.astro';
+const sources = [
+  {
+    "label": "FTB: nonresidents and part-year residents",
+    "url": "https://www.ftb.ca.gov/file/personal/residency-status/part-year-and-nonresident.html"
+  },
+  {
+    "label": "FTB: residency guidelines, Publication 1031",
+    "url": "https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf"
+  },
+  {
+    "label": "FTB: changing residency, Publication 1100",
+    "url": "https://www.ftb.ca.gov/forms/misc/1100.html"
+  },
+  {
+    "label": "FTB: equity compensation, Publication 1004",
+    "url": "https://www.ftb.ca.gov/forms/misc/1004.html"
+  },
+  {
+    "label": "California: AB 259 legislative history",
+    "url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202320240AB259"
+  },
+  {
+    "label": "California Secretary of State: 2026 qualified measures",
+    "url": "https://www.sos.ca.gov/elections/ballot-measures/qualified-ballot-measures"
+  },
+  {
+    "label": "California Secretary of State: Proposition 40",
+    "url": "https://voterguide.sos.ca.gov/propositions/40/index.htm"
+  }
+];
+const related = [
+  {
+    "label": "California QSBS and moving before an exit",
+    "href": "/california-qsbs/"
+  },
+  {
+    "label": "Employee stock options and QSBS",
+    "href": "/qsbs-stock-options/"
+  },
+  {
+    "label": "Estimate federal and state treatment",
+    "href": "/calculator/"
+  },
+  {
+    "label": "Browse all QSBS guides",
+    "href": "/guides/"
+  }
+];
+---
+<Guide
+  title="California Exit Tax: What Applies When You Move?"
+  description="Is there a California exit tax? Separate current residency and income-source rules from wealth-tax proposals, and learn what matters before a stock exit."
+  heading="California exit tax: what actually applies when you move"
+  summary="California does not impose a general income-tax charge merely for crossing state lines. Income earned or sourced to California can still be taxable after a move, and pending wealth-tax proposals are a separate issue."
+  canonicalPath="/california-exit-tax/"
+  category="State QSBS guides"
+  sources={sources}
+  related={related}
+>
+  <h2>Is there a California exit tax?</h2>
+  <p>As of September 4, 2026, California's ordinary personal income-tax rules do not impose a blanket tax on all your assets simply because you move away. The operative questions are whether you remain a resident and whether particular income has a California source. The FTB's <a href="https://www.ftb.ca.gov/file/personal/residency-status/part-year-and-nonresident.html">part-year and nonresident guidance</a> describes that framework.</p>
+  <p>The phrase “California exit tax” often mixes different subjects: tax on income from a business exit, income tax that remains due after changing residence, and proposals to tax wealth. A founder selling stock needs to identify which subject applies. There is no single exit-tax percentage that answers all three.</p>
+
+  <h2>What taxes can remain after a move?</h2>
+  <div class="table-scroll"><table>
+    <thead><tr><th scope="col">Situation</th><th scope="col">Question to resolve</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Temporary departure</th><td>Do the facts still make you a California resident?</td></tr>
+      <tr><th scope="row">Employee equity</th><td>Is part of the payment compensation attributable to California work?</td></tr>
+      <tr><th scope="row">California property or business</th><td>Does the income retain a California source?</td></tr>
+      <tr><th scope="row">Deferred sale proceeds</th><td>When was the sale, what was the property's source, and when is income recognized?</td></tr>
+      <tr><th scope="row">QSBS gain</th><td>Does the federal exclusion apply, and what California adjustment is required?</td></tr>
+    </tbody>
+  </table></div>
+  <p>These are income and sourcing questions, not a charge for moving. The FTB's <a href="https://www.ftb.ca.gov/forms/misc/1100.html">Publication 1100</a> explains how changing residency affects tax calculations and illustrates installment sales. Cash arriving after a move does not establish that every part of the payment is outside California's reach.</p>
+
+  <h2>Why a new address is not the whole test</h2>
+  <p>California examines whether a departure is temporary and where a person's closest connections remain. Homes, family, work, and the overall pattern of life matter. A person can spend substantial time outside the state while remaining a resident. The <a href="https://www.ftb.ca.gov/forms/2025/2025-1031-publication.pdf">FTB residency guide</a> explains these factors.</p>
+  <p>There is no general 183-day exemption. The separate 546-day employment-contract safe harbor has conditions and exclusions, including an intangible-income limit and a tax-avoidance-purpose exception. It is not a countdown for selling startup stock. Our <a href="/california-qsbs/">California QSBS guide</a> sets out those conditions and links to the statute.</p>
+  <p>For a planned relocation, write down the actual sequence of events and keep supporting records. The point is to establish the facts accurately. Documents that merely announce a preferred tax result cannot replace the underlying change in home and daily life.</p>
+
+  <h2>Stock compensation and stock gains are different</h2>
+  <p>A payment associated with an acquisition may combine wages, option compensation, investment gain, and deferred amounts. California-source compensation can survive a move. The source of later capital gain may be different. The distinction depends on the award type and events such as exercise and disposition, as illustrated in <a href="https://www.ftb.ca.gov/forms/misc/1004.html">FTB Publication 1004</a>.</p>
+  <p>California also does not recognize the federal QSBS exclusion. That is a state-versus-federal tax difference, not a separate departure tax. Review the <a href="/california-qsbs/">California QSBS guide</a> before interpreting a federal “tax-free exit” estimate as a complete result.</p>
+
+  <h2>What about wealth-tax proposals?</h2>
+  <p>AB 259 from the 2023–24 legislative session proposed a wealth tax. Its <a href="https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=202320240AB259">official legislative history</a> shows that it was filed with the Chief Clerk in February 2024 under Joint Rule 56; it did not become enacted tax law. Quoting its proposed rates as an existing California exit tax is misleading.</p>
+  <p>A different measure, Proposition 40, is on the November 3, 2026 ballot. The Secretary of State lists it as a proposed one-time tax on certain taxpayers in the <a href="https://www.sos.ca.gov/elections/ballot-measures/qualified-ballot-measures">qualified measures</a> and <a href="https://voterguide.sos.ca.gov/propositions/40/index.htm">official voter guide</a>. As of this guide's review date, the election has not happened. Ballot qualification does not enact the measure.</p>
+  <p>Someone potentially within a proposal's scope should examine its actual text and dates with counsel. An income-tax explanation does not resolve a proposed wealth tax, and an old article about a failed bill does not describe the current ballot. Recheck official status after the election.</p>
+
+  <h2>What should you ask before moving or selling?</h2>
+  <ul>
+    <li>What date do the facts support for the end of California residency?</li>
+    <li>Which proceeds remain California-source even after that date?</li>
+    <li>Do agreements, payment conditions, or deferred amounts change the timing analysis?</li>
+    <li>Is the federal QSBS claim documented separately from the state analysis?</li>
+    <li>What filing and estimated-payment obligations remain, and are any proposals actually relevant?</li>
+  </ul>
+  <p>Review those questions with a California tax professional before an agreement fixes the transaction. A useful plan accounts for the actual income, the genuine move, and current law; it does not depend on an internet day-count rule.</p>
+</Guide>
