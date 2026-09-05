@@ -3,19 +3,19 @@ import Layout from '../layouts/Base.astro';
 import ExitCalculator from '../components/ExitCalculator.astro';
 import ObbbaBox from '../components/ObbbaBox.astro';
 
-const title = 'QSBS Exit Tax Calculator — Calculate Your State Tax on Startup Exits';
-const description = 'Calculate your state tax on a QSBS exit under Section 1202, including OBBBA 3/4/5-year rules. Compare all 50 states, share results, and see how 2026 conformity changes affect your exit.';
+const title = "QSBS State Tax Calculator — Compare Startup Exit Taxes";
+const description = "Estimate state tax on a QSBS exit under Section 1202. Compare all 50 states, explore holding periods, and share your calculator results.";
 ---
 
 <Layout
   title={title}
   description={description}
-  canonicalPath="/calculator"
+  canonicalPath="/calculator/"
   jsonLd={[{
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "QSBS Exit Tax Calculator",
-    "url": "https://qsbsfacts.org/calculator",
+    "url": "https://qsbsfacts.org/calculator/",
     "description": description,
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
@@ -26,12 +26,12 @@ const description = 'Calculate your state tax on a QSBS exit under Section 1202,
   <main id="main-content" tabindex="-1" class="pt-20">
     <section class="px-4 py-16 md:px-8 lg:py-24 bg-gray-50">
       <div class="max-w-5xl mx-auto">
-        <h1 class="text-3xl md:text-4xl font-bold text-center mb-4">Exit Tax Calculator</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-4">QSBS State Tax Calculator</h1>
         <p class="text-gray-500 text-center mb-4 max-w-2xl mx-auto">
           See what your state actually takes from a qualified small business stock exit under Section 1202.
         </p>
-        <ObbbaBox compact />
-        <ExitCalculator showIntro />
+        <ObbbaBox compact headingLevel={2} />
+        <ExitCalculator showIntro headingLevel={2} />
       </div>
     </section>
   </main>

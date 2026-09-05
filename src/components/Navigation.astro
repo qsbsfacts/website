@@ -1,10 +1,10 @@
 ---
 const links = [
-  ['/evidence', 'Evidence'], ['/who-uses-it', 'Who Uses It'],
-  ['/the-94-percent-claim', 'The 94% Claim'], ['/calculator', 'Calculator'],
-  ['/state-impact', 'State Impact'], ['/sources', 'Sources'],
+  ['/evidence/', 'Evidence'], ['/who-uses-it/', 'Who Uses It'],
+  ['/the-94-percent-claim/', 'The 94% Claim'], ['/calculator/', 'Calculator'],
+  ['/state-impact/', 'State Impact'], ['/sources/', 'Sources'],
 ];
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') + '/';
 ---
 <a href="#main-content" class="skip-link">Skip to content</a>
 <nav class="site-nav fixed top-0 inset-x-0 z-50 bg-primary-950/95 backdrop-blur-sm border-b border-primary-800" aria-label="Main navigation">

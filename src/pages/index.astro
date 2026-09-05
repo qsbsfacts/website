@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Seo from '../components/Seo.astro';
 import Navigation from '../components/Navigation.astro';
 import treasuryData from '../../data/treasury-summary.json';
 import migrationData from '../../data/migration.json';
@@ -7,6 +8,97 @@ import ExitCalculator from '../components/ExitCalculator.astro';
 import ObbbaBox from '../components/ObbbaBox.astro';
 import StateMap from '../components/StateMap.astro';
 import MigrationCharts from '../components/MigrationCharts.astro';
+const title = "QSBS Facts: Section 1202 Data & State Tax Calculator";
+const description = "Explore qualified small business stock (QSBS) data, compare state tax treatment, and estimate your startup exit tax with our Section 1202 calculator.";
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "QSBS Facts",
+    "url": "https://qsbsfacts.org/",
+    "description": "Data-driven analysis of Section 1202 Qualified Small Business Stock (QSBS) tax policy."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QSBS Facts",
+    "url": "https://qsbsfacts.org/",
+    "description": "Data-driven advocacy for Section 1202 QSBS tax policy based on U.S. Treasury data, academic studies, and migration statistics."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "QSBS Facts: Section 1202 Data & State Tax Calculator",
+    "url": "https://qsbsfacts.org/",
+    "description": "Explore qualified small business stock (QSBS) data, compare state tax treatment, and estimate your startup exit tax with our Section 1202 calculator.",
+    "datePublished": "2025-03-20",
+    "dateModified": "2026-09-04",
+    "citation": [
+      {
+        "@type": "CreativeWork",
+        "name": "U.S. Treasury OTA Working Paper 127",
+        "url": "https://home.treasury.gov/system/files/131/WP-127.pdf",
+        "datePublished": "2025-01"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Edwards & Todenhaupt (2020)",
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Chen & Farre-Mensa (2023/2025)",
+        "url": "https://ssrn.com/abstract=4482626"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is QSBS (Qualified Small Business Stock)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "QSBS refers to stock in a qualified small business under IRC Section 1202. Stock acquired on or before July 4, 2025 still needs a 5-year hold and a $10 million per-issuer cap (or 10× basis). Stock acquired after that date, under P.L. 119-21 (OBBBA), uses a 3/4/5-year ladder (50/75/100%) and a $15 million cap, with a $75 million gross-asset test, both indexed after 2026. The exclusion was created in 1993 under President Clinton and expanded to 100% under President Obama in 2010."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it true that 94% of QSBS benefits go to millionaires?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This claim from ITEP is misleading. It's a dollar-weighted statistic, not a count of people. Treasury data (OTA WP-127) shows 74% of QSBS claimants earn under $1 million by average income excluding QSBS gains. ITEP arrives at 94% by adding two groups: 74% of dollars going to people already over $1M, plus 20% going to people earning under $1M whose one-time startup exit temporarily pushed them over. The second group — founders and employees with a single successful exit — is exactly who QSBS was designed for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who actually uses QSBS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "According to U.S. Treasury data (2012–2022): 75% of individuals claimed QSBS in only a single year — one exit, one reward. The median annual exclusion is just $2,810. The 75th percentile is $67,820. The largest claimant group (35%) earns $100K–$400K. These are founders, early employees, and seed investors — not repeat tax avoiders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the QSBS incentive actually work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Two peer-reviewed studies provide evidence: Edwards & Todenhaupt (2020) found startup investment increased approximately 12% after the 100% exclusion was enacted in 2010. Chen & Farre-Mensa (2023/2025) found that QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round venture capital compared to ineligible industries."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when states decouple from QSBS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "States that decouple from federal QSBS tax startup exits that would otherwise be excluded. California never conformed and still hosts the largest U.S. venture cluster — that cluster is path-dependent. The relevant margin for other states is whether they keep founders who can leave. New York considered and rejected QSBS decoupling in its FY2027 budget after founder pushback. Oregon decoupled in April 2026, and Governor Kotek immediately flagged competitiveness and pledged 2027 QSBS legislation. IRS migration data (2021–2022) still shows high-tax states losing filers to Florida and Texas."
+        }
+      }
+    ]
+  }
+];
 ---
 
 <html lang="en">
@@ -15,110 +107,7 @@ import MigrationCharts from '../components/MigrationCharts.astro';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Most startups fail. QSBS rewards the founders who built them, the employees who joined early, and the investors who backed them. Here's what the data actually shows." />
-    <link rel="canonical" href="https://qsbsfacts.org" />
-    <meta property="og:title" content="QSBS Facts — Most startups fail. QSBS rewards the ones that don't." />
-    <meta property="og:description" content="75% of QSBS claimants use it exactly once. Data-driven analysis of Section 1202 tax policy." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://qsbsfacts.org" />
-    <meta property="og:site_name" content="QSBS Facts" />
-    <meta property="og:image" content="https://qsbsfacts.org/og-image.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="QSBS Facts — Most startups fail. QSBS rewards the ones that don't." />
-    <meta name="twitter:description" content="75% of QSBS claimants use it exactly once. Data-driven analysis of Section 1202 tax policy." />
-    <meta name="twitter:image" content="https://qsbsfacts.org/og-image.png" />
-    <title>QSBS Facts — Most startups fail. QSBS rewards the ones that don't.</title>
-    <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "QSBS Facts",
-        "url": "https://qsbsfacts.org",
-        "description": "Data-driven analysis of Section 1202 Qualified Small Business Stock (QSBS) tax policy."
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "QSBS Facts",
-        "url": "https://qsbsfacts.org",
-        "description": "Data-driven advocacy for Section 1202 QSBS tax policy based on U.S. Treasury data, academic studies, and migration statistics."
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "QSBS Facts — Most startups fail. QSBS rewards the ones that don't.",
-        "url": "https://qsbsfacts.org",
-        "description": "75% of QSBS claimants use it exactly once. Data-driven analysis of Section 1202 tax policy.",
-        "datePublished": "2025-03-20",
-        "dateModified": "2026-09-04",
-        "citation": [
-          {
-            "@type": "CreativeWork",
-            "name": "U.S. Treasury OTA Working Paper 127",
-            "url": "https://home.treasury.gov/system/files/131/WP-127.pdf",
-            "datePublished": "2025-01"
-          },
-          {
-            "@type": "ScholarlyArticle",
-            "name": "Edwards & Todenhaupt (2020)",
-            "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3520783"
-          },
-          {
-            "@type": "ScholarlyArticle",
-            "name": "Chen & Farre-Mensa (2023/2025)",
-            "url": "https://ssrn.com/abstract=4482626"
-          }
-        ]
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is QSBS (Qualified Small Business Stock)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "QSBS refers to stock in a qualified small business under IRC Section 1202. Stock acquired on or before July 4, 2025 still needs a 5-year hold and a $10 million per-issuer cap (or 10× basis). Stock acquired after that date, under P.L. 119-21 (OBBBA), uses a 3/4/5-year ladder (50/75/100%) and a $15 million cap, with a $75 million gross-asset test, both indexed after 2026. The exclusion was created in 1993 under President Clinton and expanded to 100% under President Obama in 2010."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is it true that 94% of QSBS benefits go to millionaires?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "This claim from ITEP is misleading. It's a dollar-weighted statistic, not a count of people. Treasury data (OTA WP-127) shows 74% of QSBS claimants earn under $1 million by average income excluding QSBS gains. ITEP arrives at 94% by adding two groups: 74% of dollars going to people already over $1M, plus 20% going to people earning under $1M whose one-time startup exit temporarily pushed them over. The second group — founders and employees with a single successful exit — is exactly who QSBS was designed for."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who actually uses QSBS?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "According to U.S. Treasury data (2012–2022): 75% of individuals claimed QSBS in only a single year — one exit, one reward. The median annual exclusion is just $2,810. The 75th percentile is $67,820. The largest claimant group (35%) earns $100K–$400K. These are founders, early employees, and seed investors — not repeat tax avoiders."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the QSBS incentive actually work?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Two peer-reviewed studies provide evidence: Edwards & Todenhaupt (2020) found startup investment increased approximately 12% after the 100% exclusion was enacted in 2010. Chen & Farre-Mensa (2023/2025) found that QSBS-eligible industries experienced more firm births, more startup employment, and increased first-round venture capital compared to ineligible industries."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What happens when states decouple from QSBS?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "States that decouple from federal QSBS tax startup exits that would otherwise be excluded. California never conformed and still hosts the largest U.S. venture cluster — that cluster is path-dependent. The relevant margin for other states is whether they keep founders who can leave. New York considered and rejected QSBS decoupling in its FY2027 budget after founder pushback. Oregon decoupled in April 2026, and Governor Kotek immediately flagged competitiveness and pledged 2027 QSBS legislation. IRS migration data (2021–2022) still shows high-tax states losing filers to Florida and Texas."
-            }
-          }
-        ]
-      }
-    ]
-    </script>
+    <Seo title={title} description={description} jsonLd={jsonLd} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -143,14 +132,14 @@ import MigrationCharts from '../components/MigrationCharts.astro';
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-3">
           <a href="#evidence" class="bg-white text-primary-950 font-semibold px-7 py-3 rounded-lg hover:bg-primary-100 transition-colors">Explore the evidence ↓</a>
-          <a href="/calculator" class="border border-primary-300 text-white font-semibold px-7 py-3 rounded-lg hover:bg-white/10 transition-colors">Calculate your state tax →</a>
+          <a href="/calculator/" class="border border-primary-300 text-white font-semibold px-7 py-3 rounded-lg hover:bg-white/10 transition-colors">Calculate your state tax →</a>
         </div>
         <dl class="grid sm:grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/20 text-center">
           <div><dt class="text-sm text-primary-200">Claimed in only one year</dt><dd class="text-3xl font-bold mt-2">75%</dd></div>
           <div><dt class="text-sm text-primary-200">Median annual exclusion</dt><dd class="text-3xl font-bold mt-2">$2,810</dd></div>
           <div><dt class="text-sm text-primary-200">Claimants earning under $1M</dt><dd class="text-3xl font-bold mt-2">74%</dd></div>
         </dl>
-        <p class="text-xs text-primary-200 mt-5">Treasury data, 2012–2022. Income excludes QSBS gains. <a href="/sources" class="underline underline-offset-4">Sources & methodology →</a></p>
+        <p class="text-xs text-primary-200 mt-5">Treasury data, 2012–2022. Income excludes QSBS gains. <a href="/sources/" class="underline underline-offset-4">Sources & methodology →</a></p>
       </div>
     </section>
 
@@ -718,27 +707,27 @@ import MigrationCharts from '../components/MigrationCharts.astro';
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Explore In Depth</h2>
         <p class="text-primary-300 text-center mb-12 max-w-2xl mx-auto">Each topic has its own dedicated page with full data, sources, and analysis.</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <a href="/the-94-percent-claim" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/the-94-percent-claim/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">The "94%" Claim</h3>
             <p class="text-primary-400 text-sm">Why the headline stat about millionaires is misleading — and what the Treasury data actually shows.</p>
           </a>
-          <a href="/calculator" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/calculator/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">Exit Tax Calculator</h3>
             <p class="text-primary-400 text-sm">Calculate the state tax impact on your startup exit. Compare all 50 states side by side.</p>
           </a>
-          <a href="/who-uses-it" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/who-uses-it/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">Who Uses QSBS</h3>
             <p class="text-primary-400 text-sm">75% claim it once. Median exclusion: $2,810. The real people behind the numbers.</p>
           </a>
-          <a href="/evidence" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/evidence/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">The Evidence</h3>
             <p class="text-primary-400 text-sm">Peer-reviewed research showing QSBS drives startup investment, firm creation, and employment.</p>
           </a>
-          <a href="/state-impact" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/state-impact/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">State Impact & Migration</h3>
             <p class="text-primary-400 text-sm">How decoupling drives founders and capital to other states — IRS migration data tells the story.</p>
           </a>
-          <a href="/sources" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
+          <a href="/sources/" class="group bg-primary-900/50 border border-primary-800 rounded-xl p-6 hover:bg-primary-900 hover:border-primary-600 transition-all">
             <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-primary-300 transition-colors">Sources & Data</h3>
             <p class="text-primary-400 text-sm">Every claim sourced. Treasury data, academic papers, IRS migration statistics, and methodology.</p>
           </a>
