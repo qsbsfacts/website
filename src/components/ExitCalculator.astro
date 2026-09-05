@@ -5,9 +5,11 @@ const comparisonStates = ['TX', 'FL', 'WA', 'CA', 'OR', 'NY'];
 const comparisonData = comparisonStates.map(code => statesData.find(s => s.code === code)!);
 
 interface Props {
+  headingLevel?: 2 | 3;
   showIntro?: boolean;
 }
 const { showIntro = false } = Astro.props;
+const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
 ---
 
 <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
@@ -77,7 +79,7 @@ const { showIntro = false } = Astro.props;
     <p id="result-note" class="text-sm text-gray-500 mt-2"></p>
   </div>
 
-  <h3 class="font-semibold text-gray-700 mb-4">Compare key states on the same exit</h3>
+  <Heading class="font-semibold text-gray-700 mb-4">Compare key states on the same exit</Heading>
   <div class="overflow-x-auto">
     <table class="w-full text-left">
       <thead>

@@ -4,19 +4,19 @@ import migrationData from '../../data/migration.json';
 import StateMap from '../components/StateMap.astro';
 import MigrationCharts from '../components/MigrationCharts.astro';
 
-const title = 'QSBS State Impact — Migration Data & State Conformity Map';
-const description = '2026 QSBS map: New York kept conformity, Oregon decoupled, Washington and Maryland bills failed. IRS migration data and California\'s $102B AGI loss, with the California cluster caveat.';
+const title = "QSBS State Impact — Migration Data & State Conformity Map";
+const description = "Compare QSBS state conformity and 2026 policy changes. Explore the state map, IRS migration data, and evidence on California’s outmigration.";
 ---
 
 <Layout
   title={title}
   description={description}
-  canonicalPath="/state-impact"
+  canonicalPath="/state-impact/"
   jsonLd={[{
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "QSBS State Impact: Migration Data & Conformity Map",
-    "url": "https://qsbsfacts.org/state-impact",
+    "url": "https://qsbsfacts.org/state-impact/",
     "description": description,
     "datePublished": "2025-03-20",
     "dateModified": "2026-09-04"
@@ -38,7 +38,7 @@ const description = '2026 QSBS map: New York kept conformity, Oregon decoupled, 
     <!-- State Map -->
     <section class="px-4 py-16 md:px-8 lg:py-24">
       <div class="max-w-6xl mx-auto">
-        <StateMap />
+        <StateMap headingLevel={2} />
 
         <!-- Migration -->
         <h2 class="text-2xl font-bold text-center mb-8">The Migration Problem</h2>
