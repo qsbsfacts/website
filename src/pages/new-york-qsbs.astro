@@ -1,0 +1,89 @@
+---
+import Guide from '../layouts/Guide.astro';
+const sources = [
+  {
+    "label": "New York Tax Law \u00a7612: income and modifications",
+    "url": "https://www.nysenate.gov/legislation/laws/TAX/612"
+  },
+  {
+    "label": "New York Tax Law \u00a7632: nonresident sources",
+    "url": "https://www.nysenate.gov/legislation/laws/TAX/632"
+  },
+  {
+    "label": "New York DTF: residency FAQ",
+    "url": "https://www.tax.ny.gov/pit/file/nonresident-faqs.htm"
+  },
+  {
+    "label": "New York DTF: income-tax definitions",
+    "url": "https://www.tax.ny.gov/pit/file/pit_definitions.htm"
+  },
+  {
+    "label": "New York DTF: equity compensation memorandum",
+    "url": "https://www.tax.ny.gov/pdf/memos/income/m07_7i.pdf"
+  },
+  {
+    "label": "New York: enacted 2026\u201327 budget",
+    "url": "https://www.assembly.state.ny.us/2026budget/?sec=enacted"
+  }
+];
+const related = [
+  {
+    "label": "California QSBS guide",
+    "href": "/california-qsbs/"
+  },
+  {
+    "label": "Oregon QSBS guide",
+    "href": "/oregon-qsbs/"
+  },
+  {
+    "label": "Check QSBS eligibility",
+    "href": "/qsbs-eligibility/"
+  },
+  {
+    "label": "Compare state treatment",
+    "href": "/state-impact/"
+  }
+];
+---
+<Guide
+  title="New York QSBS: Exclusion, Residency, and State Taxes"
+  description="Does New York recognize QSBS? Learn how federal conformity, residency, the 183-day rule, and employee equity sourcing affect a stock exit."
+  heading="New York QSBS: federal conformity, residency, and stock exits"
+  summary="New York generally follows the federal QSBS exclusion through its income-tax starting point. Confirm the federal claim first, then examine state residency, source rules, and any tax-year-specific changes."
+  canonicalPath="/new-york-qsbs/"
+  category="State QSBS guides"
+  sources={sources}
+  related={related}
+>
+  <h2>Does New York recognize the federal QSBS exclusion?</h2>
+  <p>Generally, yes. New York begins a resident individual's calculation with federal adjusted gross income and then applies listed state modifications. The current <a href="https://www.nysenate.gov/legislation/laws/TAX/612">Tax Law §612</a>, reviewed September 4, 2026, does not contain a general addition reversing the Section 1202 exclusion. On that basis, a properly excluded federal QSBS gain generally remains excluded for New York State personal income tax.</p>
+  <p>This is a reading of the current statute, not a promise that every transaction involving startup shares is exempt. The federal exclusion must actually apply. A sale above the applicable limit, a short holding period, or a failed eligibility condition can leave taxable gain in the federal starting point. New York conformity does not repair a federal eligibility problem.</p>
+
+  <h2>Start with the stock, not the state's name</h2>
+  <p>Keep an inventory of each lot: acquisition date, how the shares were acquired, basis, issuer records, prior exclusions, and the expected sale date. Different lots in the same company can have different outcomes. Separate evidence about the stock from evidence about where the seller lives.</p>
+  <p>Our <a href="/qsbs-eligibility/">eligibility guide</a> explains the federal conditions, and the <a href="/qsbs-holding-period/">holding-period guide</a> addresses the acquisition-date rules. These should be checked before assuming the full proceeds of an exit are excluded. Sale proceeds, gain, and excluded gain are three different numbers.</p>
+
+  <h2>What about proposals to end New York conformity?</h2>
+  <p>Budget debate is not the same as enacted tax law. A provision appearing in a legislative proposal does not become a taxpayer's addback merely because one chamber supports it. Check the <a href="https://www.assembly.state.ny.us/2026budget/?sec=enacted">enacted 2026–27 budget materials</a> alongside the current consolidated statute.</p>
+  <p>This guide uses current §612 rather than treating a proposed QSBS reversal as enacted. Recheck the law for the year of a future sale; a later amendment can change the result. A policy comparison should label a hypothetical decoupling scenario clearly and should not substitute it for the current-law baseline.</p>
+
+  <h2>Does moving out of New York help?</h2>
+  <p>First ask what gain is taxable. If the entire gain is already excluded federally and New York follows that exclusion, a move does not create another state exclusion on those same dollars. The question becomes more relevant for nonexcluded gain, compensation, other investments, or other income. That is a reason to model the actual transaction before making relocation the centerpiece of a plan.</p>
+  <p>New York residency involves both domicile and a separate statutory-residency test. Someone domiciled elsewhere may nevertheless be a resident if they maintain a permanent place of abode in New York for substantially all the year and spend more than 183 days there. Any part of a day generally counts as a day; the count is not limited to overnight stays. See the <a href="https://www.tax.ny.gov/pit/file/pit_definitions.htm">official residency definitions</a> and <a href="https://www.tax.ny.gov/pit/file/nonresident-faqs.htm">residency FAQ</a>.</p>
+  <p>Staying below 184 days does not by itself end New York domicile. Domicile concerns the permanent home a person intends to return to. The state also has specific exceptions for certain New York domiciliaries; they have multiple conditions, not simply a day count. Review the <a href="https://www.tax.ny.gov/pit/file/pit_definitions.htm">official definitions</a> against the complete living arrangement.</p>
+
+  <h2>Can New York still tax income after a move?</h2>
+  <p>Yes. Nonresident source rules remain relevant. Under <a href="https://www.nysenate.gov/legislation/laws/TAX/632">§632</a>, income from intangible property is generally sourced to New York when the property is employed in a business, trade, profession, or occupation carried on there. Other rules cover real-property interests and business income. Directly held investment stock should not be casually equated with a partnership interest or an asset sale.</p>
+  <p>Employee equity needs separate attention. New York's <a href="https://www.tax.ny.gov/pdf/memos/income/m07_7i.pdf">equity compensation memorandum</a> describes allocations tied to New York workdays over the relevant award period. Those periods can include years before the employee became a nonresident. An out-of-state address when an award pays does not automatically erase compensation attributable to New York work.</p>
+  <p>New York City residency is another question. Leaving the city while remaining in New York State is different from leaving the state. Include the city in a personal tax projection when applicable; a state-only comparison is not a complete household estimate. See the <a href="https://www.tax.ny.gov/pit/file/nonresident-faqs.htm">state and city residency FAQ</a>.</p>
+
+  <h2>Questions to resolve before signing</h2>
+  <ul>
+    <li>What portion of gain qualifies federally, and which stock-lot records support it?</li>
+    <li>Which current New York modifications apply in the year of recognition?</li>
+    <li>Could domicile or statutory residency apply despite a move?</li>
+    <li>Are any proceeds compensation, a pass-through allocation, or a special-source item?</li>
+    <li>Does New York City residency, deferred payment timing, or estimated tax change the projection?</li>
+  </ul>
+  <p>A New York tax professional can turn those questions into a documented filing position. Use the <a href="/state-impact/">state comparison</a> to understand the policy landscape and the stock records to establish the actual exclusion.</p>
+</Guide>

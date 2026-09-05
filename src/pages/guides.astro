@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { guideGroups } from '../data/guides';
+const title = 'QSBS Guides: Eligibility, Holding Periods & State Taxes';
+const description = 'Learn what QSBS is, check eligibility and holding periods, explore exclusion limits, and understand California, Oregon, and New York state tax questions.';
+const url = new URL('/guides/', Astro.site!).href;
+---
+<Base title={title} description={description} canonicalPath="/guides/" showCta={false}
+  jsonLd={[{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url }]}>
+  <main id="main-content" tabindex="-1" class="pt-16">
+    <section class="bg-primary-950 text-white px-4 py-14 md:py-20">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-primary-300 uppercase tracking-widest text-xs font-semibold mb-4">The practical questions</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Understand your QSBS.</h1>
+        <p class="text-primary-100 text-lg max-w-2xl leading-relaxed">Start with what qualified small business stock means. Then explore the requirements, the timeline, and how your state treats a sale.</p>
+        <a href="/what-is-qsbs/" class="inline-block mt-8 bg-white text-primary-950 rounded-lg px-6 py-3 font-semibold hover:bg-primary-100">Start here: What is QSBS? →</a>
+      </div>
+    </section>
+    <div class="max-w-5xl mx-auto px-4 py-12 md:py-16 space-y-14">
+      {guideGroups.map(group => (
+        <section>
+          <h2 class="text-2xl md:text-3xl font-bold mb-3">{group.title}</h2>
+          <p class="text-gray-600 mb-6 max-w-2xl">{group.description}</p>
+          <div class="grid sm:grid-cols-2 gap-5">
+            {group.guides.map(guide => (
+              <a href={guide.href} class="group block rounded-xl border border-gray-200 bg-white p-6 hover:border-primary-400 hover:shadow-sm transition-all">
+                <h3 class="font-semibold text-lg text-primary-900 mb-3 group-hover:text-primary-700">{guide.title} <span aria-hidden="true">→</span></h3>
+                <p class="text-gray-600 text-sm leading-relaxed">{guide.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+      <section class="bg-primary-50 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-3">Put the rules in context</h2>
+        <p class="text-gray-600 leading-relaxed mb-5">Use the calculator for an illustrative state comparison, or explore the research behind the policy debate. A calculator cannot establish eligibility or tax residency.</p>
+        <div class="flex flex-wrap gap-5 text-primary-700 font-semibold">
+          <a href="/calculator/" class="underline underline-offset-4">State tax calculator →</a>
+          <a href="/state-impact/" class="underline underline-offset-4">State conformity map →</a>
+          <a href="/evidence/" class="underline underline-offset-4">Research and evidence →</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Base>

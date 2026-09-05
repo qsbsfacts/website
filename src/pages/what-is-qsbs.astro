@@ -1,0 +1,52 @@
+---
+import Guide from '../layouts/Guide.astro';
+const law = 'https://www.law.cornell.edu/uscode/text/26/1202';
+const sources = [
+  { label: '26 U.S.C. §1202: exclusion, qualification, and limits', url: law },
+  { label: 'IRS: Schedule D instructions, qualified small business stock', url: 'https://www.irs.gov/instructions/i1040sd' },
+];
+---
+
+<Guide title="What Is Qualified Small Business Stock (QSBS)?" description="Learn what QSBS is, who can qualify, how Section 1202 excludes stock-sale gains, and why acquisition dates and state tax rules matter." heading="What is Qualified Small Business Stock (QSBS)?" summary="QSBS is stock that meets federal small-business requirements. Selling it can qualify a noncorporate taxpayer to exclude some or all eligible gain from federal income tax." canonicalPath="/what-is-qsbs/" category="QSBS basics" sources={sources} related={[
+  { label: 'Does my stock qualify?', href: '/qsbs-eligibility/' },
+  { label: 'Understand your holding period', href: '/qsbs-holding-period/' },
+  { label: 'Estimate an exit', href: '/calculator/' },
+]}>
+  <h2>What does QSBS actually do?</h2>
+  <p>Qualified Small Business Stock, usually shortened to QSBS, is a category of corporate stock defined by federal tax law. <a href={law}>Section 1202 of the Internal Revenue Code</a> lets eligible taxpayers exclude a percentage of qualifying gain when they sell that stock after the required holding period. An exclusion removes eligible income from the federal tax calculation; it is not a payment from the government.</p>
+  <p>The benefit applies to gain: broadly, what you receive from selling the shares minus your tax basis, with applicable adjustments. It does not automatically shelter salary, option-exercise compensation, dividends, or a company's operating profits. Nor does calling an investment “startup stock” establish eligibility.</p>
+  <p>A founder, employee, or early investor may own QSBS. Each person's shares need their own review because different purchases, exercises, transfers, and issue dates can produce different results.</p>
+
+  <h2>The basic requirements</h2>
+  <p>The core tests in <a href={`${law}#c`}>Section 1202(c)–(e)</a> concern both the shareholder and the company:</p>
+  <ul>
+    <li><strong>Eligible taxpayer.</strong> The exclusion is available to taxpayers other than corporations. Investments through partnerships and other pass-through entities have additional rules.</li>
+    <li><strong>Qualifying stock.</strong> The shares must generally be acquired at original issue from a domestic C corporation, for money, eligible property, or services. Buying another investor's shares generally fails this requirement, although specified gifts and other transfers can preserve qualifying status.</li>
+    <li><strong>Company size at issuance.</strong> Aggregate gross assets must satisfy the applicable limit before and immediately after issuance: $50 million for shares issued on or before July 4, 2025; $75 million for shares issued afterward, with inflation adjustments after 2026.</li>
+    <li><strong>Active business.</strong> During substantially all of the holding period, the company must be a C corporation and meet the active-business rules. Generally at least 80% of asset value must serve eligible business activities.</li>
+    <li><strong>Time and gain limits.</strong> You must meet the holding period, and only gain within the per-issuer limitation receives the applicable exclusion percentage.</li>
+  </ul>
+  <p>Many service and financial businesses are excluded. A small company is not necessarily a qualified small business under this statute. Use the <a href="/qsbs-eligibility/">eligibility checklist</a> to identify documents and issues to review.</p>
+
+  <h2>How much can be excluded?</h2>
+  <p>Acquisition date matters. For qualifying stock acquired from September 28, 2010 through July 4, 2025, the federal exclusion can reach 100% after a holding period of <strong>more than five years</strong>. Earlier stock can have lower percentages. For stock acquired after July 4, 2025, the law creates the following tiers. Acquisition date includes applicable holding-period carryover rules. <a href={`${law}#a`}>Source: Section 1202(a).</a></p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">Holding period for post-July 4, 2025 stock</th><th scope="col">Exclusion of eligible gain</th></tr></thead>
+      <tbody>
+        <tr><td>At least 3 years, less than 4</td><td>50%</td></tr>
+        <tr><td>At least 4 years, less than 5</td><td>75%</td></tr>
+        <tr><td>At least 5 years</td><td>100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The eligible-gain cap generally uses the greater of a remaining dollar limit or ten times qualifying basis in shares of that issuer sold during the tax year. The baseline dollar limit is $10 million for older shares and $15 million for post-July 4, 2025 acquisitions; prior usage and other rules can reduce it. The newer amount is indexed after 2026. See the <a href="/qsbs-exclusion-limits/">limits guide</a> before treating either number as an automatic exemption.</p>
+
+  <h2>A simple example</h2>
+  <p>Suppose an individual bought qualifying shares directly from a company in January 2020 for $100,000 and sells them in September 2026 for $2.1 million. Ignoring selling costs, the gain is $2 million. If every qualification test is met, there are no disqualifying transactions, and sufficient limit remains, the more-than-five-year holding period and 100% exclusion can remove that $2 million from federal gross income under Section 1202.</p>
+  <p>This example assumes eligibility rather than proving it. A shorter holding period, different stock history, previous exclusions from the same company, or state taxes could change the outcome. The <a href="/calculator/">calculator</a> helps explore scenarios; it cannot establish whether the shares qualify.</p>
+
+  <h2>Federal eligibility is only part of an exit</h2>
+  <p>State treatment requires a separate check. Start with the <a href="/state-impact/">state comparison</a> and the guides for <a href="/california-qsbs/">California</a>, <a href="/oregon-qsbs/">Oregon</a>, and <a href="/new-york-qsbs/">New York</a>. Residency and income sourcing can matter as much as whether a state follows Section 1202.</p>
+  <p>Before an exit, gather issuance records, tax-basis records, company qualification evidence, and the proposed transaction documents. Ask a qualified tax adviser to assess those facts. QSBS can be valuable, but a stock certificate or a company's informal assurance is only a starting point.</p>
+</Guide>

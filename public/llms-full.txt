@@ -252,9 +252,27 @@ All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research. T
 This site is available as both a single-page experience and as standalone pages optimized for search:
 
 - **Homepage**: https://qsbsfacts.org — Full single-page analysis with all sections, charts, and interactive calculator.
-- **Evidence**: https://qsbsfacts.org/evidence — Academic evidence that QSBS drives startup formation and investment.
-- **Who Uses It**: https://qsbsfacts.org/who-uses-it — Treasury data on claimant demographics, income levels, and exclusion amounts.
-- **The 94% Claim**: https://qsbsfacts.org/the-94-percent-claim — Deconstruction of the ITEP "94% goes to millionaires" methodology.
-- **Calculator**: https://qsbsfacts.org/calculator — Interactive QSBS exit tax calculator for all 50 states + DC.
-- **State Impact**: https://qsbsfacts.org/state-impact — State conformity map and IRS migration data.
-- **Sources**: https://qsbsfacts.org/sources — All citations, data sources, and methodology notes.
+- **Evidence**: https://qsbsfacts.org/evidence/ — Academic evidence that QSBS drives startup formation and investment.
+- **Who Uses It**: https://qsbsfacts.org/who-uses-it/ — Treasury data on claimant demographics, income levels, and exclusion amounts.
+- **The 94% Claim**: https://qsbsfacts.org/the-94-percent-claim/ — Deconstruction of the ITEP "94% goes to millionaires" methodology.
+- **Calculator**: https://qsbsfacts.org/calculator/ — Interactive QSBS exit tax calculator for all 50 states + DC.
+- **State Impact**: https://qsbsfacts.org/state-impact/ — State conformity map and IRS migration data.
+- **Sources**: https://qsbsfacts.org/sources/ — All citations, data sources, and methodology notes.
+
+
+## Educational guides
+
+[Browse all guides](https://qsbsfacts.org/guides/). These explain general rules and link to primary sources; they do not establish personal tax eligibility or residency.
+
+- [What is qualified small business stock?](https://qsbsfacts.org/what-is-qsbs/): A plain-English introduction to Section 1202 and how the exclusion works.
+- [Does my stock qualify for QSBS?](https://qsbsfacts.org/qsbs-eligibility/): Work through the company, shareholder, and stock requirements before relying on an exclusion.
+- [How long do I need to hold QSBS?](https://qsbsfacts.org/qsbs-holding-period/): Compare holding periods and understand which acquisition dates control the rules.
+- [How much gain can I exclude?](https://qsbsfacts.org/qsbs-exclusion-limits/): Understand the dollar caps, the basis alternative, and the limits of a simplified example.
+- [What changed in the QSBS rules?](https://qsbsfacts.org/new-qsbs-rules/): Compare the older rules with the changes enacted in July 2025.
+- [Can employee stock options lead to QSBS?](https://qsbsfacts.org/qsbs-stock-options/): Distinguish an option grant, acquiring shares, compensation, and a later stock sale.
+- [What is a Section 1045 rollover?](https://qsbsfacts.org/qsbs-rollover/): Understand replacement stock, the election, and how deferral differs from exclusion.
+- [What is QSBS trust stacking?](https://qsbsfacts.org/qsbs-trust-stacking/): An explanation of taxpayer limits, trust structures, and the policy debate.
+- [California QSBS and state taxes](https://qsbsfacts.org/california-qsbs/): Understand California treatment and the questions a move before a sale raises.
+- [Moving out of California before an exit](https://qsbsfacts.org/california-exit-tax/): Understand residency, income sourcing, and why a day count cannot answer every case.
+- [Oregon QSBS after SB 1507](https://qsbsfacts.org/oregon-qsbs/): Read about enacted state changes, effective dates, and the discussion about future reform.
+- [New York QSBS and state conformity](https://qsbsfacts.org/new-york-qsbs/): Understand New York treatment and distinguish budget proposals from enacted rules.

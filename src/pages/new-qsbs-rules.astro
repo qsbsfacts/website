@@ -1,0 +1,31 @@
+---
+import Guide from '../layouts/Guide.astro';
+const sources = [
+  { label: '26 U.S.C. § 1(h): tax rates on taxable Section 1202 gain', url: 'https://www.law.cornell.edu/uscode/text/26/1' },
+  { label: 'Public Law 119-21, Section 70431: 2025 QSBS changes', url: 'https://www.congress.gov/119/plaws/publ21/PLAW-119publ21.pdf' },
+  { label: '26 U.S.C. § 1202: current exclusion and qualification rules', url: 'https://www.law.cornell.edu/uscode/text/26/1202' },
+  { label: 'IRS 2025 Schedule D instructions for partnerships: issuance threshold', url: 'https://www.irs.gov/instructions/i1065sd' },
+];
+---
+<Guide title="New QSBS Rules: What Changed in 2025?" description="Compare the 2025 QSBS changes: three-year partial exclusions, the $15 million limit, the $75 million asset test, and which stock qualifies." heading="New QSBS rules: what changed in 2025?" summary="The 2025 law expanded QSBS for newer stock. The acquisition date controls the holding-period tiers and dollar limit; the issuance date controls the company's asset threshold." canonicalPath="/new-qsbs-rules/" category="Planning questions" sources={sources} related={[{label:'QSBS holding periods',href:'/qsbs-holding-period/'},{label:'Exclusion limits explained',href:'/qsbs-exclusion-limits/'},{label:'Does your stock qualify?',href:'/qsbs-eligibility/'}]}>
+  <h2>Three changes, with two different date tests</h2>
+  <p>Section 70431 of the law signed on July 4, 2025 changed the federal qualified small business stock exclusion. It introduced partial exclusions after shorter holding periods, increased the dollar limit on eligible gain for newer stock, and expanded the size of a company that can issue qualifying shares. These changes do not make every startup investment eligible.</p>
+  <div class="table-scroll"><table><thead><tr><th scope="col">Rule</th><th scope="col">On or before July 4, 2025</th><th scope="col">After July 4, 2025</th></tr></thead><tbody>
+    <tr><th scope="row">Holding period, based on acquisition</th><td>More than five years required</td><td>50% exclusion at three years; 75% at four; 100% at five or more</td></tr>
+    <tr><th scope="row">Dollar limit on eligible gain, based on acquisition</th><td>$10 million, reduced by relevant prior eligible gain</td><td>$15 million, subject to coordination and prior-gain reductions</td></tr>
+    <tr><th scope="row">Company gross-asset ceiling, based on issuance</th><td>$50 million</td><td>$75 million</td></tr>
+  </tbody></table></div>
+  <p>The alternative limit of ten times the relevant adjusted basis remains. The new $15 million and $75 million figures have inflation adjustments for taxable years beginning after 2026. These are statutory starting amounts, not promises that a particular future sale will use exactly those figures. See <a href="https://www.congress.gov/119/plaws/publ21/PLAW-119publ21.pdf">Section 70431 of the enacted law</a>.</p>
+  <h2>Older shares do not get a shorter waiting period</h2>
+  <p>Stock acquired after September 27, 2010 and on or before July 4, 2025 generally retains the 100% federal exclusion after being held for more than five years, if every other requirement is satisfied. Earlier acquisition dates can carry 50% or 75% exclusions and different tax consequences. A sale after the new law's enactment does not by itself move older shares into the new regime.</p>
+  <p>For a straightforward cash purchase of newly issued shares after July 4, 2025, the new three-, four-, and five-year tiers apply. Gifts, inherited stock, qualifying conversions, and rollovers require more care: statutory holding-period rules can carry an earlier acquisition history into the shares now held. The date on the latest certificate is not always the controlling acquisition date.</p>
+  <h2>A partial exclusion is not a tax rate</h2>
+  <p>Imagine newly issued shares acquired for cash in August 2025 are sold after three full years for a $2 million gain. Assume the shares qualify throughout and the gain is within the investor's available limit. A 50% exclusion would remove $1 million from federal gross income. The remaining $1 million would still require a tax calculation. It does not mean the investor owes a 50% tax.</p>
+  <p>The taxable portion of a partial Section 1202 exclusion can fall under special capital-gain rules, including a maximum 28% rate, and other taxes may apply. Compare actual dates and assumptions in the <a href="/qsbs-holding-period/">holding-period guide</a>; do not estimate a partial exclusion by treating all remaining gain as ordinary 20% long-term capital gain.</p>
+  <h2>The $15 million limit is coordinated with older gains</h2>
+  <p>The law limits eligible gain before applying the exclusion percentage. It also coordinates older and newer holdings in the same company. An investor does not automatically receive an independent $10 million bucket plus a fresh $15 million bucket. Prior eligible gain and certain same-year sales reduce the dollar limit under <a href="https://www.law.cornell.edu/uscode/text/26/1202">Section 1202(b)</a>. Married filing separately and the ten-times-basis alternative add further details.</p>
+  <h2>The company test is about assets, not valuation</h2>
+  <p>The higher issuance threshold concerns aggregate gross assets under the statute: generally cash plus adjusted tax bases of other property, with special treatment for contributed property and controlled groups. It is not a ceiling on the fundraising valuation. The threshold must be satisfied before issuance and immediately afterward, including the money received in that issuance. Later growth above the ceiling does not alone disqualify previously qualifying stock.</p>
+  <h2>What stayed the same?</h2>
+  <p>Original issuance, domestic C corporation status, the active-business test, excluded industries, and redemption restrictions remain central. The federal expansion also does not automatically determine state treatment. Use the <a href="/qsbs-eligibility/">eligibility guide</a> to gather company records, then review the relevant <a href="/state-impact/">state treatment</a>. The acquisition-date analysis and company evidence matter more than a general statement that a startup is “QSBS eligible.”</p>
+</Guide>

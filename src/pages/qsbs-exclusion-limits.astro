@@ -1,0 +1,60 @@
+---
+import Guide from '../layouts/Guide.astro';
+const law = 'https://www.law.cornell.edu/uscode/text/26/1202';
+const sources = [
+  { label: '26 U.S.C. §1202(b): per-issuer gain limits and inflation adjustments', url: law },
+  { label: '26 U.S.C. §1(h): rate treatment of nonexcluded Section 1202 gain', url: 'https://www.law.cornell.edu/uscode/text/26/1' },
+  { label: 'IRS: Schedule D instructions and QSBS reporting', url: 'https://www.irs.gov/instructions/i1040sd' },
+];
+---
+
+<Guide title="QSBS Exclusion Limits: $10M, $15M, and 10× Basis" description="Understand QSBS gain limits, the $10 million and $15 million rules, ten times basis, partial exclusions, and how prior sales reduce the available cap." heading="How much QSBS gain can you exclude?" summary="First determine how much gain is eligible under the per-issuer limit. Then apply the exclusion percentage for your acquisition date and holding period." canonicalPath="/qsbs-exclusion-limits/" category="QSBS basics" sources={sources} related={[
+  { label: 'Try the QSBS calculator', href: '/calculator/' },
+  { label: 'Holding-period tiers', href: '/qsbs-holding-period/' },
+  { label: 'Understand trust stacking', href: '/qsbs-trust-stacking/' },
+]}>
+  <h2>A gain limit is different from a tax saving</h2>
+  <p>The often-quoted $10 million or $15 million QSBS limit measures gain that may enter the Section 1202 exclusion calculation. It is not an amount of tax refunded, and it is not necessarily the amount you can exclude. A partial exclusion applies its percentage to the eligible gain after the cap is considered.</p>
+  <p>For example, a 50% exclusion applied to $6 million of eligible gain excludes $3 million. The other $3 million remains taxable. Multiplying an entire sale price by an assumed tax rate skips both tax basis and the statutory limitations.</p>
+
+  <h2>Compare two limits for the same issuer</h2>
+  <p>Under <a href={`${law}#b`}>Section 1202(b)</a>, the eligible gain from a corporation's shares sold in a tax year generally cannot exceed the greater of:</p>
+  <ol>
+    <li><strong>The remaining applicable dollar limit.</strong> Start with the acquisition-date amount below, then account for prior eligible gain and the coordination rules.</li>
+    <li><strong>Ten times qualifying adjusted basis.</strong> This uses the aggregate adjusted basis in that issuer's QSBS disposed of during the tax year, disregarding additions to basis after original issuance for this calculation.</li>
+  </ol>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">Stock acquisition date</th><th scope="col">Baseline dollar limit before reductions</th></tr></thead>
+      <tbody>
+        <tr><td>On or before July 4, 2025</td><td>$10 million</td></tr>
+        <tr><td>After July 4, 2025</td><td>$15 million, with inflation adjustments for tax years beginning after 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The cap is applied by taxpayer and issuer. It is not a fresh allowance for each stock certificate, each financing round, or each year. Married filing separately generally halves the dollar-limit amounts; joint-return exclusions are allocated between spouses for later-year calculations. Acquisition-date carryover rules also matter.</p>
+
+  <h2>Example: a first sale of older shares</h2>
+  <p>Assume an individual bought qualifying shares for $100,000 in 2020 and sells them in 2026 for $12.1 million after more than five years. There were no earlier sales from this issuer, no disqualifying events, and no selling costs or other basis adjustments.</p>
+  <ul>
+    <li>Gain: $12.1 million minus $100,000 = <strong>$12 million</strong>.</li>
+    <li>Dollar limit: <strong>$10 million</strong>.</li>
+    <li>Ten-times-basis limit: $100,000 × 10 = <strong>$1 million</strong>.</li>
+    <li>Eligible gain within the larger limit: <strong>$10 million</strong>.</li>
+    <li>At the applicable 100% exclusion: <strong>$10 million excluded; $2 million not excluded</strong>.</li>
+  </ul>
+  <p>The remaining $2 million is gain above the Section 1202 cap. This example establishes the exclusion amount only; it does not calculate the final federal or state tax bill.</p>
+
+  <h2>Example: when ten times basis is larger</h2>
+  <p>Now assume an individual paid $2 million for a qualifying lot in 2020 and sells that entire lot in 2026 after more than five years, realizing $24 million of gain. With no prior usage or special basis adjustments, ten times basis is $20 million, greater than the $10 million dollar limit.</p>
+  <p>Subject to all other requirements, $20 million of gain can be excluded at 100%, leaving $4 million outside the exclusion. The commonly quoted $10 million figure therefore is not an absolute ceiling for every taxpayer. Selling only part of the shares would change the basis used in that year's calculation.</p>
+
+  <h2>Earlier sales can reduce later benefits</h2>
+  <p>The dollar limit is reduced by <strong>eligible gain previously taken into account</strong>, not merely the portion that was excluded. A partial exclusion can therefore use more dollar-limit capacity than the excluded amount suggests. Track eligible gain and excluded gain separately on a per-issuer schedule. <a href={`${law}#b_4`}>Section 1202(b)(4)</a> sets these reductions.</p>
+  <p>The older and newer dollar limits also coordinate. They are not independent $10 million and $15 million allowances that can simply be added to obtain $25 million for the same issuer. Prior eligible gain from either acquisition period reduces the applicable remaining dollar limit. For newer shares, eligible gain from older shares taken into account in the same year also reduces the newer dollar limit.</p>
+  <p>The statute indexes the newer dollar amount for years beginning after 2026 and includes a rule preventing certain exhausted limits from reopening through later inflation adjustments. Use the applicable sale-year amount when it is published; a future exit should not assume the unadjusted $15 million will remain the exact figure.</p>
+
+  <h2>Apply the percentage, then calculate the tax</h2>
+  <p>After identifying eligible gain, apply the <a href="/qsbs-holding-period/">appropriate exclusion percentage</a>. For newer acquisitions that can mean 50%, 75%, or 100%. Nonexcluded gain within a partial Section 1202 exclusion can fall in the special maximum 28% capital-gain rate category under <a href="https://www.law.cornell.edu/uscode/text/26/1#h">Section 1(h)</a>; that is different from simply assuming all taxable gain receives a 20% rate. Other federal taxes and state rules may also matter.</p>
+  <p>Use the <a href="/calculator/">calculator</a> for an illustrative comparison, then reconcile its assumptions with your basis records, prior returns, acquisition lots, filing status, and company eligibility evidence. Gifts and trusts introduce additional ownership and anti-abuse questions; the <a href="/qsbs-trust-stacking/">trust-stacking guide</a> explains why multiplying exclusions is not a mechanical exercise.</p>
+</Guide>

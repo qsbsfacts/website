@@ -702,6 +702,23 @@ const jsonLd = [
     </section>
 
     <!-- Explore In Depth -->
+    <section class="bg-primary-50 px-4 py-14 md:py-20 border-t border-primary-100">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-primary-700 text-xs font-semibold uppercase tracking-widest mb-3">Start with the practical questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What does QSBS mean for your stock?</h2>
+        <p class="text-gray-600 max-w-2xl mb-8">Read the basics, understand the requirements, and explore how state rules affect a sale. Each guide links to primary sources.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            ['/what-is-qsbs/', 'What is QSBS?'],
+            ['/qsbs-eligibility/', 'Does my stock qualify?'],
+            ['/qsbs-holding-period/', 'How long must I hold it?'],
+            ['/california-qsbs/', 'What about California?'],
+          ].map(([href, label]) => <a href={href} class="bg-white rounded-xl border border-primary-100 p-5 font-semibold text-primary-900 hover:border-primary-400">{label} <span aria-hidden="true">→</span></a>)}
+        </div>
+        <a href="/guides/" class="inline-block mt-7 font-semibold text-primary-700 underline underline-offset-4">Browse all 12 guides →</a>
+      </div>
+    </section>
+
     <section class="px-4 py-16 md:px-8 lg:py-24 bg-primary-950">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Explore In Depth</h2>
@@ -742,7 +759,7 @@ const jsonLd = [
         <p class="text-white font-bold text-lg mb-2">QSBS Facts</p>
         <p class="text-sm mb-4">Data-driven analysis of Section 1202 QSBS tax policy.</p>
         <p class="text-xs text-primary-300">
-          All data sourced from U.S. Treasury, IRS, and peer-reviewed academic research.
+          Sources include U.S. Treasury and IRS publications, tax law, state agencies, and academic research.
           This site presents factual analysis and is not tax advice.
         </p>
         <p class="text-xs text-primary-300 mt-2">Updated September 2026. New York kept QSBS. Oregon, Maine, Illinois, Vermont, and Rhode Island decoupled (RI in 2027). Washington and Maryland bills failed.</p>
