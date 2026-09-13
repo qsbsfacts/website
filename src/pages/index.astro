@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 import Seo from '../components/Seo.astro';
 import Navigation from '../components/Navigation.astro';
 import treasuryData from '../../data/treasury-summary.json';
@@ -104,6 +105,7 @@ const jsonLd = [
 <html lang="en">
   <!-- deploy-check: 2026-09-04-pat -->
   <head>
+    <Analytics />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
