@@ -1,0 +1,25 @@
+<!-- Production-only GA4. Query strings can contain private calculator inputs. -->
+<script is:inline>
+  if (window.location.hostname === 'qsbsfacts.org') {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    const cleanUrl = (value) => {
+      try {
+        const url = new URL(value);
+        return url.origin + url.pathname;
+      } catch { return ''; }
+    };
+    gtag('js', new Date());
+    gtag('config', 'G-093T2TF0RH', {
+      page_location: cleanUrl(window.location.href),
+      page_referrer: cleanUrl(document.referrer),
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-093T2TF0RH';
+    document.head.appendChild(tag);
+  }
+</script>
