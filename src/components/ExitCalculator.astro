@@ -1,5 +1,12 @@
 ---
 import statesData from '../../data/states.json';
+import { calcTax, describeTax } from '../calcTax';
+
+// Render a real default scenario for readers and crawlers before JS runs.
+const initialGain = 2810;
+const initialState = statesData[0];
+const initialTax = calcTax(initialGain, initialState.taxRate, initialState.qsbsConformity, '2010-2025', initialState.code, { holdingYears: 5, saleYear: 2026 });
+const currency = (amount: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(amount);
 
 const comparisonStates = ['TX', 'FL', 'WA', 'CA', 'OR', 'NY'];
 const comparisonData = comparisonStates.map(code => statesData.find(s => s.code === code)!);
@@ -75,9 +82,9 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
 
   <p id="scenario-note" class="hidden text-sm text-amber-900 bg-amber-50 rounded-lg p-4 mb-5">Hypothetical holding-period comparison: stock newly acquired after July 4, 2025 cannot reach three years until 2028, four until 2029, or five until 2030. The tax-year selector applies modeled state rules; it does not validate acquisition and sale dates. Special carryover rules need separate review.</p>
   <div id="calc-result" class="bg-primary-50 rounded-xl p-6 mb-8 text-center">
-    <p class="text-sm text-gray-500 mb-1">Modeled state tax on this gain in <span id="result-state" class="font-semibold">Alabama</span></p>
-    <p id="result-amount" class="text-4xl md:text-5xl font-bold text-primary-700">$0</p>
-    <p id="result-note" class="text-sm text-gray-500 mt-2"></p>
+    <p class="text-sm text-gray-500 mb-1">Modeled state tax on this gain in <span id="result-state" class="font-semibold">{initialState.name}</span></p>
+    <p id="result-amount" class="text-4xl md:text-5xl font-bold text-primary-700">{currency(initialTax)}</p>
+    <p id="result-note" class="text-sm text-gray-500 mt-2">{describeTax({ tax: initialTax, exitAmount: initialGain, conformity: initialState.qsbsConformity, period: '2010-2025', stateCode: initialState.code, note: initialState.note, holdingYears: 5, saleYear: 2026 })}</p>
   </div>
 
   <Heading class="font-semibold text-gray-700 mb-4">Compare key states on the same gain</Heading>
@@ -107,7 +114,7 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
                 {state.qsbsConformity === 'none' ? 'No income tax' : state.qsbsConformity}
               </span>
             </td>
-            <td class="py-3 text-right font-semibold comparison-tax">$0</td>
+            <td class="py-3 text-right font-semibold comparison-tax">{currency(calcTax(initialGain, state.taxRate, state.qsbsConformity, '2010-2025', state.code, { holdingYears: 5, saleYear: 2026 }))}</td>
           </tr>
         ))}
       </tbody>
@@ -118,7 +125,7 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
     <button id="share-btn" class="text-sm text-primary-500 hover:text-primary-700 transition-colors">
       Copy shareable link
     </button>
-    <span id="share-confirm" class="text-sm text-green-600 ml-2 hidden">Copied!</span>
+    <span id="share-confirm" role="status" aria-live="polite" class="text-sm text-green-600 ml-2 hidden">Copied!</span>
   </div>
 </div>
 
@@ -225,10 +232,22 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
   if (params.has('exit') && Number.isFinite(sharedGain) && sharedGain >= 0) exitInput.value = formatCurrency(sharedGain);
   updateCalculator();
 
-  document.getElementById('share-btn')?.addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href);
+  document.getElementById('share-btn')?.addEventListener('click', async () => {
     const confirm = document.getElementById('share-confirm')!;
+    try {
+      const sharedUrl = new URL('/calculator/', window.location.origin);
+      const current = new URL(window.location.href);
+      for (const key of ['state', 'exit', 'period', 'year', 'holding']) {
+        const value = current.searchParams.get(key);
+        if (value !== null) sharedUrl.searchParams.set(key, value);
+      }
+      await navigator.clipboard.writeText(sharedUrl.href);
+      confirm.textContent = 'Copied!';
+      document.dispatchEvent(new Event('qsbs:share-success'));
+    } catch {
+      confirm.textContent = 'Could not copy. You can copy the address from your browser.';
+    }
     confirm.classList.remove('hidden');
-    setTimeout(() => confirm.classList.add('hidden'), 2000);
+    setTimeout(() => confirm.classList.add('hidden'), 4000);
   });
 </script>
