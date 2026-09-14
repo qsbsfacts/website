@@ -17,6 +17,24 @@
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
     });
+    // Measure intentional use once per page load, without capturing input values.
+    let calculatorUsed = false;
+    document.addEventListener('change', (event) => {
+      if (!calculatorUsed && event.target instanceof Element &&
+          event.target.matches('#state-select, #period-select, #sale-year-select, #holding-select, #exit-input')) {
+        calculatorUsed = true;
+        gtag('event', 'calculator_use');
+      }
+    });
+    document.addEventListener('click', (event) => {
+      const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+      if (!link) return;
+      const destination = new URL(link.href);
+      if (destination.origin === window.location.origin && destination.pathname === '/calculator/' &&
+          document.querySelector('article.guide-content')) {
+        gtag('event', 'guide_to_calculator');
+      }
+    });
     const tag = document.createElement('script');
     tag.async = true;
     tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-093T2TF0RH';
