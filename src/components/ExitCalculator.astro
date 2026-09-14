@@ -15,10 +15,9 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
 <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
   {showIntro && (
     <p class="text-gray-500 text-center mb-8 max-w-2xl mx-auto text-sm">
-      Under IRC Section 1202, founders, early employees, and investors can exclude QSBS gains from federal tax.
-      Stock acquired on or before July 4, 2025 still needs a 5-year hold and a $10 million cap.
-      Stock acquired after that date uses a 3/4/5-year ladder (50/75/100%) and a $15 million cap.
-      Some states do not follow the federal exclusion — meaning you could owe state tax even when you owe nothing federally.
+      This comparison assumes the shares qualify for QSBS and satisfy the relevant holding period.
+      Enter gain after subtracting tax basis, not the total sale proceeds or option-exercise compensation.
+      <a href="/calculator/#methodology" class="underline">Read the model assumptions</a> before using an estimate.
     </p>
   )}
 
@@ -34,23 +33,23 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
       </select>
     </div>
     <div>
-      <label for="exit-input" class="block text-sm font-medium text-gray-700 mb-2">Exit amount</label>
+      <label for="exit-input" class="block text-sm font-medium text-gray-700 mb-2">Stock-sale gain</label>
       <input
         type="text"
         id="exit-input"
         value="$2,810"
         inputmode="numeric"
         class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-        aria-label="Exit amount in dollars"
+        aria-label="Stock-sale gain in dollars" aria-describedby="gain-help"
       />
-      <p class="text-xs text-gray-600 mt-1">Default is the median QSBS exclusion.</p>
+      <p id="gain-help" class="text-xs text-gray-600 mt-1">Sale proceeds minus tax basis.</p>
     </div>
     <div>
       <label for="period-select" class="block text-sm font-medium text-gray-700 mb-2">Year stock was acquired</label>
       <select id="period-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-        <option value="before-2009">Before 2009 (50%, $10M cap)</option>
-        <option value="2009-2010">2009–2010 (75%, $10M cap)</option>
-        <option value="2010-2025" selected>Sep 2010 – July 4, 2025 (100%, $10M)</option>
+        <option value="before-2009">Aug 11, 1993 – Feb 17, 2009 (50%)</option>
+        <option value="2009-2010">Feb 18, 2009 – Sep 27, 2010 (75%)</option>
+        <option value="2010-2025" selected>Sep 28, 2010 – July 4, 2025 (100%)</option>
         <option value="after-july-2025">After July 4, 2025 (OBBBA)</option>
       </select>
     </div>
@@ -60,10 +59,11 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
         <option value="2026" selected>2026</option>
         <option value="2027">2027 or later</option>
       </select>
-      <p class="text-xs text-gray-600 mt-1">Rhode Island still conforms in 2026.</p>
+      <p class="text-xs text-gray-600 mt-1">2027+ applies the modeled RI change; future inflation and other law changes are not projected.</p>
     </div>
   </div>
 
+  <p class="text-sm text-gray-600 mb-5">Assumes unused dollar-limit capacity and all eligibility requirements met. Uses simplified rates; federal tax, local tax, and the 10× basis alternative are not calculated.</p>
   <div id="holding-wrap" class="mb-8 hidden">
     <label for="holding-select" class="block text-sm font-medium text-gray-700 mb-2">Holding period (post–July 4, 2025 stock)</label>
     <select id="holding-select" class="w-full md:w-80 border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
@@ -73,21 +73,22 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
     </select>
   </div>
 
+  <p id="scenario-note" class="hidden text-sm text-amber-900 bg-amber-50 rounded-lg p-4 mb-5">Hypothetical holding-period comparison: stock newly acquired after July 4, 2025 cannot reach three years until 2028, four until 2029, or five until 2030. The tax-year selector applies modeled state rules; it does not validate acquisition and sale dates. Special carryover rules need separate review.</p>
   <div id="calc-result" class="bg-primary-50 rounded-xl p-6 mb-8 text-center">
-    <p class="text-sm text-gray-500 mb-1">State tax on this exit in <span id="result-state" class="font-semibold">Alabama</span></p>
+    <p class="text-sm text-gray-500 mb-1">Modeled state tax on this gain in <span id="result-state" class="font-semibold">Alabama</span></p>
     <p id="result-amount" class="text-4xl md:text-5xl font-bold text-primary-700">$0</p>
     <p id="result-note" class="text-sm text-gray-500 mt-2"></p>
   </div>
 
-  <Heading class="font-semibold text-gray-700 mb-4">Compare key states on the same exit</Heading>
+  <Heading class="font-semibold text-gray-700 mb-4">Compare key states on the same gain</Heading>
   <div class="overflow-x-auto">
     <table class="w-full text-left">
       <thead>
         <tr class="border-b border-gray-200">
           <th class="py-3 pr-4 text-sm font-medium text-gray-500">State</th>
-          <th class="py-3 pr-4 text-sm font-medium text-gray-500">Tax Rate</th>
+          <th class="py-3 pr-4 text-sm font-medium text-gray-500">Model Rate</th>
           <th class="py-3 pr-4 text-sm font-medium text-gray-500">QSBS Status</th>
-          <th class="py-3 text-sm font-medium text-gray-500 text-right">Tax on Exit</th>
+          <th class="py-3 text-sm font-medium text-gray-500 text-right">Modeled Tax</th>
         </tr>
       </thead>
       <tbody id="comparison-body">
@@ -148,6 +149,7 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
   function syncHoldingVisibility() {
     const show = periodSelect.value === 'after-july-2025';
     holdingWrap.classList.toggle('hidden', !show);
+    document.getElementById('scenario-note')!.classList.toggle('hidden', !show);
   }
 
   function updateCalculator() {
@@ -214,14 +216,13 @@ const Heading = Astro.props.headingLevel === 2 ? 'h2' : 'h3';
   });
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get('state')) stateSelect.value = params.get('state')!;
-  if (params.get('exit')) {
-    const exitVal = parseInt(params.get('exit')!);
-    if (!isNaN(exitVal)) exitInput.value = formatCurrency(exitVal);
+  // Keep legacy share URLs while rejecting values absent from each control.
+  for (const [key, select] of [['state', stateSelect], ['period', periodSelect], ['year', saleYearSelect], ['holding', holdingSelect]] as const) {
+    const value = params.get(key);
+    if (value && Array.from(select.options).some(option => option.value === value)) select.value = value;
   }
-  if (params.get('period')) periodSelect.value = params.get('period')!;
-  if (params.get('year')) saleYearSelect.value = params.get('year')!;
-  if (params.get('holding')) holdingSelect.value = params.get('holding')!;
+  const sharedGain = Number(params.get('exit'));
+  if (params.has('exit') && Number.isFinite(sharedGain) && sharedGain >= 0) exitInput.value = formatCurrency(sharedGain);
   updateCalculator();
 
   document.getElementById('share-btn')?.addEventListener('click', () => {

@@ -3,7 +3,7 @@
   { "code": "AK", "name": "Alaska", "taxRate": 0, "qsbsConformity": "none", "note": "No state income tax" },
   { "code": "AZ", "name": "Arizona", "taxRate": 2.5, "qsbsConformity": "conforms", "note": "" },
   { "code": "AR", "name": "Arkansas", "taxRate": 3.9, "qsbsConformity": "conforms", "note": "" },
-  { "code": "CA", "name": "California", "taxRate": 13.3, "qsbsConformity": "decoupled", "note": "Never conformed. Largest U.S. startup cluster despite no QSBS. Combined top rate is 14.3% including the 1% Mental Health Services Tax on income over $1M (not modeled)." },
+  { "code": "CA", "name": "California", "taxRate": 13.3, "qsbsConformity": "decoupled", "note": "California does not allow the QSBS exclusion. The 13.3% model rate includes the 12.3% top bracket plus the 1% Behavioral Health Services Tax above $1M of taxable income. Actual brackets and the surcharge threshold are not modeled." },
   { "code": "CO", "name": "Colorado", "taxRate": 4.4, "qsbsConformity": "conforms", "note": "" },
   { "code": "CT", "name": "Connecticut", "taxRate": 6.99, "qsbsConformity": "conforms", "note": "" },
   { "code": "DE", "name": "Delaware", "taxRate": 6.6, "qsbsConformity": "conforms", "note": "" },

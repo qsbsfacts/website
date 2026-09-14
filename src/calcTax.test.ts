@@ -261,3 +261,16 @@ describe('calcTax', () => {
     });
   });
 });
+
+// Published examples must stay aligned with both the state dataset and the engine.
+describe('calculator page worked examples', () => {
+  it.each([
+    ['CA', 1_000_000, 133_000],
+    ['NY', 1_000_000, 0],
+    ['NY', 12_000_000, 218_000],
+  ] as const)('%s gain %i produces the published estimate %i', async (code, gain, expected) => {
+    const { default: states } = await import('../data/states.json');
+    const state = states.find(state => state.code === code)!;
+    expect(calcTax(gain, state.taxRate, state.qsbsConformity, '2010-2025', code, { saleYear: 2026 })).toBe(expected);
+  });
+});

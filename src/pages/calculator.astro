@@ -19,7 +19,7 @@ const description = "Estimate state tax on a QSBS exit under Section 1202. Compa
     "description": description,
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
-    "dateModified": "2026-09-04"
+    "dateModified": "2026-09-13"
   }]}
 >
 
@@ -28,7 +28,7 @@ const description = "Estimate state tax on a QSBS exit under Section 1202. Compa
       <div class="max-w-5xl mx-auto">
         <h1 class="text-3xl md:text-4xl font-bold text-center mb-4">QSBS State Tax Calculator</h1>
         <p class="text-gray-500 text-center mb-4 max-w-2xl mx-auto">
-          See what your state actually takes from a qualified small business stock exit under Section 1202.
+          Estimate state tax on stock-sale gain, compare states, and understand the assumptions behind the numbers.
         </p>
         <ObbbaBox compact headingLevel={2} />
         <ExitCalculator showIntro headingLevel={2} />
@@ -42,6 +42,33 @@ const description = "Estimate state tax on a QSBS exit under Section 1202. Compa
           </div>
         </aside>
       </div>
+    </section>
+    <section id="methodology" class="px-4 py-12 max-w-4xl mx-auto guide-content">
+      <h2>How this QSBS calculator works</h2>
+      <p>This is a state-tax comparison, not a calculation of your total tax bill. Enter your gain: sale proceeds minus adjusted tax basis. For example, $1.2 million of proceeds less $200,000 of basis means entering $1 million.</p>
+      <p>For a fully conforming state, the general model is: <strong>(gain − modeled exclusion) × model rate</strong>. The modeled exclusion is the selected percentage times the lesser of gain or the base dollar cap. For a fully decoupled state, the general model applies the rate to the whole gain. State-specific branches can change that calculation.</p>
+      <h3>What the estimate assumes and omits</h3>
+      <ul>
+        <li>Shares already satisfy the <a href="/qsbs-eligibility/">QSBS requirements</a>. Older shares satisfy the more-than-five-year holding rule. The tool does not test the company, original issuance, redemptions, or acquisition-date carryover.</li>
+        <li>The model assumes full unused $10M or $15M dollar capacity. It does not apply the 10× basis alternative, earlier sales from the same issuer, mixed acquisition lots, separate-return limits, or inflation adjustments. Read the <a href="/qsbs-exclusion-limits/">exclusion limits guide</a>.</li>
+        <li>Rates are simplified comparison rates, generally top state marginal rates applied to the modeled taxable gain. Progressive brackets, other income, deductions, credits, local taxes, and most surtaxes are omitted. A top-rate estimate is not your effective tax rate.</li>
+        <li>Federal capital-gains tax, net investment income tax, AMT, option-exercise compensation, and Section 1045 rollover elections are not calculated.</li>
+        <li>Massachusetts uses a modeled 5% rate on the remainder and omits its 4% surtax. Vermont, Hawaii, Maine, and Rhode Island use special model branches. Washington's displayed 7% rate is a simplified model, not a complete computation of its capital-gains tax.</li>
+        <li>State selection does not establish residency or where income is sourced. Changing the selection is a comparison, not evidence that moving eliminates tax. See <a href="/california-exit-tax/">moving before a stock sale</a>.</li>
+      </ul>
+      <p>A $0 result means zero under these assumptions. It does not establish that no tax is owed. The 2027+ selector applies the modeled Rhode Island change; it does not forecast every future state's rules.</p>
+      <h2>Worked examples you can load</h2>
+      <p>These examples assume qualifying shares acquired September 28, 2010 through July 4, 2025, held more than five years, a 2026 sale, and unused dollar-limit capacity. Dollar amounts are rounded to the nearest dollar.</p>
+      <h3>$1 million gain: California and New York</h3>
+      <p>At California's model rate of 13.3%, the calculation is $1,000,000 × 13.3% = <strong>$133,000</strong>, because the model allows no state QSBS exclusion. For New York, a fully excluded $1 million gain produces <strong>$0</strong> in this model. These are simplified state comparisons, not individual tax bills.</p>
+      <p><a href="/calculator/?state=CA&amp;exit=1000000&amp;period=2010-2025&amp;year=2026">Load the $1M California example</a> · <a href="/calculator/?state=NY&amp;exit=1000000&amp;period=2010-2025&amp;year=2026">Load the $1M New York example</a></p>
+      <h3>$12 million gain: the base dollar cap matters</h3>
+      <p>Using New York's 10.9% model rate and the assumed $10 million cap, $12 million − $10 million leaves $2 million taxable. The modeled tax is <strong>$218,000</strong>. An available 10× basis alternative could change this outcome; the calculator does not model it.</p>
+      <p><a href="/calculator/?state=NY&amp;exit=12000000&amp;period=2010-2025&amp;year=2026">Load the $12M cap example</a></p>
+      <h2>Documents to gather before relying on QSBS</h2>
+      <p>Bring stock purchase or exercise records, acquisition dates, basis records, issuer eligibility documentation, and records of prior sales from the same issuer to your tax adviser. Separate option compensation from later stock-sale gain. The <a href="/qsbs-stock-options/">employee stock options guide</a> explains that distinction; the <a href="/qsbs-eligibility/">eligibility guide</a> provides the broader checklist.</p>
+      <h2>Sources and methodology</h2>
+      <p>Federal requirements: <a href="https://www.law.cornell.edu/uscode/text/26/1202">26 USC §1202</a>. California rate reference: <a href="https://www.ftb.ca.gov/forms/2025/2025-540-booklet.html">FTB Form 540 instructions and rate schedules</a>. State treatment and underlying citations: <a href="/state-impact/">state conformity map</a>, <a href="/california-qsbs/">California</a>, <a href="/new-york-qsbs/">New York</a>, and <a href="/oregon-qsbs/">Oregon</a>. The <a href="https://github.com/qsbsfacts/website/blob/main/src/calcTax.ts">calculation code</a> and <a href="https://github.com/qsbsfacts/website/blob/main/data/states.json">state dataset</a> show precisely what this model implements.</p>
     </section>
   </main>
 </Layout>
