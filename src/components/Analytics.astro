@@ -1,6 +1,6 @@
 <!-- Production-only GA4. Query strings can contain private calculator inputs. -->
 <script is:inline>
-  if (window.location.hostname === 'qsbsfacts.org') {
+  if (window.location.hostname === 'qsbsfacts.org' && !new URLSearchParams(window.location.search).has('qa')) {
     window.dataLayer = window.dataLayer || [];
     function gtag() { window.dataLayer.push(arguments); }
     window.gtag = gtag;
@@ -17,13 +17,18 @@
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
     });
+    const track = (name) => gtag('event', name, {
+      page_location: cleanUrl(window.location.href),
+      page_referrer: cleanUrl(document.referrer),
+    });
+    document.addEventListener('qsbs:share-success', () => track('calculator_share'));
     // Measure intentional use once per page load, without capturing input values.
     let calculatorUsed = false;
     document.addEventListener('change', (event) => {
       if (!calculatorUsed && event.target instanceof Element &&
           event.target.matches('#state-select, #period-select, #sale-year-select, #holding-select, #exit-input')) {
         calculatorUsed = true;
-        gtag('event', 'calculator_use');
+        track('calculator_use');
       }
     });
     document.addEventListener('click', (event) => {
@@ -31,8 +36,8 @@
       if (!link) return;
       const destination = new URL(link.href);
       if (destination.origin === window.location.origin && destination.pathname === '/calculator/' &&
-          document.querySelector('article.guide-content')) {
-        gtag('event', 'guide_to_calculator');
+          document.querySelector('article.guide-content') && window.location.pathname !== '/calculator/') {
+        track('guide_to_calculator');
       }
     });
     const tag = document.createElement('script');
