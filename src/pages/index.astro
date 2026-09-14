@@ -63,7 +63,7 @@ const jsonLd = [
         "name": "What is QSBS (Qualified Small Business Stock)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "QSBS refers to stock in a qualified small business under IRC Section 1202. Stock acquired on or before July 4, 2025 still needs a 5-year hold and a $10 million per-issuer cap (or 10× basis). Stock acquired after that date, under P.L. 119-21 (OBBBA), uses a 3/4/5-year ladder (50/75/100%) and a $15 million cap, with a $75 million gross-asset test, both indexed after 2026. The exclusion was created in 1993 under President Clinton and expanded to 100% under President Obama in 2010."
+          "text": "QSBS is qualified small business stock under Section 1202. Older stock must be held for more than five years; stock acquired after July 4, 2025 uses three-, four-, and five-year exclusion tiers. Dollar limits depend on acquisition date and prior usage, with a ten-times-basis alternative. The increased gross-asset threshold depends on issuance date. Company and shareholder requirements also apply."
         }
       },
       {
@@ -206,55 +206,55 @@ const jsonLd = [
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
             <p class="text-sm font-semibold text-primary-600 mb-1">Senior Engineer</p>
-            <p class="text-gray-700 text-sm mb-3">A senior engineer at a 50-person startup exercises $40K in stock after 6 years.</p>
+            <p class="text-gray-700 text-sm mb-3">An engineer sells qualifying shares held for six years, realizing $40K of gain after basis.</p>
             <div class="flex justify-between text-xs">
-              <span class="text-gray-600">With QSBS</span>
+              <span class="text-gray-600">With full exclusion</span>
               <span class="font-bold text-green-600">$0 state tax</span>
             </div>
             <div class="flex justify-between text-xs mt-1">
-              <span class="text-gray-600">Without</span>
+              <span class="text-gray-600">Without exclusion</span>
               <span class="font-bold text-red-600">$5,320</span>
             </div>
           </div>
           <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
             <p class="text-sm font-semibold text-primary-600 mb-1">First-time Founder</p>
-            <p class="text-gray-700 text-sm mb-3">A first-time founder sells after 8 years for $2M. First liquidity event of their career.</p>
+            <p class="text-gray-700 text-sm mb-3">A founder sells qualifying shares held for eight years, realizing $2M of gain after basis.</p>
             <div class="flex justify-between text-xs">
-              <span class="text-gray-600">With QSBS</span>
+              <span class="text-gray-600">With full exclusion</span>
               <span class="font-bold text-green-600">$0 state tax</span>
             </div>
             <div class="flex justify-between text-xs mt-1">
-              <span class="text-gray-600">Without</span>
+              <span class="text-gray-600">Without exclusion</span>
               <span class="font-bold text-red-600">$266,000</span>
             </div>
           </div>
           <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
             <p class="text-sm font-semibold text-primary-600 mb-1">Early Employee</p>
-            <p class="text-gray-700 text-sm mb-3">Employee #12 exercises options worth $150K after the company is acquired. Five years of below-market salary.</p>
+            <p class="text-gray-700 text-sm mb-3">An early employee sells qualifying shares held for six years after exercise, realizing $150K of gain.</p>
             <div class="flex justify-between text-xs">
-              <span class="text-gray-600">With QSBS</span>
+              <span class="text-gray-600">With full exclusion</span>
               <span class="font-bold text-green-600">$0 state tax</span>
             </div>
             <div class="flex justify-between text-xs mt-1">
-              <span class="text-gray-600">Without</span>
+              <span class="text-gray-600">Without exclusion</span>
               <span class="font-bold text-red-600">$19,950</span>
             </div>
           </div>
           <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-primary-500">
             <p class="text-sm font-semibold text-primary-600 mb-1">Seed Investor</p>
-            <p class="text-gray-700 text-sm mb-3">Puts $25K into a friend's company. 7 years later it's worth $200K.</p>
+            <p class="text-gray-700 text-sm mb-3">An investor sells qualifying shares for $200K after seven years, with $25K of basis and $175K of gain.</p>
             <div class="flex justify-between text-xs">
-              <span class="text-gray-600">With QSBS</span>
+              <span class="text-gray-600">With full exclusion</span>
               <span class="font-bold text-green-600">$0 state tax</span>
             </div>
             <div class="flex justify-between text-xs mt-1">
-              <span class="text-gray-600">Without</span>
+              <span class="text-gray-600">Without exclusion</span>
               <span class="font-bold text-red-600">$23,275</span>
             </div>
           </div>
         </div>
 
-        <p class="text-xs text-gray-600 text-center mt-4 mb-8">Tax shown at California's 13.3% rate, the highest in the nation. Your state may differ — <a href="#calculator" class="underline hover:text-gray-600">try the calculator</a>.</p>
+        <p class="text-xs text-gray-600 text-center mt-4 mb-8">Hypothetical comparison at a flat 13.3% rate, assuming qualifying stock acquired September 28, 2010 through July 4, 2025 and unused exclusion capacity. California does not allow the QSBS exclusion; its modeled tax is the “without exclusion” amount. Actual tax depends on income and other rules — <a href="#calculator" class="underline hover:text-gray-600">try the calculator</a>.</p>
 
         <div class="bg-white rounded-xl shadow-md p-6 md:p-8 max-w-3xl mx-auto">
           <h3 class="font-semibold text-lg mb-2 text-center">How large is a typical QSBS exclusion?</h3>
@@ -350,7 +350,7 @@ const jsonLd = [
       <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Exit Tax Calculator</h2>
         <p class="text-gray-500 text-center mb-8 max-w-2xl mx-auto">
-          See what your state actually takes from a qualified small business stock exit under Section 1202.
+          Compare illustrative state taxes on qualified stock-sale gain using simplified rates and exclusion assumptions.
         </p>
         <ObbbaBox />
         <ExitCalculator />
@@ -521,7 +521,7 @@ const jsonLd = [
             <ul class="space-y-3 text-sm text-gray-700">
               <li class="flex items-start gap-2">
                 <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
-                <span><strong>Taxes the engineer</strong> exercising $40K in startup stock the same way it taxes a $50M exit</span>
+                <span><strong>Taxes the engineer</strong> realizing $40K of qualifying stock-sale gain the same way it taxes a $50M exit</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="shrink-0 mt-0.5 text-red-600 font-bold">×</span>
@@ -580,7 +580,7 @@ const jsonLd = [
           <div class="border-t border-primary-200 pt-4 text-left space-y-2">
             <p class="text-sm text-gray-700"><strong>A targeted fix:</strong> a per-taxpayer lifetime cap that does not multiply across related nongrantor trusts, or an income phaseout that leaves the 74% of claimants under $1M untouched. Build Back Better floated a 50% exclusion for trusts — prior art, not an endorsement.</p>
             <p class="text-sm text-gray-600">
-              Blanket state decoupling taxes the engineer exercising $40K the same way it taxes a stacked $50M exit. New York rejected that trade in 2026. Oregon's governor asked for a 2027 bill the day she signed it.
+              Blanket state decoupling taxes the engineer realizing $40K of qualifying stock-sale gain the same way it taxes a stacked $50M exit. New York rejected that trade in 2026. Oregon's governor asked for a 2027 bill the day she signed it.
             </p>
           </div>
         </div>
