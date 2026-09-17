@@ -35,6 +35,9 @@
       const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
       if (!link) return;
       const destination = new URL(link.href);
+      if (destination.origin === window.location.origin && destination.pathname === '/downloads/qsbs-records-checklist.txt') {
+        track('checklist_download');
+      }
       if (destination.origin === window.location.origin && destination.pathname === '/calculator/' &&
           document.querySelector('article.guide-content') && window.location.pathname !== '/calculator/') {
         track('guide_to_calculator');

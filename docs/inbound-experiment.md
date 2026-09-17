@@ -50,3 +50,19 @@ Use the `qsbsfacts/website` repository, website-specific GitHub credentials and 
 No outbound messaging, paid promotion, paid service signup, or collection of personal financial inputs is part of this experiment. A BB agent automation performs daily reviews in the originating thread; its configuration and private run log are stored outside this public repository.
 
 References: [Google's search performance diagnosis guidance](https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops), [Section 1202](https://www.law.cornell.edu/uscode/text/26/1202), [New York Tax Law 612](https://www.nysenate.gov/legislation/laws/TAX/612).
+
+## Discovery experiment 2 — September 17, 2026
+
+Hypothesis: a reusable records checklist on `/qsbs-eligibility/` can attract people searching for QSBS eligibility/documentation checklists and give them something useful to take to their company or adviser. The existing guide remains the canonical destination; no competing guide URL is added.
+
+The guide now offers an ungated, editable text download, grouped by records held by the shareholder, records to request from the company, and adviser questions. It includes a request template readers can choose to send themselves. This site sends no requests and receives no completed checklists. The guide hub and introductory QSBS guide link to the resource. Checklist content and download share one source.
+
+Measure `checklist_download` (a click on the download link, not confirmed saving, completion, sharing, or eligibility). It uses the existing sanitized event payload without financial values, query strings, or fragments. Direct requests to the text file have no GA instrumentation and are not counted by this event.
+
+Observe September 18–October 1; assess October 2 using the available complete dates and record any lag. Compare eligibility-page impressions, queries and clicks with the preceding 14 days, and inspect organic landing sessions and checklist event users separately. Improvements are observational, not attributable proof. Under 50 measured organic landings on this page is insufficient exposure to judge usefulness; do not treat that as a reason to stop discovery work. If exposure grows without downloads, review the offer, placement, and file format. If downloads occur, look for repeated organic discovery and returning visitors before expanding.
+
+## Active experimentation cadence
+
+Daily monitoring supports a weekly build-and-learn cycle. Low exposure is a discoverability problem to work on, not a prerequisite that must resolve before trying anything. At each weekly review, choose and ship one bounded discovery experiment grounded in observed queries, an actual search task, or an indexing problem; record the hypothesis, distribution mechanism, metric, and review date. If no defensible experiment is found, record the research and concrete blocker rather than repeating “insufficient data.”
+
+Keep each experiment stable for its stated window except for fixes. Prefer a distinct page/task or reusable resource over repeatedly rewriting the same titles. Do not call internal links, a new asset, or a shipped page proof of broader distribution: confirm actual search/referral exposure. No outbound messaging, paid promotion, or new personal-data collection is authorized. First next weekly selection: September 21. Keep the October 14 overall assessment.
