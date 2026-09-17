@@ -4,7 +4,7 @@ export const guideGroups = [
     description: 'Understand the benefit, the requirements, and the dates that matter.',
     guides: [
       { href: '/what-is-qsbs/', title: 'What is qualified small business stock?', description: 'A plain-English introduction to Section 1202 and how the exclusion works.' },
-      { href: '/qsbs-eligibility/', title: 'Does my stock qualify for QSBS?', description: 'Work through the company, shareholder, and stock requirements before relying on an exclusion.' },
+      { href: '/qsbs-eligibility/', title: 'QSBS eligibility and records checklist', description: 'Download a free, editable records checklist and review the company, shareholder, and stock requirements.' },
       { href: '/qsbs-holding-period/', title: 'How long do I need to hold QSBS?', description: 'Compare holding periods and understand which acquisition dates control the rules.' },
       { href: '/qsbs-exclusion-limits/', title: 'How much gain can I exclude?', description: 'Understand the dollar caps, the basis alternative, and the limits of a simplified example.' },
     ],

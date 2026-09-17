@@ -1,5 +1,6 @@
 ---
 import Guide from '../layouts/Guide.astro';
+import { checklistGroups } from '../data/qsbsChecklist';
 const law = 'https://www.law.cornell.edu/uscode/text/26/1202';
 const sources = [
   { label: '26 U.S.C. §1202: qualification and anti-abuse requirements', url: law },
@@ -8,12 +9,23 @@ const sources = [
 ];
 ---
 
-<Guide title="QSBS Requirements: Does Your Stock Qualify?" description="Check QSBS eligibility: original issuance, C corporation status, gross assets, active business, redemptions, and the records needed for review." heading="Does your stock qualify for QSBS?" summary="Start with the shares' history, then check the company and shareholder requirements. This checklist helps you prepare an eligibility review; it does not certify your shares." canonicalPath="/qsbs-eligibility/" category="QSBS basics" sources={sources} related={[
+<Guide title="QSBS Eligibility Checklist & Records to Gather" description="Download a free QSBS records checklist. Organize stock and company documents for a Section 1202 review, then read the eligibility requirements. No signup." heading="Does your stock qualify for QSBS?" summary="Start with the shares' history, then check the company and shareholder requirements. This checklist helps you prepare an eligibility review; it does not certify your shares." canonicalPath="/qsbs-eligibility/" category="QSBS basics" sources={sources} related={[
   { label: 'What is QSBS?', href: '/what-is-qsbs/' },
   { label: 'Employee stock options', href: '/qsbs-stock-options/' },
   { label: 'QSBS holding periods', href: '/qsbs-holding-period/' },
 ]}>
-  <h2>1. Identify who owns the stock</h2>
+  <section id="records-checklist" aria-labelledby="records-checklist-title" class="rounded-xl border border-primary-100 bg-primary-50 p-6 mb-10">
+    <h2 id="records-checklist-title" style="margin-top: 0">Free QSBS records checklist</h2>
+    <p>Turn the requirements into a document inventory for your company and tax adviser. Use a separate copy for each issuer and acquisition lot. Mark missing records as questions to resolve, not requirements you have passed.</p>
+    <p><a href="/downloads/qsbs-records-checklist.txt" download="qsbs-records-checklist.txt" class="font-semibold">Download the editable checklist (.txt)</a> — no signup. Includes space for record locations and open questions, plus a company-records request you can adapt.</p>
+    <p class="text-sm">Fill it in privately using a text editor or print it. Your completed copy is not sent to this website. The checklist organizes evidence; it does not certify QSBS eligibility.</p>
+    {checklistGroups.map(group => <details>
+      <summary>{group.title}</summary>
+      <ul>{group.items.map(item => <li>{item}</li>)}</ul>
+    </details>)}
+    <p class="text-sm"><a href="#eligibility-requirements">Read the requirements behind the checklist ↓</a></p>
+  </section>
+  <h2 id="eligibility-requirements">1. Identify who owns the stock</h2>
   <p><a href={`${law}#a`}>Section 1202(a)</a> applies to taxpayers other than corporations. Individuals, estates, and qualifying trusts may be eligible. A partnership can hold QSBS and pass qualifying gain through, but the partner generally must have held an interest when the partnership acquired the shares and continuously afterward. The benefit is also limited by the partner's original interest. An S corporation can be an intermediary under the pass-through rules even though its own stock is not QSBS.</p>
   <p><strong>Gather:</strong> the ownership chart, account registration, partnership acquisition records, and any trust or transfer documents. If the name on the cap table differs from the taxpayer claiming the exclusion, resolve that relationship first.</p>
 
