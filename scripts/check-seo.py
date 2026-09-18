@@ -54,6 +54,18 @@ class Page(HTMLParser):
             self.schema[-1] += text
 
 pages = {route: Page((DIST / route.lstrip("/") / "index.html").read_text()) for route in ROUTES}
+# Without this file Cloudflare Pages serves the homepage with HTTP 200 for
+# arbitrary missing URLs (its default SPA fallback).
+not_found_path = DIST / "404.html"
+assert not_found_path.is_file(), "404.html required to disable Cloudflare SPA fallback"
+not_found_html = not_found_path.read_text()
+not_found = Page(not_found_html)
+assert "noindex" in not_found.meta.get("robots", "")
+assert not not_found.canonicals, "Missing URLs must not canonicalize to the homepage"
+assert "<script" not in not_found_html.lower(), "Keep missing-page paths out of analytics"
+assert not_found.headings.count(1) == 1
+assert all(href in pages for href in not_found.links), "Broken recovery link in 404 page"
+
 titles, descriptions = set(), set()
 for route, page in pages.items():
     expected = ORIGIN + route
