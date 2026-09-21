@@ -43,8 +43,8 @@ const related = [
 ];
 ---
 <Guide
-  title="California QSBS: Taxes, Residency, and Moving"
-  description="Does California tax QSBS gains? Understand federal versus state treatment, moving before a stock sale, residency, and employee equity sourcing."
+  title="California QSBS Tax: No State Exclusion, With Examples"
+  description="California does not allow the federal QSBS exclusion. Compare federal and California treatment of a $2 million gain, then explore a state-tax example."
   heading="California QSBS: state taxes, residency, and moving before an exit"
   summary="California does not recognize the federal QSBS exclusion. A genuine change of residence can matter, but there is no universal number of days outside the state that makes a stock sale tax-free."
   canonicalPath="/california-qsbs/"
@@ -56,9 +56,20 @@ const related = [
   <p>No. A stock sale can qualify for a federal Section 1202 exclusion and still produce taxable California gain. California also does not conform to the Section 1045 QSBS rollover. The FTB's <a href="https://www.ftb.ca.gov/forms/2025/2025-540-d-instructions.html">Schedule D instructions</a> expressly identify both differences. California nonconformity does not itself disqualify the stock federally.</p>
   <p>That creates two separate calculations: establish the federal exclusion, then determine which income California can tax and the applicable state adjustments. A company's California headquarters does not, by itself, answer either question. The shareholder's residence, the character of the proceeds, and the stock's qualification all matter.</p>
 
-  <h2>What does that mean for an exit?</h2>
-  <p>Illustrative example: a California resident sells shares with $2 million of gain, all of which qualifies for a federal exclusion. The California calculation generally includes that gain despite the federal exclusion. This is $2 million of potentially taxable gain, not a $2 million tax bill. Basis adjustments, losses, other income, filing status, and state rates affect the final amount.</p>
-  <p>Use the <a href="/calculator/">calculator</a> to explore the difference between state treatments. It cannot decide residency or establish that a particular stock lot qualifies. A scenario comparing states is a financial illustration; it is not a determination that relocating produces that result.</p>
+  <h2 id="federal-vs-california">Federal vs. California QSBS: a $2 million example</h2>
+  <p>Assume a full-year California resident sells qualifying shares with $2 million of gain after basis, and the entire gain qualifies for a federal Section 1202 exclusion. This compares the treatment of that stock gain, before other income, losses, deductions, or state basis adjustments.</p>
+  <div class="table-scroll"><table>
+    <caption>One qualifying stock sale, two different income-tax treatments</caption>
+    <thead><tr><th scope="col">Item</th><th scope="col">Federal</th><th scope="col">California</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Stock gain after basis</th><td>$2,000,000</td><td>$2,000,000</td></tr>
+      <tr><th scope="row">Section 1202 exclusion in this example</th><td>$2,000,000</td><td>$0</td></tr>
+      <tr><th scope="row">Gain remaining before other adjustments</th><td>$0</td><td>$2,000,000</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Taxable gain is not the tax bill.</strong> California taxes capital gains as ordinary income rather than giving them a separate lower capital-gains rate. Filing status, other income, and applicable rates affect the tax. See the FTB's <a href="https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html">capital-gains guidance</a> and <a href="https://www.ftb.ca.gov/forms/2025/2025-540-d-instructions.html">Schedule D instructions</a>. Federal qualification does not make the California amount disappear.</p>
+  <p><a href="/calculator/?state=CA&amp;exit=2000000&amp;period=2010-2025&amp;year=2026">Explore this $2 million California gain in the calculator</a>. The illustration uses the site's simplified 13.3% California top-rate model, not a progressive-bracket tax return. It assumes qualifying shares acquired in the September 28, 2010–July 4, 2025 period, held more than five years, with unused exclusion capacity. Federal and local taxes, credits, and individual adjustments are omitted.</p>
+  <p>The calculator cannot decide residency or establish that a stock lot qualifies. Comparing states does not establish that relocating would produce the illustrated result.</p>
 
   <h2>Can moving before the sale change California tax?</h2>
   <p>Potentially. California taxes residents on worldwide income and nonresidents on California-source income. Part-year residents need to account for both periods. The FTB explains these categories in its <a href="https://www.ftb.ca.gov/file/personal/residency-status/part-year-and-nonresident.html">nonresident guidance</a>. The practical task is to establish when residence changed and identify the source of each item of income.</p>
