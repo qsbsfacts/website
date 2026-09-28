@@ -1,13 +1,30 @@
 ---
 import Guide from '../layouts/Guide.astro';
 const sources = [
+ {label:'26 U.S.C. § 1223(5): stock acquired by exercising rights',url:'https://www.law.cornell.edu/uscode/text/26/1223'},
  {label:'26 CFR § 1.83-4: holding period and basis of restricted property',url:'https://www.law.cornell.edu/cfr/text/26/1.83-4'},
  {label:'IRS Topic 427: statutory and nonstatutory stock options',url:'https://www.irs.gov/taxtopics/tc427'},
  {label:'26 U.S.C. § 1202(c): original issuance and employee stock',url:'https://www.law.cornell.edu/uscode/text/26/1202'},
  {label:'26 U.S.C. § 83: restricted property, elections, and holding periods',url:'https://www.law.cornell.edu/uscode/text/26/83'},
 ];
 ---
-<Guide title="QSBS Stock Options: When Does the Clock Start?" description="Learn when employee stock can qualify for QSBS, why an option grant does not start the stock holding period, and how exercise taxes differ from sale gains." heading="Do employee stock options qualify for QSBS?" summary="An option is a right to acquire stock. The shares received when you exercise may qualify for QSBS, but the grant date alone does not start the stock's holding period." canonicalPath="/qsbs-stock-options/" category="Planning questions" sources={sources} related={[{label:'Check QSBS eligibility',href:'/qsbs-eligibility/'},{label:'Holding periods and acquisition dates',href:'/qsbs-holding-period/'},{label:'California QSBS and moving states',href:'/california-qsbs/'}]}>
+<Guide title="QSBS Stock Options: Grant vs. Exercise Date" description="Does the QSBS clock start at grant, exercise, or vesting? Compare vested shares and early exercise, with a timeline example and the records to check." heading="Do employee stock options qualify for QSBS?" summary="An option is a right to acquire stock. The shares received when you exercise may qualify for QSBS, but the grant date alone does not start the stock's holding period." canonicalPath="/qsbs-stock-options/" category="Planning questions" sources={sources} related={[{label:'Check QSBS eligibility',href:'/qsbs-eligibility/'},{label:'Holding periods and acquisition dates',href:'/qsbs-holding-period/'},{label:'California QSBS and moving states',href:'/california-qsbs/'}]}>
+ <section aria-labelledby="grant-vs-exercise">
+ <h2 id="grant-vs-exercise">Grant, exercise, or vesting: which date matters?</h2>
+ <p>Start with the shares you actually received. <a href="https://www.law.cornell.edu/uscode/text/26/1223">Section 1223(5)</a> excludes the time spent holding an unexercised right from the holding period of stock acquired through exercise.</p>
+ <div class="table-scroll"><table>
+ <caption>Stock-option timing comparison — the date alone does not establish QSBS eligibility</caption>
+ <thead><tr><th scope="col">Your situation</th><th scope="col">Date to investigate</th><th scope="col">Record to check</th></tr></thead>
+ <tbody>
+ <tr><th scope="row">Options granted but not exercised</th><td>No stock holding period from the grant alone.</td><td>Grant agreement and exercise history.</td></tr>
+ <tr><th scope="row">Exercise into fully vested shares</th><td>Generally exercise and acquisition of the shares, not the earlier grant.</td><td>Exercise confirmation and share issuance record.</td></tr>
+ <tr><th scope="row">Early exercise into restricted shares</th><td>For property governed by Section 83, generally when shares become transferable or the substantial risk of forfeiture ends; a valid 83(b) election changes the holding-period treatment.</td><td>Transfer date, restrictions, vesting schedule, and evidence of any election. Statutory options need separate review.</td></tr>
+ </tbody></table></div>
+ <p>The restricted-property distinction comes from <a href="https://www.law.cornell.edu/cfr/text/26/1.83-4">Treasury Regulation § 1.83-4(a)</a>. Do not apply an early-exercise shortcut without checking the award type and restrictions.</p>
+ <h3>A grant-to-exercise timeline</h3>
+ <p>Suppose an option is granted in 2023 and exercised into fully vested shares in 2026. The three years before exercise do not count as three years holding those shares. Keep the grant and exercise dates separate, then check the <a href="/qsbs-holding-period/">QSBS holding-period rules</a> for the stock acquired in 2026.</p>
+ <p><a href="#employee-records">Find the employee records to request</a> before deciding which date applies.</p>
+ </section>
  <h2>Separate the option from the shares</h2>
  <p>An employee may receive an option years before becoming a shareholder. For QSBS, that distinction matters: <a href="https://www.law.cornell.edu/uscode/text/26/1202">Section 1202(c)</a> covers qualifying stock acquired at original issuance, including stock issued as compensation for services. It does not turn an unexercised option into qualifying stock. Once an option is exercised and shares are issued, those shares need their own eligibility review.</p>
  <p>For a conventional exercise into fully vested shares, the stock holding period generally begins with the stock acquisition, not the option grant. The company must satisfy the applicable gross-asset test when it issues those shares. A company that was small enough when it granted an option might be too large when the employee exercises it. Conversely, the company's fundraising valuation alone does not establish the statutory asset amount.</p>
@@ -25,7 +42,7 @@ const sources = [
  <h2>Early exercise and restricted stock require extra care</h2>
  <p>Some plans permit exercise before vesting. For restricted property governed by Section 83, the holding period generally waits until the shares become transferable or no longer subject to a substantial risk of forfeiture. A valid Section 83(b) election can cause the transfer date to govern instead. The statute generally requires the election within 30 days after the property transfer.</p>
  <p>An 83(b) election concerns transferred property, not an ordinary unexercised option. It can accelerate tax and leave the employee exposed to loss or forfeiture; it does not certify QSBS status. Statutory options have additional interactions with these rules. Review the award, exercise documents, restrictions, and actual election with a tax professional instead of inferring the date from a cap-table dashboard.</p>
- <h2>What employees should request</h2>
+ <h2 id="employee-records">What employees should request</h2>
  <ul><li>The grant agreement, exercise notice, stock issuance record, and vesting terms.</li><li>Evidence of any Section 83(b) election and relevant Forms W-2 or 3921.</li><li>Company records supporting the asset threshold at issuance, C corporation status, active business, and redemption history.</li><li>A reconciliation of exercise compensation, regular-tax basis, any AMT basis, and the proposed sale date.</li></ul>
  <p>State sourcing is another separate question. Compensation associated with work in a state can remain taxable there after a move, while subsequent stock gain may follow different rules. The <a href="/california-qsbs/">California guide</a> explains why changing residence does not automatically eliminate every tax associated with an employee equity award.</p>
 </Guide>
