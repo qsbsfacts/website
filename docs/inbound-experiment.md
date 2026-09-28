@@ -77,3 +77,14 @@ Distribution mechanism: organic search on an already surfaced canonical Californ
 Observe September 22–October 5; review October 6 against September 7–20, using complete dates where available and recording lag. Primary metrics: California-page search impressions, clicks and CTR, with query/position/device mix to distinguish exposure and ranking changes from click behavior. Secondary: organic landings and `guide_to_calculator` event users on the California page; inspect calculator use separately unless a same-cohort report supports linkage. Existing privacy sanitization and QA exclusion apply. No new event or personal data is needed.
 
 Keep the title, description and example stable during the observation window except for confirmed fixes. Fewer than 50 organic California landings is insufficient exposure to judge engagement; report search-presentation evidence separately and avoid attributing observed changes causally. At review, retain, revise or end the experiment based on exposure, relevance and behavior. Next weekly discovery selection September 28; preserve the October 2 checklist and October 14 overall assessments.
+
+
+## Discovery experiment 4 — September 28, 2026
+
+Hypothesis: searchers comparing QSBS option grant, exercise and vesting dates will discover and visit the existing `/qsbs-stock-options/` guide when its title names the comparison and its initial HTML provides a concise, sourced situation table and timeline. The guide already surfaces in search; this targets a distinct employee-equity task while the California and checklist experiments remain stable.
+
+Distribution mechanism: organic discovery of the existing canonical guide for stock-option timing searches, including more specific grant-versus-exercise searches. The title and description describe the comparison; the table answers it without requiring a script or submitted information. Search engines may rewrite the presentation. Publication, internal links and a public search result are not proof of additional distribution.
+
+Observe September 29–October 12; review October 13 against September 15–28 using complete data where available. Primary metrics: guide impressions, clicks and CTR, disclosed query/page pairs for grant/exercise/vesting and stock options, with position/device/country mix. Secondary: organic landing sessions and engagement on this guide. No new event is introduced; no same-cohort transition rate is assumed. Fewer than 50 organic landings remains insufficient exposure to judge usefulness.
+
+Analytics access was unavailable at selection. Recover the baseline when access returns; if either window remains unavailable, report the gap and extend observation rather than treating missing counts as zero. Keep this page stable during the window except for confirmed fixes. Next weekly discovery selection October 5. Preserve the October 2 checklist, October 6 California, and October 14 overall assessments.
